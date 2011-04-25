@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# explude these files from creating links
+EXPLUDE="^.git|^README"
+
+usage() {
+  echo "Please run this script from 'dotmatrix' directory!"
+  echo "Usage:  ./bin/mklinks"
+}
+
+pwd=`pwd`
+if [ `basename ${pwd}` != 'dotmatrix' ] ; then
+  usage
+fi
+
+for i in `find . -depth 1 -exec basename {} \;`; do
+  echo ${i} | egrep ${EXPLUDE} 1> /dev/null && echo "skipping ${i}" &&  continue
+  if [ -f ${HOME}/${i} ] ; then  
+    echo "${HOME}/$i already exists"
+    continue
+  fi
+  if [ -d ${HOME}/${i} ] ; then  
+    echo "${HOME}/$i already exists"
+    continue
+  fi
+  ln -vs ${pwd}/$i ${HOME}/$i
+done
