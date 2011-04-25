@@ -1,0 +1,23 @@
+autodetach on
+startup_message off
+defscrollback 5000
+# nice blue theme
+hardstatus alwayslastline "%{.bW}%-Lw%{= rW}%51>%n%f %t%{-}%+Lw%<"
+# keep old info when exit from vi
+#altscreen on
+
+#termcap  facit|vt100|xterm|rxvt LP:G0
+#terminfo facit|vt100|xterm|rxvt LP:G
+termcapinfo rxvt* ti@:te@
+
+# http://bbs.archlinux.org/viewtopic.php?pid=499440
+
+msgwait 2 # 2 second message
+bindkey "^[." next
+bindkey "^[," prev
+#
+#password 'htpasswd'
+
+screen -t r00t 0 su -
+#screen -t outpost 8 ssh -v outpost
+#screen -t micq 9 micq
