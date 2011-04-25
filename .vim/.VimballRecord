@@ -1,0 +1,2 @@
+align.vba: call delete('/private/home/todor/.vim/plugin/AlignPlugin.vim')|call delete('/private/home/todor/.vim/plugin/AlignMapsPlugin.vim')|call delete('/private/home/todor/.vim/plugin/cecutil.vim')|call delete('/private/home/todor/.vim/doc/Align.txt')|call delete('/private/home/todor/.vim/autoload/Align.vim')|call delete('/private/home/todor/.vim/autoload/AlignMaps.vim')
+download_script.php?src_id=14237: call delete('/Users/t0d0r/.vim/doc/checksyntax.txt')|call delete('/Users/t0d0r/.vim/plugin/checksyntax.vim')|call delete('/Users/t0d0r/.vim/autoload/checksyntax.vim')
