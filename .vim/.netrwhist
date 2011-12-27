@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/t0d0r/work/testing/rails/google-map'
-let g:netrw_dirhist_2='/Users/t0d0r/Projects/rails/parking'
-let g:netrw_dirhist_3='/Users/t0d0r/work/g00net/gooweb'
-let g:netrw_dirhist_4='/Users/t0d0r/Projects/rails/pilotorder'
-let g:netrw_dirhist_5='/Users/t0d0r/work/testing/rails/rrafinery'
-let g:netrw_dirhist_6='/Users/t0d0r/.vim'
