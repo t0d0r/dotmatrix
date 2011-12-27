@@ -25,7 +25,7 @@ export PS1="\[\033]0;\W\007\] \W> "
 test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
 # PATH for DarwinPorts
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="~/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 export MANPATH="/opt/local/share/man:$MANPATH"
 scname=".scriptype."`date +"%y%m%d%H%M%S"`
 #script -qa ~/$scname && logout
