@@ -31,8 +31,8 @@ scname=".scriptype."`date +"%y%m%d%H%M%S"`
 #script -qa ~/$scname && logout
 
 # this file must be kept away from github :)
-[[ -s "~/.bash_env" ]] && source "~/.bash_env"
+[[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
 
 # Ruby Version Manager
-[[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
