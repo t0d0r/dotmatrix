@@ -5,3 +5,5 @@ Dot files from my Mac OS X.
   cd github
   git clone git://github.com/t0d0r/dotmatrix.git
   cd gotmatrix && ./bin/mklinks
+
+# .vim is replaced by https://github.com/t0d0r/vimfiles
