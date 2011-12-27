@@ -1,0 +1,19 @@
+#!/bin/bash
+
+date=`date +"%Y%m%d%H%M%S"`
+pwd=`pwd`
+pwd=~/Desktop
+filename="${pwd}/scanned_${date}.tif" 
+echo "Finding device..."
+device=$(scanimage -L | cut -d ' ' -f 2 | sed -e "s/[\`\|\']//g")
+echo "got ${device}"
+
+if [ ! -f "${filename}" ]; then
+#   scanimage --format=tiff --mode lineart --resolution=75 -d "net:192.168.1.254:snapscan:libusb:003:002" -p > ${filename}
+  scanimage --format=tiff --resolution=300 -d "${device}" -p > ${filename}
+  echo ${filename}
+  open ${filename}
+else
+  echo "$1 already exist !"
+  exit 2
+fi
