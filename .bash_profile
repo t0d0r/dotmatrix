@@ -18,6 +18,12 @@ alias mvim='mvim --servername `basename $PWD`'
 alias mysql='mysql5'
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
+alias less='less -R'
+
+# history related
+export HISTIGNORE="??"
+export HISTCONTROL=ignoreboth
+export HISTSIZE=512
 
 #export PS1="dir.= \W> "
 export PS1="\[\033]0;\W\007\] \W> "
