@@ -1,0 +1,24 @@
+[ui]
+username = Todor Dragnev <todor.dragnev@gmail.com>
+#verbose = True
+[defaults]
+# suppress noisy extdiff header message
+cdiff = -q
+
+# добавя cdiff, color and glog команди
+[extensions]
+hgext.extdiff =
+graphlog =
+color =
+[extdiff]
+cmd.cdiff = colordiff
+opts.cdiff = -uprN
+#cmd.opendiff = vimdiff
+
+[color]
+status.modified = magenta bold
+status.added = yellow bold
+status.removed = red bold blue_background
+status.deleted = red bold
+status.unknown = blue bold
+status.ignored = black bold
