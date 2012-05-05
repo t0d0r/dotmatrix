@@ -10,6 +10,7 @@ cdiff = -q
 hgext.extdiff =
 graphlog =
 color =
+convert =
 [extdiff]
 cmd.cdiff = colordiff
 opts.cdiff = -uprN
