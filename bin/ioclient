@@ -21,7 +21,7 @@
 #### EDIT HERE ####
 
 # Path to your iodine executable
-IOD="/usr/local/sbin/iodine"
+IOD="/opt/local/sbin/iodine"
 
 # Your top domain
 IOTD="l.all4y.net"
@@ -36,7 +36,7 @@ IODEV="tun0"
 
 # The IP your iodined server uses inside the tunnel
 # The man page calls this tunnel_ip
-IOIP="172.16.0.1"
+IOIP="172.16.12.1"
 
 
 #### STOP EDITING ####
