@@ -19,6 +19,8 @@ alias mvim='mvim --servername `basename $PWD`'
 alias mysql='mysql5'
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
+alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
+alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
 alias less='less -R'
 alias groovysh="groovysh -C off"
 
