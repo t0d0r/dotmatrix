@@ -16,6 +16,12 @@ cmd.cdiff = colordiff
 opts.cdiff = -uprN
 #cmd.opendiff = vimdiff
 
+
+[alias]
+latest = log --limit 4
+lastlog = latest
+ll = lastlog
+
 [color]
 status.modified = magenta bold
 status.added = yellow bold
