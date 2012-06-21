@@ -1,7 +1,12 @@
+set guioptions-=T
+set wildmenu " change style when use <tab>
+set smartcase
+
 "functions and commands to switch fast between fonts and styles
 function! GUInormal()
   set anti
   set nofullscreen
+  colorscheme t0d0r
   set guifont=Envy\ Code\ R:h14
   call GUIstatusline()
 endfunction
