@@ -1,0 +1,38 @@
+" settings
+set visualbell
+" set dictionary=/usr/share/dict/words
+set complete+=k
+set complete-=i
+" add dictionary to CTRL-P completion, and remove include search
+"set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
+set spelllang=en,bg
+
+" commands
+command! FR set filetype=ruby
+
+let NERDTreeChDirMode=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeMinimalUI=1
+let NERDTreeShowBookmarks=1
+
+" save files as root without prior sudo
+cmap w!! w !sudo tee % >/dev/null
+map Q gq
+" clear recent search highlighting with space
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <F4> :NERDTreeToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
+
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()

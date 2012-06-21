@@ -1,0 +1,6 @@
+[submodule ".janus/nerdtree-ack"]
+	path = .janus/nerdtree-ack
+	url = https://github.com/vim-scripts/nerdtree-ack.git
+[submodule ".janus/ruby-runner"]
+	path = .janus/ruby-runner
+	url = https://github.com/henrik/vim-ruby-runner
