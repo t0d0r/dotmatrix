@@ -4,3 +4,9 @@
 [submodule ".janus/ruby-runner"]
 	path = .janus/ruby-runner
 	url = https://github.com/henrik/vim-ruby-runner
+[submodule ".janus/l9"]
+	path = .janus/l9
+	url = https://github.com/vim-scripts/L9.git
+[submodule "scmfrontend"]
+	path = scmfrontend
+	url = https://github.com/vim-scripts/ScmFrontEnd-former-name--MinSCM.git
