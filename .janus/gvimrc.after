@@ -1,0 +1,45 @@
+"functions and commands to switch fast between fonts and styles
+function! GUInormal()
+  set anti
+  set nofullscreen
+  set guifont=Envy\ Code\ R:h14
+  call GUIstatusline()
+endfunction
+
+function! GUIstatusline()
+  set statusline=
+  set statusline +=%1*\ %n\ %*            "buffer number
+  set statusline +=%4*\ %<%f%*            "full path
+  set statusline +=%2*%m%*                "modified flag
+  set statusline +=%1*%=%5l%*             "current line
+  set statusline +=%2*/%L%*               "total lines
+  set statusline +=%1*%4v\ %*             "virtual column number
+  set statusline +=%3*%{strlen(&fenc)?&fenc:&enc}
+  set statusline +=%5*\ %{&ff}%*            "file format
+  set statusline +=%3*%y%*                "file type
+  set statusline +=%2*\ 0x%04B%*          "character under cursor
+
+  hi User1 guifg=#eea040 guibg=#222222
+  hi User2 guifg=#dd3333 guibg=#222222
+  hi User3 guifg=#ff66ff guibg=#222222
+  hi User4 guifg=#a0ee40 guibg=#222222
+  hi User5 guifg=#eeee40 guibg=#222222
+endfunction
+
+command! FR set filetype=ruby
+command! DELL set guifont=Terminus:h24 " set big font for using in my 20" DELL display
+command! ENVY set guifont=Envy\ Code\ R:h18 " same as above but font is different
+command! MONODELL set guifont=monofur:h24
+command! NORMAL call GUInormal()
+command! STATUSLINE call GUIstatusline()
+command! Zmanual set foldmethod=manual
+command! Zindent set foldmethod=indent
+command! Zsyntax set foldmethod=syntax
+command! FULL set fullscreen
+command! WHITE colorscheme lingodirector
+command! BLACK colorscheme t0d0r
+
+autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
+
+NORMAL "set normal font size
+

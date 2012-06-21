@@ -1,0 +1,17 @@
+This directory is a part from janus vim plugin.
+
+To install janus remove all .vim files and directories in your home and
+execute:
+
+  curl -Lo- https://bit.ly/janus-bootstrap | bash
+
+= Gui Fonts
+
+* "Envy":http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
+* "Monofur":http://www.dafont.com/monofur.font
+
+= Bundles
+
+  git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
+  git submodule add https://github.com/vim-scripts/Rename2.git .janus/rename2
+  git submodule add https://github.com/henrik/vim-ruby-runner .janus/ruby-runner
