@@ -13,6 +13,9 @@ if [ `basename ${pwd}` != 'dotmatrix' ] ; then
   usage
 fi
 
+# update submodules (vim-janus)
+git submodule update --init
+
 for i in `find . -depth 1 -exec basename {} \;`; do
   echo ${i} | egrep ${EXCLUDE} 1> /dev/null && echo "skipping ${i}" &&  continue
   if [ -f ${HOME}/${i} ] ; then
