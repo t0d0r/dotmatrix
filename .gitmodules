@@ -7,6 +7,6 @@
 [submodule ".janus/l9"]
 	path = .janus/l9
 	url = https://github.com/vim-scripts/L9.git
-[submodule "scmfrontend"]
-	path = scmfrontend
+[submodule ".janus/scmfrontend"]
+	path = .janus/scmfrontend
 	url = https://github.com/vim-scripts/ScmFrontEnd-former-name--MinSCM.git
