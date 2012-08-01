@@ -1,0 +1,2 @@
+text/html;                      elinks %s; nametemplate=%s.html
+text/html;                      iconv -c -f %{charset} -t cp1251 < %s | elinks -dump --dump-charset %{charset}; nametemplate=%s.html; copiousoutput

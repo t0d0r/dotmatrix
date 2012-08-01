@@ -10,3 +10,6 @@
 [submodule ".janus/scmfrontend"]
 	path = .janus/scmfrontend
 	url = https://github.com/vim-scripts/ScmFrontEnd-former-name--MinSCM.git
+[submodule ".janus/tabular"]
+	path = .janus/tabular
+	url = https://github.com/godlygeek/tabular.git
