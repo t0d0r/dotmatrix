@@ -45,6 +45,8 @@ command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
 
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
+" set some session options for :mksession command
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 NORMAL "set normal font size
 
