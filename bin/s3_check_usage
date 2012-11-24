@@ -1,0 +1,151 @@
+#!/usr/bin/env python
+
+# Nagios check_s3_usage plugin
+#
+# License: GPL2 or above
+# Copyright (c) 2007 Basil Shubin <bashu@users.sourceforge.net>
+#
+# Description:
+#
+# This plugin checks disk usage by S3 storage system.
+#
+# To use this plugin you must have s3cmd installed (http://s3tools.logix.cz)
+#
+# TODO:
+#
+# Add more functionality to this script
+#
+
+"""check_s3_usage 0.1
+Copyright (c) 2007 Basil Shubin <bashu@users.sourceforge.net>
+
+This plugin checks the amount of used disk space on a S3 storage system and
+generates an alert if free space is less than one of the threshold values.
+
+To use this plugin you must have s3cmd installed (http://s3tools.logix.cz)
+
+Usage: %(program)s [-b bucket] [-t timeout]
+
+Options:
+ -h, --help
+    Print detailed help screen
+ -V, --version
+    Print version information
+ -b, --bucket=URI
+    Check specified S3 bucket by URI
+ -t, --timeout=INTEGER
+    Seconds before connection times out (default: 10)
+"""
+
+__version__ = '0.1'
+
+import os
+import sys
+import getopt
+import signal
+from subprocess import Popen, PIPE
+
+program = sys.argv[0]
+
+COMMASPACE = ', '
+
+STATE_OK = 0
+STATE_WARNING = 1
+STATE_CRITICAL = 2
+STATE_UNKNOWN = 3
+
+OK = 0
+ERROR = -1
+
+# path to s3cmd executable
+S3CMD = '/opt/local/bin/s3cmd'
+
+DU = 'du'
+
+def usage(code, msg=''):
+  outfp = sys.stderr
+  if code == 0:
+    outfp = sys.stdout
+
+  print >> outfp, __doc__ % globals()
+  if msg:
+    print >> outfp, msg
+
+  sys.exit(code)
+
+def output(code, msg=''):
+  outfp = sys.stdout
+  if msg:
+    print >> outfp, msg
+  sys.exit(code)
+
+def parseargs():
+  try:
+    opts, args = getopt.getopt(sys.argv[1:], 'b:t:Vh',
+                                           ['bucket', 'timeout', 'version', 'help'])
+  except getopt.error, msg:
+    usage(OK, msg)
+
+  class Options:
+    bucket = None      # S3 bucket URI
+    timeout = 10       # timeout for command
+
+  options = Options()
+
+  for opt, arg in opts:
+    if opt in ('-h', '--help'):
+      usage(OK)
+    elif opt in ('-v', '--version'):
+      output(__version__, OK)
+    elif opt in ('-b', '--bucket'):
+      options.bucket = arg
+    elif opt in ('-t', '--timeout'):
+      options.timeout = int(arg)
+    else:
+      assert False, (opt, arg)
+
+  if options.bucket is None:
+    usage(ERROR, "No bucket URI specified!")
+
+  # Any other arguments are invalid
+  if args:
+    usage(ERROR, 'Invalid arguments: ' + COMMASPACE.join(args))
+
+  return options
+
+
+def main():
+  def handler(signum, frame):
+    raise IOError
+
+  options = parseargs()
+
+  if options.bucket is not None:
+    # Set the signal handler and an alarm set by timeout
+    signal.signal(signal.SIGALRM, handler)
+    signal.alarm(options.timeout)
+
+    try:
+      p1 = Popen([S3CMD, DU, options.bucket], stdout=PIPE)
+      out, err = p1.communicate()
+      retcode = p1.wait()
+    except IOError:
+      os.kill(p1.pid, signal.SIGTERM)
+      output(STATE_CRITICAL,
+             "S3 CRITICAL - Command timeout after %s seconds!" % options.timeout)
+
+    signal.alarm(0)
+
+    if retcode == OK:
+      if options.bucket is None:
+        pass
+      else:
+        usage = out.split()[0]
+        output(STATE_OK,
+               "S3 OK - bucket usage: %s %s;| size=%s;;;;" %
+               (options.bucket, usage, usage))
+    else:
+      sys.exit(ERROR)
+
+if __name__ == '__main__':
+  main()
