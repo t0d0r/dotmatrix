@@ -4,10 +4,24 @@ set smartcase
 
 "functions and commands to switch fast between fonts and styles
 function! GUInormal()
-  set anti
+  set antialias
   set nofullscreen
   colorscheme t0d0r
   set guifont=Envy\ Code\ R:h14
+  call GUIstatusline()
+endfunction
+
+function! GUIsmall()
+  set noantialias
+  set nofullscreen
+  set guifont=Monaco:h10
+  call GUIstatusline()
+endfunction
+
+function! GUImicro()
+  set noantialias
+  set nofullscreen
+  set guifont=Monaco:h9
   call GUIstatusline()
 endfunction
 
@@ -32,10 +46,12 @@ function! GUIstatusline()
 endfunction
 
 command! FR set filetype=ruby
-command! DELL set guifont=Terminus:h24 " set big font for using in my 20" DELL display
-command! ENVY set guifont=Envy\ Code\ R:h18 " same as above but font is different
-command! MONODELL set guifont=monofur:h24
+command! DELL set guifont=Terminus:h24 antialias " set big font for using in my 20" DELL display
+command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
+command! MONODELL set guifont=monofur:h24 antialias
 command! NORMAL call GUInormal()
+command! SMALL call GUIsmall()
+command! MICRO call GUImicro()
 command! STATUSLINE call GUIstatusline()
 command! Zmanual set foldmethod=manual
 command! Zindent set foldmethod=indent

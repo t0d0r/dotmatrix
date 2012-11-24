@@ -15,3 +15,22 @@ execute:
   git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
   git submodule add https://github.com/vim-scripts/Rename2.git .janus/rename2
   git submodule add https://github.com/henrik/vim-ruby-runner .janus/ruby-runner
+
+= Useful modules or commands
+
+== GUI related
+:FULL
+:WHITE
+:BLACK
+:NORMAL
+:MONODELL
+:ENVY
+
+:Zmanual
+:Zindex
+:Zsyntax
+
+== git related
+:Gstatus
+:Gcommit
+:Gdiff

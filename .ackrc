@@ -1,2 +1,8 @@
 --type-add=ruby=.haml,.rake,.rsel
 --ignore-dir=log
+--type-set
+haml=.haml
+--type-set
+sass=.sass,.scss
+--type-set
+coffee=.coffee

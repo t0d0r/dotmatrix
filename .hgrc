@@ -1,16 +1,25 @@
 [ui]
-username = Todor Dragnev <todor.dragnev@gmail.com>
+username = Todor Dragnev <todor@bstconsult.com>
+#username = Todor Dragnev <todor.dragnev@gmail.com>
 #verbose = True
 [defaults]
 # suppress noisy extdiff header message
 cdiff = -q
 
 # добавя cdiff, color and glog команди
+
+[extensions]
+hgshelve=~/.hgext/hgshelve/hgshelve.py
+
 [extensions]
 hgext.extdiff =
 graphlog =
 color =
 convert =
+hgext.churn=
+hgext.hgshelve=
+fetch =
+
 [extdiff]
 cmd.cdiff = colordiff
 opts.cdiff = -uprN
@@ -18,9 +27,14 @@ opts.cdiff = -uprN
 
 
 [alias]
+changelog = log
+stash = shelve
+changeset = log --template '{date|age}: {desc|firstline} [{author|person}]\n'
 latest = log --limit 4
 lastlog = latest
-ll = lastlog
+ll = lastlog --stat
+__mystatus = status
+st = !hg __mystatus $($HG root) $HG_ARGS
 
 [color]
 status.modified = magenta bold
