@@ -23,6 +23,7 @@ alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-serve
 alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
 alias less='less -R'
 alias groovysh="groovysh -C off"
+alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 
 # history related
 export HISTIGNORE="??"
@@ -43,15 +44,21 @@ scname=".scriptype."`date +"%y%m%d%H%M%S"`
 
 export NODE_PATH="~/.npm"
 
-# this file must be kept away from github :)
-[[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
+# interactive or not, that is the question...
+case "$-" in
+  *i*)
+    # this file must be kept away from github :)
+    [[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
+    # Ruby Version Manager
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    # bash completion
+    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
+    # mercurial completion
+    [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
+    # fortune
+    [[ -s "/opt/local/bin/fortune" ]] && echo && /opt/local/bin/fortune
+  ;;
+esac
 
-# Ruby Version Manager
+# this fix mvim environment
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-
-[[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
-
-if [ -f /opt/local/etc/bash_completion ]; then
-      . /opt/local/etc/bash_completion
-fi
