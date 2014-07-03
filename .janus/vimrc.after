@@ -6,9 +6,11 @@ set complete-=i
 " add dictionary to CTRL-P completion, and remove include search
 "set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
 set spelllang=en,bg
+set hidden
 
 " commands
 command! FR set filetype=ruby
+command! ORG set filetype=org
 
 let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
@@ -16,7 +18,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
 
 " save files as root without prior sudo (included in janus)
-"cmap w!! w !sudo tee % >/dev/null
+cmap w!! w !sudo tee % >/dev/null
 map Q gq
 " clear recent search highlighting with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
