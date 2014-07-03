@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PATH="$PATH:/sw/bin:/Developer/usr/bin/"
+PATH="$PATH:/sw/bin:/Developer/usr/bin"
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
 # workaround for cvs to use ssh as transfer protocol
@@ -16,9 +16,11 @@ alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
-alias mysql='mysql5'
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
-alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
+alias mysql='mysql'
+#alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
+#alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
+alias mysqlstart='mysql.server start'
+alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
 alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
 alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
 alias less='less -R'
@@ -61,4 +63,14 @@ case "$-" in
 esac
 
 # this fix mvim environment
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+eval "$(rbenv init -)"
+
+# locate fix for mosh /t0d0r
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
+#export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=/Users/t0d0r/work/gocode
+
