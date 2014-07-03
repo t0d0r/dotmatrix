@@ -24,6 +24,12 @@ alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server
 alias less='less -R'
 alias groovysh="groovysh -C off"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
+alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
+alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias ppjson=json_reformat
+
+# this fix crontab -e issue with vi
+export EDITOR=vim
 
 # history related
 export HISTIGNORE="??"
@@ -62,3 +68,5 @@ esac
 
 # this fix mvim environment
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
