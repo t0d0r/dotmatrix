@@ -16,7 +16,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
 
 " save files as root without prior sudo (included in janus)
-"cmap w!! w !sudo tee % >/dev/null
+cmap w!! w !sudo tee % >/dev/null
 map Q gq
 " clear recent search highlighting with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -41,3 +41,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" execute opened buffer as GoLang code
+autocmd FileType go :map <F10> :!go run %<CR>
+autocmd FileType go colorscheme dejavu
+
