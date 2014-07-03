@@ -9,15 +9,20 @@ hardstatus alwayslastline "%{.bW}%-Lw%{= rW}%51>%n%f %t%{-}%+Lw%<"
 #termcap  facit|vt100|xterm|rxvt LP:G0
 #terminfo facit|vt100|xterm|rxvt LP:G
 termcapinfo rxvt* ti@:te@
+termcapinfo xterm* ti@:te@
 
 # http://bbs.archlinux.org/viewtopic.php?pid=499440
 
 msgwait 2 # 2 second message
-bindkey "^[." next
-bindkey "^[," prev
-#
+
 #password 'htpasswd'
 
+bindkey "^[." next
+bindkey "^[," prev
+
 screen -t r00t 0 su -
+#defutf8 on
+#utf8 on on
 #screen -t outpost 8 ssh -v outpost
 #screen -t micq 9 micq
+
