@@ -7,6 +7,7 @@ function! GUInormal()
   set antialias
   set nofullscreen
   colorscheme t0d0r
+  colorscheme dejavu
   set guifont=Envy\ Code\ R:h14
   call GUIstatusline()
 endfunction
@@ -45,6 +46,17 @@ function! GUIstatusline()
   hi User5 guifg=#eeee40 guibg=#222222
 endfunction
 
+function! SetCP1251()
+  set encoding=cp1251
+  set fileencoding=cp1251
+  echo "type :e! to reload file."
+  "e!
+endfunction
+
+"function! ReduceWhiteSpaceToOne
+"  %s![^ ]\zs  \+! !g
+"endfunction
+
 command! FR set filetype=ruby
 command! DELL set guifont=Terminus:h24 antialias " set big font for using in my 20" DELL display
 command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
@@ -59,10 +71,15 @@ command! Zsyntax set foldmethod=syntax
 command! FULL set fullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
+command! CP1251 call SetCP1251()
+command! NOCLOSE let NERDTreeQuitOnOpen=0
+
+" ord TODO
+let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
+
 
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 NORMAL "set normal font size
-
