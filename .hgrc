@@ -10,15 +10,18 @@ cdiff = -q
 
 [extensions]
 hgshelve=~/.hgext/hgshelve/hgshelve.py
+#fold=~/.hgext/hgfold/fold.py
 
 [extensions]
-hgext.extdiff =
-graphlog =
-color =
-convert =
+color=
+convert=
+fetch=
+graphlog=
 hgext.churn=
-hgext.hgshelve=
-fetch =
+hgext.extdiff=
+#hgext.hgshelve=
+record=
+#pager=
 
 [extdiff]
 cmd.cdiff = colordiff
@@ -43,3 +46,8 @@ status.removed = red bold blue_background
 status.deleted = red bold
 status.unknown = blue bold
 status.ignored = black bold
+
+#[pager]
+#pager = less
+#quiet = True
+#attend = diff,status,log,qdiff,blame,annotate,pdiff,glog
