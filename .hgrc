@@ -22,6 +22,8 @@ hgext.extdiff=
 #hgext.hgshelve=
 record=
 #pager=
+hgext.bookmarks =
+hggit =
 
 [extdiff]
 cmd.cdiff = colordiff
@@ -47,6 +49,8 @@ status.deleted = red bold
 status.unknown = blue bold
 status.ignored = black bold
 
+[git]
+intree=1
 #[pager]
 #pager = less
 #quiet = True
