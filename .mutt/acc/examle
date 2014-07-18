@@ -1,0 +1,21 @@
+# vim: filetype=muttrc
+
+source ~/.mutt/unset
+
+set imap_user = "useremail"
+set imap_pass = "userpassword"
+set folder = imaps://useremail@imap.gmail.com:993/
+set spoolfile = +INBOX
+set from = "useremail"
+set imap_keepalive=300
+set mail_check=60
+set postponed="+[Gmail]/Drafts"
+set record="+[Gmail]/Sent'
+set realname = "useremail"
+
+# send options
+set smtp_url = "smtp://useremail@smtp.gmail.com:587/"
+set smtp_pass = "userpassword"
+set ssl_force_tls = yes
+
+account-hook $folder 'set imap_user = "useremail" imap_pass = "userpassword"'
