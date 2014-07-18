@@ -1,0 +1,6 @@
+#define your mailboxes here
+
+mailboxes
+#mailboxes 'imaps://todor.dragnev@catenate.com@imap.gmail.com:993/' \
+#        + 'imaps://todor.dragnev@imap.gmail.com:993/' \
+#        + 'imaps://todor@bstconsult.com@imap.gmail.com:993/'
