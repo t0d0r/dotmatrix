@@ -10,7 +10,7 @@ set from = "useremail"
 set imap_keepalive=300
 set mail_check=60
 set postponed="+[Gmail]/Drafts"
-set record="+[Gmail]/Sent'
+set record="+[Gmail]/Sent Mail"
 set realname = "useremail"
 
 # send options
