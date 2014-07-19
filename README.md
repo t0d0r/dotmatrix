@@ -4,5 +4,8 @@ Dot files from my Mac OS X.
   git clone git://github.com/t0d0r/dotmatrix.git
   cd dotmatrix && ./bin/mklinks
 
+
 # .vim is replaced by janus plugin
   curl -Lo- https://bit.ly/janus-bootstrap | bash
+
+# .netrc - part of goobook mutt helper

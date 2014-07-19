@@ -102,7 +102,11 @@ unset sig_dashes                         # dashes before sig
 
 # Index View Options -----------------------------
 set date_format         = "%y/%m/%d"
-set index_format        = "[%Z]  %D  %-20.20F  %s"
+set index_format        = "%4C│%Z│%D %-20.20F (%4c) %s"
+
+#set index_format        = "[%Z] %D %-20.20F (%4c) %s"
+#set index_format="%4C %Z %{%b %d} %-15.15F (%4c) %s"
+
 set sort                = threads                           # As in GMail
 set strict_threads      = "yes"
 set sort_browser        = "date"
@@ -123,7 +127,7 @@ set ispell              = "aspell -e -c"
 set implicit_autoview
 
 # Goobook https://pypi.python.org/pypi/goobook/ -----
-#set query_command       = "goobook query '%s'"
+set query_command       = "goobook query '%s'"
 
 ## SIDEBAR ## -----------------------------------------
 #set sidebar_width       = 30
