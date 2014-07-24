@@ -8,4 +8,8 @@ Dot files from my Mac OS X.
 # .vim is replaced by janus plugin
   curl -Lo- https://bit.ly/janus-bootstrap | bash
 
+# after installing janus, don't forget to execute
+  git submodule init
+  git submodule update
+
 # .netrc - part of goobook mutt helper
