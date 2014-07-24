@@ -13,3 +13,6 @@
 [submodule ".janus/tabular"]
 	path = .janus/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule ".janus/vim-orgmode"]
+	path = .janus/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
