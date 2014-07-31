@@ -67,13 +67,14 @@ case "$-" in
     [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
     # fortune
     [[ -s "/opt/local/bin/fortune" ]] && echo && /opt/local/bin/fortune
+    # rbenv /rvm replacement/
+    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
   ;;
 esac
 
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-eval "$(rbenv init -)"
 
 # locate fix for mosh /t0d0r
 export LANG=en_US.UTF-8

@@ -84,7 +84,7 @@ color index         yellow          red             "~v~(~D)"                   
 #color index         green           default         "~S"                       # superseded messages
 #color index         red             default         "~T"                       # tagged messages
 #color index         brightred       red             "~="                       # duplicated messages
-color index         brightyellow     default             "PROBLEM!!:"                       # duplicated messages
+color index         red     default             "PROBLEM!!:|Fehler"                       # duplicated messages
 
 # message headers ------------------------------------------------------
 
