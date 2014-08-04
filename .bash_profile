@@ -82,3 +82,6 @@ export LC_CTYPE=en_US.UTF-8
 
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=/Users/t0d0r/work/gocode
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
