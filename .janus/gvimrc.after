@@ -46,11 +46,10 @@ function! GUIstatusline()
   hi User5 guifg=#eeee40 guibg=#222222
 endfunction
 
-function! SetCP1251()
-  set encoding=cp1251
-  set fileencoding=cp1251
-  echo "type :e! to reload file."
-  "e!
+function! SetEncoding(enc)
+  exec ":set encoding=" . a:enc
+  exec ":set fileencoding=" . a:enc
+  echo "Set encoding to " . a:enc . ", please type :e! to reload the file."
 endfunction
 
 "function! ReduceWhiteSpaceToOne
@@ -71,7 +70,8 @@ command! Zsyntax set foldmethod=syntax
 command! FULL set fullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
-command! CP1251 call SetCP1251()
+command! CP1251 call SetEncoding('cp1251')
+command! UTF8 call SetEncoding('utf8')
 command! NOCLOSE let NERDTreeQuitOnOpen=0
 
 " ord TODO
