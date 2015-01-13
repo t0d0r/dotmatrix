@@ -41,4 +41,5 @@ macro index gt "<change-folder>=[Gmail]/Starred<enter>" "Go to TODO"
 
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 
-macro index <Esc>z "<delete-pattern>~f zabbix@support.catenate.com|~s 'PROFILE DELETION'<enter>" "Mark for deleting all zabbix"
+macro index <Esc>z "<delete-pattern>~f zabbix@support.catenate.com|~s 'PROFILE DELETION'|~f no-reply@monitor.us<enter>" "Mark for deleting all zabbix"
+macro index <Esc>Z "<delete-pattern>~s 'backupninja:'<enter>" "Mark for deleting all backupninja"
