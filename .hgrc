@@ -23,7 +23,7 @@ hgext.extdiff=
 record=
 #pager=
 hgext.bookmarks =
-hggit =
+#hggit =
 
 [extdiff]
 cmd.cdiff = colordiff

@@ -85,3 +85,12 @@ export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+##
+# Your previous /Users/t0d0r/.bash_profile file was backed up as /Users/t0d0r/.bash_profile.macports-saved_2015-04-23_at_03:15:04
+##
+
+# MacPorts Installer addition on 2015-04-23_at_03:15:04: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
