@@ -8,6 +8,7 @@ function! GUInormal()
   set nofullscreen
   colorscheme t0d0r
   colorscheme dejavu
+  highlight Cursor gui=reverse guifg=red guibg=NONE
   set guifont=Envy\ Code\ R:h14
   call GUIstatusline()
 endfunction

@@ -1,7 +1,9 @@
 *~
+*.pyc
 .DS_Store
 .mutt/acc/
 .mutt/cache/bodies/
 .mutt/cache/headers
 .netrc
 .bash_env
+
