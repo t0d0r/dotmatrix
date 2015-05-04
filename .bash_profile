@@ -17,9 +17,9 @@ alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
 alias mysql='mysql'
-#alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
+alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 #alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
-alias mysqlstart='mysql.server start'
+#alias mysqlstart='mysql.server start'
 alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
 #alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
 #alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
@@ -85,3 +85,12 @@ export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+##
+# Your previous /Users/t0d0r/.bash_profile file was backed up as /Users/t0d0r/.bash_profile.macports-saved_2015-04-23_at_03:15:04
+##
+
+# MacPorts Installer addition on 2015-04-23_at_03:15:04: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
