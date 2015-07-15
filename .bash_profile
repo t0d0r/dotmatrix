@@ -23,8 +23,9 @@ alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
 #alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
 #alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
-alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
+#alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+#alias pgstop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
+alias pg.start='postgres -D /usr/local/var/postgres'
 alias less='less -R'
 alias groovysh="groovysh -C off"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
@@ -66,15 +67,16 @@ case "$-" in
     # mercurial completion
     [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
     # fortune
-    [[ -s "/opt/local/bin/fortune" ]] && echo && /opt/local/bin/fortune
+    [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
     # rbenv /rvm replacement/
     [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+    # mysql
+    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
   ;;
 esac
 
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 
 # locate fix for mosh /t0d0r
 export LANG=en_US.UTF-8
@@ -85,12 +87,4 @@ export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-##
-# Your previous /Users/t0d0r/.bash_profile file was backed up as /Users/t0d0r/.bash_profile.macports-saved_2015-04-23_at_03:15:04
-##
-
-# MacPorts Installer addition on 2015-04-23_at_03:15:04: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
 
