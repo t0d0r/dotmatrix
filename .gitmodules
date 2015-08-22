@@ -16,3 +16,6 @@
 [submodule ".janus/vim-orgmode"]
 	path = .janus/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
+[submodule ".janus/vim-gista"]
+	path = .janus/vim-gista
+	url = https://github.com/lambdalisue/vim-gista.git
