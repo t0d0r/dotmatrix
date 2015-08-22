@@ -12,11 +12,13 @@ execute:
 
 = Bundles
 
+  * execute following commands in 'dotmatrix' directory
   git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
   git submodule add https://github.com/vim-scripts/Rename2.git .janus/rename2
   git submodule add https://github.com/henrik/vim-ruby-runner .janus/ruby-runner
   git submodule add git://github.com/godlygeek/tabular.git .janus/tabular
   git submodule add https://github.com/jceb/vim-orgmode.git .janus/vim-orgmode
+  git submodule add https://github.com/lambdalisue/vim-gista.git .janus/vim-gista
 
 = Useful modules or commands
 
