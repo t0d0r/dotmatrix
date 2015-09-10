@@ -2,6 +2,8 @@
 username = Todor Dragnev <todor@bstconsult.com>
 #username = Todor Dragnev <todor.dragnev@gmail.com>
 #verbose = True
+merge = vimdiff
+
 [defaults]
 # suppress noisy extdiff header message
 cdiff = -q
@@ -29,6 +31,14 @@ hgext.bookmarks =
 cmd.cdiff = colordiff
 opts.cdiff = -uprN
 #cmd.opendiff = vimdiff
+
+[merge-tools]
+vimdiff.executable = mvim
+#vimdiff.args = -d -c "wincmd J" "$output" "$local" "$other" "$base"
+#vimdiff.args = -d $base $local $output $other -c "wincmd J"
+vimdiff.args = -f -d $output -M $local $base $other -c "wincmd J" -c "set modifiable" -c "set write"
+vimdiff.premerge = keep
+
 
 
 [alias]
