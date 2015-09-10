@@ -7,6 +7,8 @@ set complete-=i
 "set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
 set spelllang=en,bg
 set hidden
+set nonumber
+colorscheme koehler
 
 " commands
 command! FR set filetype=ruby
