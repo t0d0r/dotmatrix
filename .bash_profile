@@ -16,11 +16,11 @@ alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
-alias mysql='mysql'
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
+#alias mysql='mysql'
+#alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 #alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
 #alias mysqlstart='mysql.server start'
-alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
+#alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
 #alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
 #alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
 alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
@@ -93,4 +93,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # MacPorts Installer addition on 2015-04-23_at_03:15:04: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
+
+PERL_MB_OPT="--install_base \"/Users/t0d0r/perl5\""; export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/Users/t0d0r/perl5"; export PERL_MM_OPT
+export PERL5LIB="/Users/t0d0r/perl5/lib/perl5"
+
 
