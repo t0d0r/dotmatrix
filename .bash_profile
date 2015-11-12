@@ -16,6 +16,7 @@ alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
+alias mutt.local="mutt -f /var/mail/$USER"
 #alias mysql='mysql'
 #alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 #alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
