@@ -8,10 +8,10 @@
 # executing linuxfan profile / syncing data from/to do.linuxfan.org
 /usr/local/bin/unison -batch -silent linuxfan
 
+## if sync failed, resolve problem from terminal, executing:
+## unison -ui text linuxfan
 if [ $? -gt 0 ]; then
   /usr/bin/osascript -e 'display notification "sync failed!" with title "unison" sound name "Sound Name"'
-  # if sync failed, resolve problem from terminal, executing:
-  # unison -ui text linuxfan
-else
-  /usr/bin/osascript -e 'display notification "sync ok." with title "unison"'
+# else
+#  /usr/bin/osascript -e 'display notification "sync ok." with title "unison"'
 fi
