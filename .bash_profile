@@ -14,6 +14,7 @@ alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
 
+alias mutt.local="mutt -f /var/mail/$USER"
 alias pg.start='postgres -D /usr/local/var/postgres'
 alias less='less -R'
 alias groovysh="groovysh -C off"
@@ -21,6 +22,7 @@ alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ppjson=json_reformat
+#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
 # this fix crontab -e issue with vi
 export EDITOR=vim
