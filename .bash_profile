@@ -1,10 +1,7 @@
 #!/bin/sh
 
-
-PATH="$PATH:/sw/bin:/Developer/usr/bin"
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-
 # workaround for cvs to use ssh as transfer protocol
+PATH="$HOME/bin:$PATH"
 CVS_RSH=ssh
 export PATH CVS_RSH
 
@@ -16,15 +13,7 @@ alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
-#alias mysql='mysql'
-#alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
-#alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
-#alias mysqlstart='mysql.server start'
-#alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
-#alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
-#alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
-#alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-#alias pgstop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
+
 alias pg.start='postgres -D /usr/local/var/postgres'
 alias less='less -R'
 alias groovysh="groovysh -C off"
@@ -45,11 +34,6 @@ export HISTSIZE=512
 #export PS1="\[\033]0;\W\007\] \W> "
 export PS1="\[\e[32;1m\]\W> \[\e[0m\]"
 
-test -r /sw/bin/init.sh && . /sw/bin/init.sh
-
-# PATH for DarwinPorts
-export PATH="~/bin:/opt/local/bin:/opt/local/sbin:$PATH"
-export MANPATH="/opt/local/share/man:$MANPATH"
 scname=".scriptype."`date +"%y%m%d%H%M%S"`
 #script -qa ~/$scname && logout
 
@@ -87,3 +71,5 @@ export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
