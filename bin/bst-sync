@@ -1,0 +1,17 @@
+#!/bin/sh
+# crontab settings
+# */30 * * * * ~/bin/bst-sync
+
+# FIXME
+# which unison || (echo Error: unison cmd must be installed! 1 >&2 && exit 127)
+
+# executing linuxfan profile / syncing data from/to do.linuxfan.org
+/usr/local/bin/unison -batch -silent linuxfan
+
+## if sync failed, resolve problem from terminal, executing:
+## unison -ui text linuxfan
+if [ $? -gt 0 ]; then
+  /usr/bin/osascript -e 'display notification "sync failed!" with title "unison" sound name "Sound Name"'
+# else
+#  /usr/bin/osascript -e 'display notification "sync ok." with title "unison"'
+fi
