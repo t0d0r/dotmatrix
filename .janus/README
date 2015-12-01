@@ -19,6 +19,7 @@ execute:
   git submodule add git://github.com/godlygeek/tabular.git .janus/tabular
   git submodule add https://github.com/jceb/vim-orgmode.git .janus/vim-orgmode
   git submodule add https://github.com/lambdalisue/vim-gista.git .janus/vim-gista
+  git submodule add https://github.com/vim-scripts/VimRepress.git .janus/vim-repress
 
 = Useful modules or commands
 
