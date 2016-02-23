@@ -10,9 +10,15 @@
 [submodule ".janus/scmfrontend"]
 	path = .janus/scmfrontend
 	url = https://github.com/vim-scripts/ScmFrontEnd-former-name--MinSCM.git
-[submodule ".janus/tabular"]
-	path = .janus/tabular
-	url = https://github.com/godlygeek/tabular.git
 [submodule ".janus/vim-orgmode"]
 	path = .janus/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
+[submodule ".janus/vim-gista"]
+	path = .janus/vim-gista
+	url = https://github.com/lambdalisue/vim-gista.git
+[submodule ".janus/vim-repress"]
+	path = .janus/vim-repress
+	url = https://github.com/vim-scripts/VimRepress.git
+[submodule ".janus/YouCompleteMe"]
+	path = .janus/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git

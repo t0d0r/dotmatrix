@@ -1,10 +1,7 @@
 #!/bin/sh
 
-
-PATH="$PATH:/sw/bin:/Developer/usr/bin"
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-
 # workaround for cvs to use ssh as transfer protocol
+PATH="$HOME/bin:$PATH"
 CVS_RSH=ssh
 export PATH CVS_RSH
 
@@ -16,21 +13,17 @@ alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
-alias mysql='mysql'
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
-#alias mysqlstop='/opt/local/bin/mysqladmin5 -u root shutdown'
-#alias mysqlstart='mysql.server start'
-alias mysqlstop='/usr/local/bin/mysqladmin -u root shutdown'
-#alias pgstart="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper start"
-#alias pgstop="sudo /opt/local/etc/LaunchDaemons/org.macports.postgresql84-server/postgresql84-server.wrapper stop"
-alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
+
+alias mutt.local="mutt -f /var/mail/$USER"
+alias pg.start='postgres -D /usr/local/var/postgres'
 alias less='less -R'
 alias groovysh="groovysh -C off"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ppjson=json_reformat
+alias rbenv.init='eval "$(rbenv init -)"'
+#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
 # this fix crontab -e issue with vi
 export EDITOR=vim
@@ -38,13 +31,11 @@ export EDITOR=vim
 # history related
 export HISTIGNORE="??"
 export HISTCONTROL=ignoreboth
-export HISTSIZE=512
+export HISTSIZE=1024
 
 #export PS1="dir.= \W> "
 #export PS1="\[\033]0;\W\007\] \W> "
 export PS1="\[\e[32;1m\]\W> \[\e[0m\]"
-
-test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
 # PATH for DarwinPorts
 export PATH="~/bin:/opt/local/bin:/opt/local/sbin:$PATH"
@@ -59,16 +50,18 @@ case "$-" in
   *i*)
     # this file must be kept away from github :)
     [[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
-    # Ruby Version Manager
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#    # Ruby Version Manager
+#    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
     # bash completion
-    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
+#    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
     # mercurial completion
     [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
     # fortune
-    [[ -s "/opt/local/bin/fortune" ]] && echo && /opt/local/bin/fortune
+    [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
     # rbenv /rvm replacement/
-    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+#    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+#    # mysql
+#    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
   ;;
 esac
 
@@ -80,7 +73,6 @@ done
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-
 # locate fix for mosh /t0d0r
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -90,13 +82,6 @@ export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-##
-# Your previous /Users/t0d0r/.bash_profile file was backed up as /Users/t0d0r/.bash_profile.macports-saved_2015-04-23_at_03:15:04
-##
-
-# MacPorts Installer addition on 2015-04-23_at_03:15:04: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
+export PATH="/usr/local/sbin:$PATH"
 
 source ~/.bashrc
