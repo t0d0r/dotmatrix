@@ -1,10 +1,26 @@
 #!/bin/sh
 
 base_path=~/.ssh
-relative_dir="hosts/${1:-`hostname -s`}"
-absolute_config="${base_path}/${relative_dir}"
-cd $base_path
+relative_host_dir="hosts/${1:-`hostname -s`}"
+customers_dir="customers"
+absolute_config="${base_path}/${relative_host_dir}"
 
-for filename in `find ${relative_dir} -type f `; do
+cd $base_path
+# cleanup
+find $base_path -type l -delete
+
+for filename in `find ${relative_host_dir} -type f `; do
   ln -sfv $filename
 done
+
+rm config
+
+for c in `find ${customers_dir} -type f -name "config"`; do
+  cat >> ${base_path}/config <<__EOF__
+### `dirname ${c}`
+`cat $c | egrep -v "^#|^$"`
+
+__EOF__
+done
+
+cat config.default | egrep -v "^#|^$" >> ${base_path}/config
