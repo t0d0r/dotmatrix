@@ -1,0 +1,10 @@
+#!/bin/sh
+
+base_path=~/.ssh
+relative_dir="hosts/${1:-`hostname -s`}"
+absolute_config="${base_path}/${relative_dir}"
+cd $base_path
+
+for filename in `find ${relative_dir} -type f `; do
+  ln -sfv $filename
+done
