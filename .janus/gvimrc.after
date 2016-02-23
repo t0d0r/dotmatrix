@@ -1,5 +1,6 @@
 set guioptions-=T
 set wildmenu " change style when use <tab>
+set wim=list
 set smartcase
 
 "functions and commands to switch fast between fonts and styles
@@ -78,7 +79,6 @@ command! NOCLOSE let NERDTreeQuitOnOpen=0
 
 " ord TODO
 let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
-
 
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
