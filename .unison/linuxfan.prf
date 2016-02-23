@@ -3,7 +3,7 @@ root = ssh://todor@do.linuxfan.org//home/todor
 
 path = .mutt/acc
 path = .ssh
-path = .unison/linuxfan.prf
+#path = .unison/linuxfan.prf
 path = work/catenate
 path = work/testing
 
@@ -11,9 +11,9 @@ follow = Name .mutt
 follow = Name .unison
 follow = Name work/catenate
 
-ignore = Name .ssh/authorized_keys
-ignore = Name .ssh/id_rsa
-ignore = Name .ssh/known_hosts
+ignore = Path .ssh/authorized_keys
+ignore = Path .ssh/id_rsa
+ignore = Path .ssh/known_hosts
 
 ignore = Name .DS_Store
 ignore = Name .*~

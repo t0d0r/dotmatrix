@@ -33,6 +33,7 @@ alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ppjson=json_reformat
+alias rbenv.init='eval "$(rbenv init -)"'
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
 # this fix crontab -e issue with vi
@@ -41,13 +42,11 @@ export EDITOR=vim
 # history related
 export HISTIGNORE="??"
 export HISTCONTROL=ignoreboth
-export HISTSIZE=512
+export HISTSIZE=1024
 
 #export PS1="dir.= \W> "
 #export PS1="\[\033]0;\W\007\] \W> "
 export PS1="\[\e[32;1m\]\W> \[\e[0m\]"
-
-test -r /sw/bin/init.sh && . /sw/bin/init.sh
 
 # PATH for DarwinPorts
 export PATH="~/bin:/opt/local/bin:/opt/local/sbin:$PATH"
@@ -62,18 +61,18 @@ case "$-" in
   *i*)
     # this file must be kept away from github :)
     [[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
-    # Ruby Version Manager
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#    # Ruby Version Manager
+#    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
     # bash completion
-    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
+#    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
     # mercurial completion
     [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
     # fortune
     [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
     # rbenv /rvm replacement/
-    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
-    # mysql
-    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
+#    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+#    # mysql
+#    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
   ;;
 esac
 
