@@ -42,7 +42,7 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " execute opened buffer as GoLang code
 autocmd FileType go :map <F10> :!go run %<CR>
 autocmd FileType go colorscheme dejavu
