@@ -72,6 +72,11 @@ case "$-" in
   ;;
 esac
 
+# build aleases based on ~/.screen.d
+for i in `ls ~/.screen.d`; do
+  alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
+done
+
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -94,3 +99,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
+source ~/.bashrc
