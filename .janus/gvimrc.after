@@ -60,6 +60,7 @@ endfunction
 command! FR set filetype=ruby
 command! DELL set guifont=Terminus\ (TTF):h18 noantialias " set big font for using in my 20" DELL display
 command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
+command! FIRA set guifont=Fira\ Mono:h18 antialias " same as above but font is different
 command! MONODELL set guifont=monofur:h24 antialias
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
