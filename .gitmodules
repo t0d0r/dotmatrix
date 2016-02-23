@@ -19,3 +19,6 @@
 [submodule ".janus/vim-repress"]
 	path = .janus/vim-repress
 	url = https://github.com/vim-scripts/VimRepress.git
+[submodule ".janus/YouCompleteMe"]
+	path = .janus/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
