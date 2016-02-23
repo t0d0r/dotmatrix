@@ -1,5 +1,6 @@
 set guioptions-=T
 set wildmenu " change style when use <tab>
+set wim=list
 set smartcase
 
 "functions and commands to switch fast between fonts and styles
@@ -7,8 +8,9 @@ function! GUInormal()
   set antialias
   set nofullscreen
   colorscheme t0d0r
-  colorscheme dejavu
-  highlight Cursor gui=reverse guifg=red guibg=NONE
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
   set guifont=Envy\ Code\ R:h14
   call GUIstatusline()
 endfunction
@@ -58,8 +60,9 @@ endfunction
 "endfunction
 
 command! FR set filetype=ruby
-command! DELL set guifont=Terminus:h24 antialias " set big font for using in my 20" DELL display
+command! DELL set guifont=Terminus\ (TTF):h18 noantialias " set big font for using in my 20" DELL display
 command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
+command! FIRA set guifont=Fira\ Mono:h18 antialias " same as above but font is different
 command! MONODELL set guifont=monofur:h24 antialias
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
@@ -78,9 +81,14 @@ command! NOCLOSE let NERDTreeQuitOnOpen=0
 " ord TODO
 let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
 
-
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 NORMAL "set normal font size
+
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set number
+    autocmd WinLeave * set nonumber
+augroup END
