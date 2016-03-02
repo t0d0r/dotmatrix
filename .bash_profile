@@ -23,6 +23,10 @@ alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' 
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ppjson=json_reformat
 alias rbenv.init='eval "$(rbenv init -)"'
+
+alias aea='ansible all -m shell -o -a '
+alias sca="./scp_all.rb"
+alias sea="./ssh_exec_all.rb"
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
 # this fix crontab -e issue with vi
