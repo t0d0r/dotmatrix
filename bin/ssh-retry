@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while (true); do
+  ssh $@
+  date
+  echo 'retrying (after 30 sec)...'
+  sleep 30
+done
