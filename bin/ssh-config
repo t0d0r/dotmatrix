@@ -1,10 +1,20 @@
 #!/bin/sh
 
 base_path=~/.ssh
-relative_host_dir="hosts/${1:-`hostname -s`}"
+hostname=${1:-`hostname -s`}
+case $hostname in
+  do)
+    hostname='do-linuxfan'
+  ;;
+  zion)
+    hostname='zion-linuxfan'
+  ;;
+esac
+relative_host_dir="hosts/$hostname"
 customers_dir="customers"
 absolute_config="${base_path}/${relative_host_dir}"
 
+# rewrite some hosts to their relative paths
 cd $base_path
 # cleanup
 find $base_path -type l -delete
@@ -13,9 +23,11 @@ for filename in `find ${relative_host_dir} -type f `; do
   ln -sfv $filename
 done
 
-rm config
+rm -v config
 
+echo "Generating composite ${base_path}/config:"
 for c in `find ${customers_dir} -type f -name "config"`; do
+  echo " ${c}..."
   cat >> ${base_path}/config <<__EOF__
 ### `dirname ${c}`
 `cat $c | egrep -v "^#|^$"`

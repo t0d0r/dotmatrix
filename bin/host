@@ -1,4 +1,4 @@
 #!/bin/sh
 
-arg=`echo $@ | /usr/bin/sed -e 's#http://##'`
+arg=`echo $@ | sed -e 's#http://##'`
 /usr/bin/host $arg
