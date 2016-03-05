@@ -22,7 +22,7 @@ find $base_path -type l -delete
 for filename in `find ${relative_host_dir} -type f `; do
   ln -sfv $filename
 done
-
+# remove host config file, content of it will be uncluded later
 rm -v config
 
 echo "Generating composite ${base_path}/config:"
@@ -35,4 +35,7 @@ for c in `find ${customers_dir} -type f -name "config"`; do
 __EOF__
 done
 
+echo "### ${relative_host_dir}/config" >> ${base_path}/config
+cat ${relative_host_dir}/config | egrep -v "^#|^$" >> ${base_path}/config
+echo "### config.default" >> ${base_path}/config
 cat config.default | egrep -v "^#|^$" >> ${base_path}/config
