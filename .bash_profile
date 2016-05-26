@@ -70,9 +70,11 @@ case "$-" in
 esac
 
 # build aleases based on ~/.screen.d
-for i in `ls ~/.screen.d`; do
-  alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
-done
+if [ -d ~/.screen.d ]; then
+  for i in `ls ~/.screen.d`; do
+    alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
+  done
+fi
 
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -88,4 +90,4 @@ export GOPATH=/Users/t0d0r/work/gocode
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-source ~/.bashrc
+[[ -f ~/.bashrc ]] && source ~/.bashrc
