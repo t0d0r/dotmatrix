@@ -7,9 +7,5 @@
 .mutt/cache/headers
 .netrc
 .unison/
-<<<<<<< HEAD
 .ansible/execution.log
 .ansible/hosts
-=======
-.ansible/log/ansible.log
->>>>>>> e33779bbdd64db7ecbbedd41e40ee9db09affc93
