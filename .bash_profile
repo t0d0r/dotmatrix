@@ -23,6 +23,7 @@ alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' 
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ppjson=json_reformat
 alias rbenv.init='eval "$(rbenv init -)"'
+alias dotmatrix='eval $(~/bin/dotmatrix)'
 
 alias aea='ansible all -m shell -o -a '
 alias sca="./scp_all.rb"
@@ -66,28 +67,25 @@ case "$-" in
 #    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
 #    # mysql
 #    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
+    # build aleases based on ~/.screen.d
+    if [ -d ~/.screen.d ]; then
+      for i in `ls ~/.screen.d`; do
+        alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
+      done
+    fi
+    #export PATH=$PATH:/usr/local/opt/go/libexec/bin
+    export GOPATH=/Users/t0d0r/work/gocode
+    [[ -f ~/.bashrc ]] && source ~/.bashrc
+
   ;;
 esac
 
-# build aleases based on ~/.screen.d
-if [ -d ~/.screen.d ]; then
-  for i in `ls ~/.screen.d`; do
-    alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
-  done
-fi
-
-# this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# locate fix for mosh /t0d0r
+# locale fix for mosh /t0d0r
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
-#export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-
-[[ -f ~/.bashrc ]] && source ~/.bashrc
