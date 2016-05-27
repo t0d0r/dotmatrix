@@ -67,26 +67,27 @@ case "$-" in
 #    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
 #    # mysql
 #    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
+    [[ -f ~/.bashrc ]] && source ~/.bashrc
+    # build aleases based on ~/.screen.d
+    if [ -d ~/.screen.d ]; then
+      for i in `ls ~/.screen.d`; do
+        alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
+      done
+    fi
+    #export PATH=$PATH:/usr/local/opt/go/libexec/bin
+    export GOPATH=/Users/t0d0r/work/gocode
+
   ;;
 esac
-
-# build aleases based on ~/.screen.d
-for i in `ls ~/.screen.d`; do
-  alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
-done
 
 # this fix mvim environment
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# locate fix for mosh /t0d0r
+# locale fix for mosh /t0d0r
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
-#export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=/Users/t0d0r/work/gocode
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-source ~/.bashrc
