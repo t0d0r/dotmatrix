@@ -1,6 +1,8 @@
 *.pyc
 *~
 .DS_Store
+.ansible/hosts
+.ansible/log/execution.log
 .bash_env
 .mutt/acc/
 .mutt/cache/bodies/
