@@ -1,11 +1,11 @@
 *.pyc
 *~
 .DS_Store
+.ansible/hosts
+.ansible/log/execution.log
 .bash_env
 .mutt/acc/
 .mutt/cache/bodies/
 .mutt/cache/headers
 .netrc
 .unison/
-.ansible/execution.log
-.ansible/hosts
