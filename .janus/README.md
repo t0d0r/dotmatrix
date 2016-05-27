@@ -1,9 +1,11 @@
-This directory is a part from janus vim plugin.
+This directory is a part from Janus VIM plugin.
 
 To install janus remove all .vim files and directories in your home and
 execute:
 
-  curl -Lo- https://bit.ly/janus-bootstrap | bash
+```
+curl -Lo- https://bit.ly/janus-bootstrap | bash
+```
 
 # Gui Fonts
 
@@ -13,7 +15,7 @@ execute:
 
 # Bundles
 
-* execute following commands in 'dotmatrix' directory
+List of all submodules added to additionaly to VIM. Must be execited in 'dotmatrix' directory
 
 ```
   git submodule add git://github.com/godlygeek/tabular.git .janus/tabular
@@ -40,6 +42,8 @@ execute:
 :ENVY
 :FIRA
 ```
+
+### Folding
 
 ```vim
 :Zmanual
