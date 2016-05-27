@@ -7,4 +7,4 @@
 .mutt/cache/headers
 .netrc
 .unison/
-.ansible/log/ansible.log
+.ansible/log/execution.log
