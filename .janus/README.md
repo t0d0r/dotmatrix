@@ -31,6 +31,7 @@ execute:
 # Useful modules or commands
 
 ## GUI related
+
 :FULL
 :WHITE
 :BLACK
@@ -44,6 +45,7 @@ execute:
 :Zsyntax
 
 ## git related
+
 :Gstatus
 :Gcommit
 :Gdiff
