@@ -1,4 +1,3 @@
-# vim: syntax=markdown tw=80 noexpandtab
 This directory is a part from janus vim plugin.
 
 To install janus remove all .vim files and directories in your home and
@@ -32,6 +31,7 @@ execute:
 
 ## GUI related
 
+```vim
 :FULL
 :WHITE
 :BLACK
@@ -39,14 +39,20 @@ execute:
 :MONODELL
 :ENVY
 :FIRA
+```
 
+```vim
 :Zmanual
 :Zindex
 :Zsyntax
+```
 
-## git related
+## GIT related
 
+```vim
 :Gstatus
 :Gcommit
 :Gdiff
+```
 
+vim: syntax=markdown tw=80 noexpandtab
