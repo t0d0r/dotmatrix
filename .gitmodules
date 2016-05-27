@@ -22,3 +22,9 @@
 [submodule ".janus/YouCompleteMe"]
 	path = .janus/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".janus/tabular"]
+	path = .janus/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule ".janus/vim-signify"]
+	path = .janus/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
