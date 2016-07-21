@@ -27,11 +27,12 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " no help needed
 " was <nop>
 inoremap <F1> <ESC>
+nnoremap <F3> i<C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR><Esc>
+inoremap <F3> <C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR>
 nnoremap <F4> :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :BuffergatorToggle<CR>
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
-
 " Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
