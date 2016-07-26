@@ -5,7 +5,7 @@ EXCLUDE="^.git|^README|^janus"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
-  echo "Usage:  ./bin/mklinks"
+  echo "Usage:  ./bin/dotmatrix-install"
 }
 
 pwd=`pwd`
