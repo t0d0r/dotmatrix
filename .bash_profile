@@ -70,7 +70,7 @@ case "$-" in
     # build aleases based on ~/.screen.d
     if [ -d ~/.screen.d ]; then
       for i in `ls ~/.screen.d`; do
-        alias screen.${i}="screen -S ${i} -c ~/.screen.d/${i}"
+        alias screen.${i}="screen -list | grep ${i} && screen -r -D ${i} || screen -S ${i} -c ~/.screen.d/${i}"
       done
     fi
     #export PATH=$PATH:/usr/local/opt/go/libexec/bin
