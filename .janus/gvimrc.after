@@ -7,12 +7,12 @@ set smartcase
 function! GUInormal()
   set antialias
   set nofullscreen
-  colorscheme t0d0r
   "colorscheme dejavu
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
   set guifont=Envy\ Code\ R:h14
   call GUIstatusline()
+  colorscheme t0d0r
 endfunction
 
 function! GUIsmall()
@@ -92,3 +92,10 @@ augroup BgHighlight
     autocmd WinEnter * set number
     autocmd WinLeave * set nonumber
 augroup END
+
+"augroup NoSimultaneousEdits
+    "autocmd!
+    "autocmd SwapExists * let v:swapchoice = 'o'
+    "autocmd SwapExists * echo 'Duplicate edit session (readonly)'
+    "autocmd SwapExists * echohl None
+"augroup END
