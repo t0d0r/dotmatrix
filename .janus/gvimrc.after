@@ -4,13 +4,24 @@ set wim=list
 set smartcase
 
 "functions and commands to switch fast between fonts and styles
+function! GUIbig()
+  set antialias
+  set nofullscreen
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+  set guifont=Menlo\ Regular:h24
+  call GUIstatusline()
+  colorscheme t0d0r
+endfunction
+
 function! GUInormal()
   set antialias
   set nofullscreen
   "colorscheme dejavu
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
-  set guifont=Envy\ Code\ R:h14
+  set guifont=Menlo\ Regular:h15
   call GUIstatusline()
   colorscheme t0d0r
 endfunction
@@ -61,9 +72,11 @@ endfunction
 
 command! FR set filetype=ruby
 command! DELL set guifont=Terminus\ (TTF):h18 noantialias " set big font for using in my 20" DELL display
-command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
+" deprecated, Envy Code R did not support cyrillic...
+"command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
 command! FIRA set guifont=Fira\ Mono:h18 antialias " same as above but font is different
 command! MONODELL set guifont=monofur:h24 antialias
+command! BIG call GUIbig()
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
 command! MICRO call GUImicro()
