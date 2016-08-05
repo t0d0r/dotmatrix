@@ -14,26 +14,30 @@ colorscheme koehler
 command! FR set filetype=ruby
 command! ORG set filetype=org
 
+" settings for various plugins
 let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
+let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
+let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z' " 24h format for timestamp.vim plugin
 
 " save files as root without prior sudo (included in janus)
 cmap w!! w !sudo tee % >/dev/null
 map Q gq
 " clear recent search highlighting with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-" no help needed
-" was <nop>
+" no help needed, was <nop>
+nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 nnoremap <F3> i<C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR><Esc>
 inoremap <F3> <C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR>
 nnoremap <F4> :NERDTreeToggle<CR>
+nnoremap <S-F4> :NERDTreeFocus<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :BuffergatorToggle<CR>
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
-" Strip trailing whitespace
+" Strip trailing whitespace,janus command :FixWhitespace
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -45,8 +49,11 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
-"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"
 " execute opened buffer as GoLang code
 autocmd FileType go :map <F10> :!go run %<CR>
 autocmd FileType go colorscheme dejavu
 
+" settings for timestamp.vim plugin
+let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z'
