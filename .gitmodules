@@ -28,3 +28,6 @@
 [submodule ".janus/vim-signify"]
 	path = .janus/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
+[submodule ".janus/timestamp.vim"]
+	path = .janus/timestamp.vim
+	url = https://github.com/vim-scripts/timestamp.vim.git
