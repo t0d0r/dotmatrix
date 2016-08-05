@@ -12,10 +12,13 @@ curl -Lo- https://bit.ly/janus-bootstrap | bash
 * "Envy":http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released
 * "Monofur":http://www.dafont.com/monofur.font
 * "Fira":https://www.mozilla.org/en-US/styleguide/products/firefox-os/typeface/
+* "basis33":https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
+** original source: http://www.1001fonts.com/basis33-font.html
 
 # Bundles
 
-List of all submodules added to additionaly to VIM. Must be execited in 'dotmatrix' directory
+List of all submodules added to additionaly to VIM.
+Must be execited in 'dotmatrix' directory!
 
 ```
   git submodule add git://github.com/godlygeek/tabular.git .janus/tabular
@@ -27,6 +30,7 @@ List of all submodules added to additionaly to VIM. Must be execited in 'dotmatr
   git submodule add https://github.com/vim-scripts/Rename2.git .janus/rename2
   git submodule add https://github.com/vim-scripts/VimRepress.git .janus/vim-repress
   git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
+	git submodule add https://github.com/vim-scripts/timestamp.vim.git .janus/timestamp.vim
 ```
 
 # Useful modules or commands
