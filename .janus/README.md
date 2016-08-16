@@ -30,7 +30,8 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/vim-scripts/Rename2.git .janus/rename2
   git submodule add https://github.com/vim-scripts/VimRepress.git .janus/vim-repress
   git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
-	git submodule add https://github.com/vim-scripts/timestamp.vim.git .janus/timestamp.vim
+  git submodule add https://github.com/vim-scripts/timestamp.vim.git .janus/timestamp.vim
+  git submodule add https://github.com/vim-scripts/QFGrep.vim.git .janus/QFGrep
 ```
 
 # Useful modules or commands
@@ -63,4 +64,4 @@ Must be execited in 'dotmatrix' directory!
 :Gdiff
 ```
 
-vim: syntax=markdown tw=80 noexpandtab
+vim: syntax=markdown tw=80 expandtab
