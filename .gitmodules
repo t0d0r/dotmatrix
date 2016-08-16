@@ -31,3 +31,6 @@
 [submodule ".janus/timestamp.vim"]
 	path = .janus/timestamp.vim
 	url = https://github.com/vim-scripts/timestamp.vim.git
+[submodule ".janus/QFGrep"]
+	path = .janus/QFGrep
+	url = https://github.com/vim-scripts/QFGrep.vim.git
