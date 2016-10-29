@@ -59,6 +59,13 @@ function! GUIconsole()
   set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
+"
+" good old full screen console with MORE pixellised font
+function! GUIvt220()
+  set guifont=VT220:h36 antialias
+  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
 
 function! GUIstatusline()
   set statusline=
@@ -91,6 +98,7 @@ endfunction
 "endfunction
 
 command! FR set filetype=ruby
+command! FJS set filetype=javascript
 " set big font for using in my 20" DELL display
 command! DELL set guifont=Terminus\ (TTF):h18 noantialias
 " deprecated, Envy Code R did not support cyrillic...
@@ -99,6 +107,7 @@ command! FIRA set guifont=Fira\ Mono:h18 antialias
 command! MONODELL set guifont=monofur:h24 antialias
 command! BASIS set guifont=basis33:h36 antialias
 command! CONSOLE call GUIconsole()
+command! VT220 call GUIvt220()
 command! BIG call GUIbig()
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
