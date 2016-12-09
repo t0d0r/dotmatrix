@@ -9,6 +9,16 @@ set smartcase
 let g:gvim_default_font = "basis33"
 let g:gvim_default_font_size = "36"
 
+" test script to get resolution on mac
+"function! GUIresolution()
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"  if has('mac')
+"    let system_resolution = substitute(system('system_profiler SPDisplaysDataType |grep Resolution'), '\n', '', '')
+""          Resolution: 1440 x 900
+"    echo system_resolution
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"endfunction
+
 "functions and commands to switch fast between fonts and styles
 function! GUIbig()
   set antialias
@@ -63,6 +73,7 @@ endfunction
 " good old full screen console with MORE pixellised font
 function! GUIvt220()
   set guifont=VT220:h36 antialias
+  set guifont=VT220:h28 antialias
   set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction

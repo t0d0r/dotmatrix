@@ -32,6 +32,8 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/vim-scripts/nerdtree-ack.git .janus/nerdtree-ack
   git submodule add https://github.com/vim-scripts/timestamp.vim.git .janus/timestamp.vim
   git submodule add https://github.com/vim-scripts/QFGrep.vim.git .janus/QFGrep
+  git submodule add https://github.com/zainin/vim-mikrotik.git .janus/vim-mikrotik
+  git submodule add https://github.com/vim-scripts/DirDiff.vim.git .janus/dirdiff
 ```
 
 # Useful modules or commands
@@ -46,6 +48,8 @@ Must be execited in 'dotmatrix' directory!
 :MONODELL
 :ENVY
 :FIRA
+:VT220
+:CONSOLE
 ```
 
 ### Folding
