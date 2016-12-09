@@ -34,3 +34,6 @@
 [submodule ".janus/QFGrep"]
 	path = .janus/QFGrep
 	url = https://github.com/vim-scripts/QFGrep.vim.git
+[submodule ".janus/vim-mikrotik"]
+	path = .janus/vim-mikrotik
+	url = https://github.com/zainin/vim-mikrotik.git
