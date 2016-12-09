@@ -66,7 +66,8 @@ endfunction
 " good old full screen console with nice pixellised font
 function! GUIconsole()
   set guifont=basis33:h36 antialias
-  set fullscreen
+"  set nofullscreen
+"  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
 "
@@ -128,6 +129,7 @@ command! Zmanual set foldmethod=manual
 command! Zindent set foldmethod=indent
 command! Zsyntax set foldmethod=syntax
 command! FULL set fullscreen
+command! NOFULL set nofullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
 command! CP1251 call SetEncoding('cp1251')
