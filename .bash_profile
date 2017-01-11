@@ -66,7 +66,7 @@ case "$-" in
     # fortune
     [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
     # rbenv /rvm replacement/
-#    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
 #    # mysql
 #    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
     # build aleases based on ~/.screen.d

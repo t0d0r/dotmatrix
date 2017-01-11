@@ -31,3 +31,6 @@
 [submodule ".janus/vim-mikrotik"]
 	path = .janus/vim-mikrotik
 	url = https://github.com/zainin/vim-mikrotik.git
+[submodule ".janus/emmet"]
+	path = .janus/emmet
+	url = https://github.com/mattn/emmet-vim.git

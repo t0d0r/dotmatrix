@@ -34,6 +34,7 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/vim-scripts/QFGrep.vim.git .janus/QFGrep
   git submodule add https://github.com/zainin/vim-mikrotik.git .janus/vim-mikrotik
   git submodule add https://github.com/vim-scripts/DirDiff.vim.git .janus/dirdiff
+  git submodule add https://github.com/mattn/emmet-vim.git .janus/emmet
 ```
 
 # Useful modules or commands
