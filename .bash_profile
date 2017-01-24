@@ -30,7 +30,10 @@ alias sca="./scp_all.rb"
 alias sea="./ssh_exec_all.rb"
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 alias lmk='say '\''Process complete.'\'''
+alias weather='curl -s wttr.in | head -7'
+alias moon='curl -s wttr.in/Moon'
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
+function title { echo -ne "\033]0;"$*"\007"; }
 
 # this fix crontab -e issue with vi
 export EDITOR=vim
@@ -66,7 +69,7 @@ case "$-" in
     # fortune
     [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
     # rbenv /rvm replacement/
-#    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
 #    # mysql
 #    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
     # build aleases based on ~/.screen.d
