@@ -3,14 +3,42 @@ set wildmenu " change style when use <tab>
 set wim=list
 set smartcase
 
+" default font and size
+" basis33 can be downloaded from here:
+" https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
+let g:gvim_default_font = "basis33"
+let g:gvim_default_font_size = "36"
+
+" test script to get resolution on mac
+"function! GUIresolution()
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"  if has('mac')
+"    let system_resolution = substitute(system('system_profiler SPDisplaysDataType |grep Resolution'), '\n', '', '')
+""          Resolution: 1440 x 900
+"    echo system_resolution
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"endfunction
+
 "functions and commands to switch fast between fonts and styles
+function! GUIbig()
+  set antialias
+  set nofullscreen
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+  set guifont=Menlo\ Regular:h24
+  call GUIstatusline()
+  colorscheme t0d0r
+endfunction
+
 function! GUInormal()
   set antialias
   set nofullscreen
   "colorscheme dejavu
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
-  set guifont=Envy\ Code\ R:h14
+  set guifont=Menlo\ Regular:h15
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
   call GUIstatusline()
   colorscheme t0d0r
 endfunction
@@ -27,6 +55,28 @@ function! GUImicro()
   set nofullscreen
   set guifont=Monaco:h9
   call GUIstatusline()
+endfunction
+
+" styling for catenate/info.org
+function! GUIinfo()
+  call GUIsmall()
+  set columns=104
+endfunction
+
+" good old full screen console with nice pixellised font
+function! GUIconsole()
+  set guifont=basis33:h36 antialias
+"  set nofullscreen
+"  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
+"
+" good old full screen console with MORE pixellised font
+function! GUIvt220()
+  set guifont=VT220:h36 antialias
+  set guifont=VT220:h28 antialias
+  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
 
 function! GUIstatusline()
@@ -60,10 +110,17 @@ endfunction
 "endfunction
 
 command! FR set filetype=ruby
-command! DELL set guifont=Terminus\ (TTF):h18 noantialias " set big font for using in my 20" DELL display
-command! ENVY set guifont=Envy\ Code\ R:h18 antialias " same as above but font is different
-command! FIRA set guifont=Fira\ Mono:h18 antialias " same as above but font is different
+command! FJS set filetype=javascript
+" set big font for using in my 20" DELL display
+command! DELL set guifont=Terminus\ (TTF):h18 noantialias
+" deprecated, Envy Code R did not support cyrillic...
+"command! ENVY set guifont=Envy\ Code\ R:h18 antialias
+command! FIRA set guifont=Fira\ Mono:h18 antialias
 command! MONODELL set guifont=monofur:h24 antialias
+command! BASIS set guifont=basis33:h36 antialias
+command! CONSOLE call GUIconsole()
+command! VT220 call GUIvt220()
+command! BIG call GUIbig()
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
 command! MICRO call GUImicro()
@@ -72,14 +129,12 @@ command! Zmanual set foldmethod=manual
 command! Zindent set foldmethod=indent
 command! Zsyntax set foldmethod=syntax
 command! FULL set fullscreen
+command! NOFULL set nofullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
 command! CP1251 call SetEncoding('cp1251')
 command! UTF8 call SetEncoding('utf8')
 command! NOCLOSE let NERDTreeQuitOnOpen=0
-
-" ord TODO
-let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
 
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command

@@ -144,3 +144,7 @@ unhdr_order *
 hdr_order From: Date: To: Cc: Reply-To: Subject:
 
 set certificate_file=~/.mutt-certs
+
+# fix mutt issue on MacOS and gmail
+set smtp_authenticators = 'gssapi:login'
+
