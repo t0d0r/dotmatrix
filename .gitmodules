@@ -7,12 +7,6 @@
 [submodule ".janus/l9"]
 	path = .janus/l9
 	url = https://github.com/vim-scripts/L9.git
-[submodule ".janus/scmfrontend"]
-	path = .janus/scmfrontend
-	url = https://github.com/vim-scripts/ScmFrontEnd-former-name--MinSCM.git
-[submodule ".janus/vim-orgmode"]
-	path = .janus/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode.git
 [submodule ".janus/vim-gista"]
 	path = .janus/vim-gista
 	url = https://github.com/lambdalisue/vim-gista.git
@@ -28,3 +22,15 @@
 [submodule ".janus/vim-signify"]
 	path = .janus/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
+[submodule ".janus/timestamp.vim"]
+	path = .janus/timestamp.vim
+	url = https://github.com/vim-scripts/timestamp.vim.git
+[submodule ".janus/QFGrep"]
+	path = .janus/QFGrep
+	url = https://github.com/vim-scripts/QFGrep.vim.git
+[submodule ".janus/vim-mikrotik"]
+	path = .janus/vim-mikrotik
+	url = https://github.com/zainin/vim-mikrotik.git
+[submodule ".janus/emmet"]
+	path = .janus/emmet
+	url = https://github.com/mattn/emmet-vim.git
