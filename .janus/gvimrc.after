@@ -2,6 +2,7 @@ set guioptions-=T
 set wildmenu " change style when use <tab>
 set wim=list
 set smartcase
+set cursorline
 
 " default font and size
 " basis33 can be downloaded from here:
