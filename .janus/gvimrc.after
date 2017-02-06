@@ -74,9 +74,9 @@ endfunction
 "
 " good old full screen console with MORE pixellised font
 function! GUIvt220()
-  set guifont=VT220:h36 antialias
+  "set guifont=VT220:h36 antialias
   set guifont=VT220:h28 antialias
-  set fullscreen
+  "  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
 
