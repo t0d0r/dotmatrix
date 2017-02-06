@@ -41,6 +41,7 @@ macro index gt "<change-folder>=[Gmail]/Starred<enter>" "Go to TODO"
 
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 
+macro index <Esc>u "| egrep 'urgency=|Subject:' | less<enter>" 'Grep urgency status from apttitude emails'
 macro index <Esc>Z "<delete-pattern>~s 'backupninja:'|~s 'Ubuntu package update'<enter>" "Mark for deleting all backupninja"
 macro index <Esc>z \
     "<delete-pattern>~f zabbix@support.catenate.com|~f no-reply@monitor.us|~s 'PROFILE DELETION'|~s 'erfolgreicher Import'|~s 'Geburtstagsecard'<enter>" \
