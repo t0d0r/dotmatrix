@@ -3,6 +3,6 @@
 while (true); do
   ssh $@
   date
-  echo 'retrying (after 30 sec)...'
-  sleep 30
+  echo 'retrying (after 60 sec)...'
+  sleep 60
 done
