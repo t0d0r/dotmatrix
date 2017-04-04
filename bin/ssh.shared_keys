@@ -1,0 +1,44 @@
+#!/bin/sh
+
+html_path=~/public_html/ssh-keys
+
+hostname=${1:-`hostname -s`}
+case $hostname in
+  do)
+    hostname='do-linuxfan'
+  ;;
+  zion)
+    hostname='zion-linuxfan'
+  ;;
+esac
+
+# functions 
+###############################################################################
+can_i_run_on () {
+  case $1 in
+  do-linuxfan)
+    echo yes;
+  ;;
+  *)
+    echo no;
+  ;;
+  esac
+}
+
+public_url_for () {
+  suffix=$1;
+  url='http://do.linuxfan.org/~todor/ssh-keys'
+  echo "${url}/${suffix}"
+}
+
+show_shared_keys () {
+  # TODO: to create cleanup logic for ~/public_html/ssh-keys
+  if [ `can_i_run_on ${hostname}` = 'yes' ]; then
+    cd ${html_path}
+    for public_key in `find . -type f -name "*.pub"`; do
+      public_url_for "${public_key}"
+    done
+  fi
+}
+
+show_shared_keys
