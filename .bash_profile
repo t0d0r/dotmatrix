@@ -99,3 +99,4 @@ export LC_CTYPE=en_US.UTF-8
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
