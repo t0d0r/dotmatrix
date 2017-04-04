@@ -85,6 +85,7 @@ case "$-" in
     export GOPATH=/Users/t0d0r/work/gocode
     [[ -f ~/.bashrc ]] && source ~/.bashrc
 
+    [[ `hostname` = 'do.linuxfan.org' ]] && last | head
     [[ -d ~/Documents/todo ]] && echo && /usr/local/bin/todo.sh ls
 
   ;;
