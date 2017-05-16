@@ -23,6 +23,12 @@ After installing janus, don't forget to execute:
   git submodule update
 ```
 
+If you prefer zsh, here is how to install it:
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
 It is possible git submodule commands to fail, try [this to solve it](http://stackoverflow.com/questions/14768509/unable-to-checkout-git-submodule-path)
 
 # Notes
