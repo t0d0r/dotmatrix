@@ -16,6 +16,7 @@ alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Reso
 alias moon='curl -s wttr.in/Moon'
 alias mutt.local="mutt -f /var/mail/$USER"
 alias pg.start='postgres -D /usr/local/var/postgres'
+alias pg.stop='pg_ctl stop -D /usr/local/var/postgres'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias ppjson=json_reformat
 alias rbenv.init='eval "$(rbenv init -)"'
