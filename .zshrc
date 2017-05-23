@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/t0d0r/.oh-my-zsh
@@ -52,7 +52,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby themes)
+plugins=(git themes)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,9 +61,11 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+# LANG=bg_BG.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -94,3 +96,9 @@ if [ -d ~/.profile.d ]; then
 fi
 
 eval "$(rbenv init -)"
+
+if [ $ZSH_THEME = 'avit' ]; then
+  PROMPT='$(_user_host)${_current_dir} $(git_prompt_info) $(_ruby_version)
+%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+fi
+
