@@ -9,6 +9,7 @@ function title { echo -ne "\033]0;"$*"\007"; }
 
 # this fix crontab -e issue with vi
 export EDITOR=vim
+export VISUAL=vim
 
 # history related
 export HISTIGNORE="??"
