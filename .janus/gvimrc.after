@@ -1,4 +1,5 @@
 set guioptions-=T
+set guitablabel=%N>%M%t
 set wildmenu " change style when use <tab>
 set wim=list
 set smartcase
@@ -67,6 +68,7 @@ endfunction
 " good old full screen console with nice pixellised font
 function! GUIconsole()
   set guifont=basis33:h36 antialias
+  set linespace=-2
 "  set nofullscreen
 "  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
@@ -76,8 +78,15 @@ endfunction
 function! GUIvt220()
   "set guifont=VT220:h36 antialias
   set guifont=VT220:h28 antialias
+  set linespace=-2
   "  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
+
+function! GUIfullscreen()
+  set nofullscreen
+  sleep 1
+  set fullscreen
 endfunction
 
 function! GUIstatusline()
@@ -129,7 +138,7 @@ command! STATUSLINE call GUIstatusline()
 command! Zmanual set foldmethod=manual
 command! Zindent set foldmethod=indent
 command! Zsyntax set foldmethod=syntax
-command! FULL set fullscreen
+command! FULL call GUIfullscreen()
 command! NOFULL set nofullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
@@ -155,3 +164,11 @@ augroup END
     "autocmd SwapExists * echo 'Duplicate edit session (readonly)'
     "autocmd SwapExists * echohl None
 "augroup END
+"
+autocmd FileType ruby nmap <buffer> <D-m> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <D-m> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <D-m> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <D-R> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <D-R> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <D-R> <Plug>(xmpfilter-run)
