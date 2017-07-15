@@ -4,7 +4,8 @@ test_subject=~/.janus
 
 if [ -L ${test_subject} ]; then
   full_path=`readlink ${test_subject}`
-  echo cd `dirname ${full_path}`
+  echo "cd `dirname ${full_path}`;"
+  echo "git pull; git status"
 else
   echo 'echo Sorry, but for me dotmatrix.git is not installed...'
   exit 1
