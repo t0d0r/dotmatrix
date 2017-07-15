@@ -51,7 +51,6 @@ case "$-" in
     [[ -f ~/.bashrc ]] && source ~/.bashrc
 
     [[ `hostname` = 'do.linuxfan.org' ]] && last | head
-    [[ -d ~/Documents/todo ]] && echo && /usr/local/bin/todo.sh ls
 
     if [ -d ~/.profile.d ]; then
       for i in ~/.profile.d/*.sh; do
