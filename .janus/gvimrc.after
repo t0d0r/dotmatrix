@@ -149,6 +149,11 @@ augroup BgHighlight
     autocmd WinLeave * set nonumber
 augroup END
 
+" Always request updated gists in :Gista list
+let g:gista#command#list#default_options = {
+      \ 'cache': 0,
+      \}
+
 "augroup NoSimultaneousEdits
     "autocmd!
     "autocmd SwapExists * let v:swapchoice = 'o'
