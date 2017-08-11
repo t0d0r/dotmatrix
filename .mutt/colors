@@ -146,6 +146,8 @@ color body          red             default         "([a-z][a-z0-9+-]*://(((([a-
 # Border lines.
 #color body          blue            default         "( *[-+=#*~_]){6,}"
 
+# aptitude
+color body         yellow           default         ".*urgency=high"
 #folder-hook .                  "color status        J_black         J_status        "
 #folder-hook gmail/inbox        "color status        J_black         yellow          "
 #folder-hook gmail/important    "color status        J_black         yellow          "
