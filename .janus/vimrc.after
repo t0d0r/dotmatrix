@@ -40,6 +40,9 @@ nnoremap <S-F4> :NERDTreeFocus<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :BuffergatorToggle<CR>
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
+nnoremap <C-a> <nop>
+nnoremap <C-x> <nop>
+
 " Strip trailing whitespace,janus command :FixWhitespace
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
