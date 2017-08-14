@@ -35,6 +35,8 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/zainin/vim-mikrotik.git .janus/vim-mikrotik
   git submodule add https://github.com/vim-scripts/DirDiff.vim.git .janus/dirdiff
   git submodule add https://github.com/mattn/emmet-vim.git .janus/emmet
+  git submodule add https://github.com/editorconfig/editorconfig-vim.git .janus/editorconfig
+  git submodule add https://github.com/ngmy/vim-rubocop.git .janus/vim-rubocop
 ```
 
 # Useful modules or commands
