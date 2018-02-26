@@ -46,8 +46,9 @@ case "$-" in
 #    # mysql
 #    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
     # build aleases based on ~/.screen.d
-    #export PATH=$PATH:/usr/local/opt/go/libexec/bin
-    export GOPATH=/Users/t0d0r/work/gocode
+    #export
+    export GOPATH=/Users/t0d0r/go
+    export PATH=$PATH:$GOPATH/bin
     [[ -f ~/.bashrc ]] && source ~/.bashrc
 
     [[ `hostname` = 'do.linuxfan.org' ]] && last | head
