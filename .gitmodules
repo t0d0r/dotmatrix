@@ -43,3 +43,6 @@
 [submodule ".janus/evervim"]
 	path = .janus/evervim
 	url = https://github.com/kakkyz81/evervim.git
+[submodule ".janus/vim-trackperlvars"]
+	path = .janus/vim-trackperlvars
+	url = git@github.com:mvgrimes/vim-trackperlvars.git
