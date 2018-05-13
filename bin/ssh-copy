@@ -1,0 +1,19 @@
+#!/bin/sh
+
+find ~/.ssh/ -type f -name "*.pub" | sort -u | cat -n
+
+# 1	/Users/t0d0r/.ssh//archives/bst-catenate.pub
+# 2	/Users/t0d0r/.ssh//customers/24ins/bst-24ins_rsa.pub
+# 3	/Users/t0d0r/.ssh//customers/camplight/bst-camplight_rsa.pub
+# 4	/Users/t0d0r/.ssh//customers/catenate/bst-catenate.pub
+# 5	/Users/t0d0r/.ssh//customers/catenate/catenate-ftp-universum.pub
+# 6	/Users/t0d0r/.ssh//customers/cloudstrap/bst-cloudstrap.pub
+# 7	/Users/t0d0r/.ssh//customers/hidrostroy/bst-hidrostroy.rsa.pub
+# 8	/Users/t0d0r/.ssh//customers/infino/bst-infino.pub
+# 9	/Users/t0d0r/.ssh//customers/tim/bst-tim_rsa.pub
+# 10	/Users/t0d0r/.ssh//customers/trackfast/drt.cy.pub
+# 11	/Users/t0d0r/.ssh//hosts/do-linuxfan/id_dsa.pub
+# 12	/Users/t0d0r/.ssh//hosts/do-linuxfan/id_rsa.pub
+# 13	/Users/t0d0r/.ssh//hosts/miniMe/id_rsa.pub
+# 14	/Users/t0d0r/.ssh//hosts/t0d0r-MBA/id_rsa.pub
+# 15	/Users/t0d0r/.ssh//hosts/zion-linuxfan/id_dsa.pub
