@@ -48,6 +48,7 @@ case "$-" in
     # build aleases based on ~/.screen.d
     #export PATH=$PATH:/usr/local/opt/go/libexec/bin
     export GOPATH=~/work/gocode
+    export PATH=$PATH:$GOPATH/bin
     [[ -f ~/.bashrc ]] && source ~/.bashrc
 
     [[ `hostname` = 'do.linuxfan.org' ]] && last | head
