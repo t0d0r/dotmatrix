@@ -1,7 +1,7 @@
 #!/bin/bash
 
 zbxconf="$HOME/.config/zabbixctl.conf"
-ZBXCTL=/Users/t0d0r/go/bin/zabbixctl
+ZBXCTL=$GOPATH/bin/zabbixctl
 
 if [ -h ${zbxconf} ]; then
   rm ${zbxconf}
@@ -10,9 +10,17 @@ else
   exit 1
 fi
 
-for profile in `find $HOME/.config/ -name "zabbixctl.conf.*" -type f`; do
+if [ -n $1 ]; then
+  profile=`find $HOME/.config/ -name "zabbixctl.conf.$1" -type f`
   basename $profile
   ln -fs $profile ${zbxconf}
   $ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
   echo
-done
+else
+  for profile in `find $HOME/.config/ -name "zabbixctl.conf.*" -type f`; do
+    basename $profile
+    ln -fs $profile ${zbxconf}
+    $ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
+    echo
+  done
+fi
