@@ -1,0 +1,4 @@
+#00 15 * * * (echo $USER; id; cd /Users/t0d0r/.ssh/; git pull)
+#* * * * * ( source /Users/t0d0r/.bash_profile; echo $USER; id; pwd; cd /Users/t0d0r/.ssh/; /usr/bin/git pull)
+@monthly /usr/local/bin/brew cleanup
+*/3 * * * * ~/bin/zabbix.status > ~/tmp/zabbix.status

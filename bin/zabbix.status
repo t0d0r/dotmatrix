@@ -1,0 +1,26 @@
+#!/bin/bash
+
+zbxconf="$HOME/.config/zabbixctl.conf"
+ZBXCTL=$GOPATH/bin/zabbixctl
+
+if [ -h ${zbxconf} ]; then
+  rm ${zbxconf}
+else
+  echo "${zbxconf} is a regular file!"
+  exit 1
+fi
+
+if [ -n $1 ]; then
+  profile=`find $HOME/.config/ -name "zabbixctl.conf.$1" -type f`
+  basename $profile
+  ln -fs $profile ${zbxconf}
+  $ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
+  echo
+else
+  for profile in `find $HOME/.config/ -name "zabbixctl.conf.*" -type f`; do
+    basename $profile
+    ln -fs $profile ${zbxconf}
+    $ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
+    echo
+  done
+fi
