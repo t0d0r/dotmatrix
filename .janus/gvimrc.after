@@ -5,6 +5,7 @@ set wim=list
 set smartcase
 set cursorline
 set balloonexpr=
+setlocal balloonexpr=
 " default font and size
 " basis33 can be downloaded from here:
 " https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
