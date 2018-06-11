@@ -39,6 +39,7 @@ nnoremap <F4> :NERDTreeToggle<CR>
 nnoremap <S-F4> :NERDTreeFocus<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :BuffergatorToggle<CR>
+map <F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
 nnoremap <C-a> <nop>
 nnoremap <C-x> <nop>
@@ -98,5 +99,13 @@ function! HighlightIP()
   syn match topsecret /^.* :: [t]opsecret/
   hi link topsecret NonText
 endfunction
+
+
+" FIXME:
+" let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
+" dr will move cursor to right
+""" 'AndrewRadev/splitjoin.vim'
+""" nnoremap dr diwh"0p
+""" nnoremap dt diw"0p
 
 
