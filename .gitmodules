@@ -40,3 +40,9 @@
 [submodule ".janus/vim-rubocop"]
 	path = .janus/vim-rubocop
 	url = https://github.com/ngmy/vim-rubocop.git
+[submodule ".janus/evervim"]
+	path = .janus/evervim
+	url = https://github.com/kakkyz81/evervim.git
+[submodule ".janus/vim-trackperlvars"]
+	path = .janus/vim-trackperlvars
+	url = git@github.com:mvgrimes/vim-trackperlvars.git

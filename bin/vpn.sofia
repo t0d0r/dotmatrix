@@ -27,9 +27,13 @@
 # EOF
 # }
 
-sudo route delete 192.168.1.0/24 192.168.188.1
-sudo route delete 192.168.88.0/24 192.168.188.1
+sudo route delete 192.168.1.0/24 192.168.188.1 2> /dev/null
+sudo route delete 192.168.88.0/24 192.168.188.1 2> /dev/null
+sudo route delete 10.10.20.0/24 192.168.188.1 2> /dev/null
+sudo route delete 37.157.136.15 192.168.188.1 2> /dev/null
+sleep 3
 scutil --nc start "ctnt.sofia"
-sleep 10
 sudo route add 192.168.1.0/24 192.168.188.1
 sudo route add 192.168.88.0/24 192.168.188.1
+sudo route add 10.10.20.0/24 192.168.188.1
+sudo route add 37.157.136.15 192.168.188.1

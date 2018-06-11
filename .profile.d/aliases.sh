@@ -1,5 +1,18 @@
-alias ls='ls -G'
+alias ls='ls -G' # *bsd option for coloring
 alias ll='ls -al'
+
+# linux flavour
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
@@ -23,6 +36,7 @@ alias rbenv.init='eval "$(rbenv init -)"'
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias sca="./scp_all.rb"
 alias sea="./ssh_exec_all.rb"
+alias ssh.edit="vim ~/.ssh/config"
 alias t='todo.sh'
 alias todo='todo.sh'
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''

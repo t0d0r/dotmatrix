@@ -37,6 +37,7 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/mattn/emmet-vim.git .janus/emmet
   git submodule add https://github.com/editorconfig/editorconfig-vim.git .janus/editorconfig
   git submodule add https://github.com/ngmy/vim-rubocop.git .janus/vim-rubocop
+  git submodule add git@github.com:mvgrimes/vim-trackperlvars.git .janus/vim-trackperlvars
 ```
 
 # Useful modules or commands
