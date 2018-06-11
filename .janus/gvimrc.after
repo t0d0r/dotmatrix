@@ -1,3 +1,15 @@
+" put following code in ~/.vim/janus/vim/vimrc
+" it is a fix for: ModuleNotFoundError: No module named 'encodings'
+if has('python3')
+    command! -nargs=1 Py py3 <args>
+    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
+    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+else
+    command! -nargs=1 Py py <args>
+    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+endif
+" to here
 set guioptions-=T
 set guitablabel=%N>%M%t
 set wildmenu " change style when use <tab>
@@ -5,6 +17,7 @@ set wim=list
 set smartcase
 set cursorline
 set balloonexpr=
+setlocal balloonexpr=
 " default font and size
 " basis33 can be downloaded from here:
 " https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
@@ -83,6 +96,12 @@ function! GUIvt220()
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
 
+" RubyMine like setup
+function! GUIrubymine()
+  set guifont=Monaco:h12 antialias
+  colorscheme darcula
+endfunction
+
 function! GUIfullscreen()
   set nofullscreen
   sleep 1
@@ -134,6 +153,7 @@ command! BIG call GUIbig()
 command! NORMAL call GUInormal()
 command! SMALL call GUIsmall()
 command! MICRO call GUImicro()
+command! RUBYMINE call GUIrubymine()
 command! STATUSLINE call GUIstatusline()
 command! Zmanual set foldmethod=manual
 command! Zindent set foldmethod=indent
@@ -154,8 +174,10 @@ NORMAL "set normal font size
 
 augroup BgHighlight
     autocmd!
-    autocmd WinEnter * set number
-    autocmd WinLeave * set nonumber
+    autocmd WinEnter * set number cursorline
+    autocmd WinLeave * set nonumber nocursorline
+    autocmd WinEnter * set balloonexpr=
+    autocmd WinEnter * setlocal balloonexpr=
 augroup END
 
 " Always request updated gists in :Gista list

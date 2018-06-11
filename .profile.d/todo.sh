@@ -1,1 +1,1 @@
-[[ -d ~/Documents/todo ]] && echo && /usr/local/bin/todo.sh ls
+[[ -d ~/Dropbox/Documents/todo ]] && echo && /usr/local/bin/todo.sh ls
