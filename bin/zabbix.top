@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while true; do 
+  clear
+  cat ~/tmp/zabbix.status | sed -e 's#PROBLEM NACK ##' |  clog
+  stat ~/tmp/zabbix.status | grep Change
+  echo "CTRL+C for exit"
+  sleep 60
+done
