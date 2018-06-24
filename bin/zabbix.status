@@ -1,16 +1,20 @@
 #!/bin/bash
 
+source ~/.profile.d/go.sh
 zbxconf="$HOME/.config/zabbixctl.conf"
 ZBXCTL=$GOPATH/bin/zabbixctl
+$ZBXCTL --version
 
 if [ -h ${zbxconf} ]; then
   rm ${zbxconf}
 else
-  echo "${zbxconf} is a regular file!"
-  exit 1
+  if [ -f ${zbxconf} ]; then
+    echo "${zbxconf} is a regular file!"
+    exit 1
+  fi
 fi
 
-if [ -n $1 ]; then
+if [ -n "$1" ]; then
   profile=`find $HOME/.config/ -name "zabbixctl.conf.$1" -type f`
   basename $profile
   ln -fs $profile ${zbxconf}

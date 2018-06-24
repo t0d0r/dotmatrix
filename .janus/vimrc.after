@@ -110,3 +110,10 @@ function! NERDTreeToggleFix()
     NERDTree
   endif
 endfunction
+
+" FIXME:
+" let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
+" dr will move cursor to right
+""" 'AndrewRadev/splitjoin.vim'
+""" nnoremap dr diwh"0p
+""" nnoremap dt diw"0p
