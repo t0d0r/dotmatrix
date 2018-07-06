@@ -46,3 +46,12 @@
 [submodule ".janus/vim-trackperlvars"]
 	path = .janus/vim-trackperlvars
 	url = git@github.com:mvgrimes/vim-trackperlvars.git
+[submodule ".janus/vim-seeing-is-believing"]
+	path = .janus/vim-seeing-is-believing
+	url = https://github.com/hwartig/vim-seeing-is-believing.git
+[submodule ".janus/vim-go"]
+	path = .janus/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".janus/dracula-theme"]
+	path = .janus/dracula-theme
+	url = https://github.com/dracula/vim.git
