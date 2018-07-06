@@ -201,3 +201,18 @@ autocmd FileType ruby imap <buffer> <D-m> <Plug>(xmpfilter-mark)
 autocmd FileType ruby nmap <buffer> <D-R> <Plug>(xmpfilter-run)
 autocmd FileType ruby xmap <buffer> <D-R> <Plug>(xmpfilter-run)
 autocmd FileType ruby imap <buffer> <D-R> <Plug>(xmpfilter-run)
+
+" Enable seeing-is-believing mappings only for Ruby
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  autocmd FileType ruby nmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+  autocmd FileType ruby xmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby xmap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+
+  autocmd FileType ruby nmap <buffer> <F6> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F6> <Plug>(seeing-is-believing-run)
+augroup END
