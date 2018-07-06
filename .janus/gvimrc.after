@@ -10,7 +10,9 @@ else
     set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
 endif
 " to here
-set guioptions-=T
+set guioptions-=T " remove toolbar
+set guioptions-=r " remove right-hand scrollbar
+set guioptions-=L " remove left-hand scrollbar
 set guitablabel=%N>%M%t
 set wildmenu " change style when use <tab>
 set wim=list
