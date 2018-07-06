@@ -38,6 +38,9 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/editorconfig/editorconfig-vim.git .janus/editorconfig
   git submodule add https://github.com/ngmy/vim-rubocop.git .janus/vim-rubocop
   git submodule add git@github.com:mvgrimes/vim-trackperlvars.git .janus/vim-trackperlvars
+  git submodule add https://github.com/hwartig/vim-seeing-is-believing.git .janus/vim-seeing-is-believing
+  git submodule add https://github.com/fatih/vim-go.git .janus/vim-go
+  git submodule add https://github.com/dracula/vim.git .janus/dracula-theme
 ```
 
 # Useful modules or commands
@@ -54,6 +57,7 @@ Must be execited in 'dotmatrix' directory!
 :FIRA
 :VT220
 :CONSOLE
+:RUBYMINE
 ```
 
 ### Folding
