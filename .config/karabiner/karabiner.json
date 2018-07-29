@@ -219,6 +219,56 @@
                     {
                         "manipulators": [
                             {
+                                "description": "Spectacle: Undo. Change keypad_/ to options+command+z.",
+                                "from": {
+                                    "key_code": "keypad_slash",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Spectacle: Fullscreen. Change keypad_* to options+command+f.",
+                                "from": {
+                                    "key_code": "keypad_asterisk",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "manipulators": [
+                            {
                                 "description": "Spectacle: Center. Change keypad_5 to options+command+c.",
                                 "from": {
                                     "key_code": "keypad_5",
@@ -233,32 +283,6 @@
                                         "key_code": "c",
                                         "modifiers": [
                                             "left_command",
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to command+control+option+shift.",
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_control",
                                             "left_option"
                                         ]
                                     }
@@ -337,6 +361,14 @@
                             },
                             "to": {
                                 "key_code": "mission_control"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "fn"
                             }
                         }
                     ]
