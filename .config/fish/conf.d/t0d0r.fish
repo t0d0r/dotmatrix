@@ -5,6 +5,8 @@ set fish_greeting ""
 if status --is-interactive
 	fortune computers
 
+	source ~/.bash_env
+
 	# function fish_greeting
 	# 	set -l cows_dir /usr/local/Cellar/cowsay/3.03/share/cows
 	# 	set -l avatar (ls $cows_dir | gshuf -n1|cut -d'.' -f1)
@@ -36,6 +38,7 @@ if status --is-interactive
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 	alias weather='curl -s wttr.in | head -7'
 	alias rm=trash
+	alias Sketch.app='timehack Sketch'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 end
