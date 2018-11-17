@@ -1,17 +1,20 @@
+# linux flavour
+# if [ -x /usr/bin/dircolors ]; then
+#     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#     alias ls='ls --color=auto'
+#     #alias dir='dir --color=auto'
+#     #alias vdir='vdir --color=auto'
+#
+#     alias grep='grep --color=auto'
+#     alias fgrep='fgrep --color=auto'
+#     alias egrep='egrep --color=auto'
+# fi
+# if [ -x /usr/local/bin/trash ]; then
+#   alias rm='trash'
+# fi
+
 alias ls='ls -G' # *bsd option for coloring
 alias ll='ls -al'
-
-# linux flavour
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 alias mv='mv -i'
 alias cp='cp -i'
@@ -20,7 +23,10 @@ alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD`'
 
+alias +='pushd .'
+alias ++='popd'
 alias aea='ansible all -m shell -o -a '
+alias beep='echo -en "\007"'
 alias dotmatrix='eval $(~/bin/dotmatrix)'
 alias groovysh="groovysh -C off"
 alias less='less -R'
@@ -33,6 +39,8 @@ alias pg.stop='pg_ctl stop -D /usr/local/var/postgres'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias ppjson=json_reformat
 alias rbenv.init='eval "$(rbenv init -)"'
+alias rehash='hash -r'
+alias rpry="pry -r ./config/environment"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias sca="./scp_all.rb"
 alias sea="./ssh_exec_all.rb"
@@ -41,7 +49,6 @@ alias t='todo.sh'
 alias todo='todo.sh'
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 alias weather='curl -s wttr.in | head -7'
-alias rpry="pry -r ./config/environment"
+alias Sketch.app='timehack Sketch'
 
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
-
