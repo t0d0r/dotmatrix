@@ -1,0 +1,20 @@
+#!/bin/sh
+
+username=$CLICKATELL_USERNAME
+password=$CLICKATELL_PASSWORD
+api_id=${CLICKATELL_API_ID}
+recipient=${CLICKATELL_RECIPIENT}
+message=$@
+
+if [ $# -eq 0 ]; then
+	echo "$0 message"
+	exit 1
+fi
+
+curl -G \
+	"http://api.clickatell.com/http/sendmsg" \
+	--data-urlencode "user=${username}" \
+	--data-urlencode "password=${password}" \
+	--data-urlencode "api_id=${api_id}" \
+	--data-urlencode "to=${recipient}" \
+	--data-urlencode "text=${message}"

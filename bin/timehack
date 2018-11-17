@@ -1,0 +1,10 @@
+#!/bin/bash
+# visudo
+# Cmnd_Alias      TIMETRAVEL = /bin/date, /usr/bin/sntp
+# %admin          ALL = (root) NOPASSWD:TIMETRAVEL
+
+CMD=$1
+
+sudo date 0102030405
+open /Applications/${CMD}.app
+sudo sntp -sS time.windows.com
