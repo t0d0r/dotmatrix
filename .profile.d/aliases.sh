@@ -28,8 +28,10 @@ alias lmk='say '\''Process complete.'\'''
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias moon='curl -s wttr.in/Moon'
 alias mutt.local="mutt -f /var/mail/$USER"
-alias pg.start='postgres -D /usr/local/var/postgres'
+alias pg.start='postgres -D /usr/local/var/postgres/10.5'
 alias pg.stop='pg_ctl stop -D /usr/local/var/postgres'
+alias redis.start='redis-server /usr/local/etc/redis.conf'
+alias redis.stop='echo no info how to stop it...'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias ppjson=json_reformat
 alias rbenv.init='eval "$(rbenv init -)"'
@@ -42,6 +44,7 @@ alias todo='todo.sh'
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 alias weather='curl -s wttr.in | head -7'
 alias rpry="pry -r ./config/environment"
+alias be="bundle exec"
 
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
