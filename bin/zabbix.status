@@ -3,8 +3,15 @@
 source ~/.profile.d/go.sh
 zbxconf="$HOME/.config/zabbixctl.conf"
 ZBXCTL=$GOPATH/bin/zabbixctl
-$ZBXCTL --version
 
+if [ ! -f $GOPATH/bin/zabbixctl ]; then
+  echo "zabbixctl is missing on local system, executing remotely..."
+  ssh do /home/todor/bin/zabbix.status
+  exit
+fi
+
+
+$ZBXCTL --version
 if [ -h ${zbxconf} ]; then
   rm ${zbxconf}
 else
