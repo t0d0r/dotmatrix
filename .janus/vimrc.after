@@ -9,6 +9,8 @@ set spelllang=en,bg
 set hidden
 set nonumber
 set shell=/bin/bash
+" disable autowrap when cursor reach textwidth size
+set formatoptions-=t
 colorscheme koehler
 
 " commands
