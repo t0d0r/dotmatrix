@@ -1,6 +1,3 @@
-[submodule ".janus/nerdtree-ack"]
-	path = .janus/nerdtree-ack
-	url = https://github.com/vim-scripts/nerdtree-ack.git
 [submodule ".janus/ruby-runner"]
 	path = .janus/ruby-runner
 	url = https://github.com/henrik/vim-ruby-runner
@@ -46,3 +43,15 @@
 [submodule ".janus/vim-trackperlvars"]
 	path = .janus/vim-trackperlvars
 	url = git@github.com:mvgrimes/vim-trackperlvars.git
+[submodule ".janus/vim-seeing-is-believing"]
+	path = .janus/vim-seeing-is-believing
+	url = https://github.com/hwartig/vim-seeing-is-believing.git
+[submodule ".janus/vim-go"]
+	path = .janus/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".janus/dracula-theme"]
+	path = .janus/dracula-theme
+	url = https://github.com/dracula/vim.git
+[submodule ".janus/nerdtree-ack"]
+	path = .janus/nerdtree-ack
+	url = https://github.com/t0d0r/nerdtree-ack.git

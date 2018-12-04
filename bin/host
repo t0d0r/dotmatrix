@@ -1,4 +1,6 @@
 #!/bin/sh
+# replace host command with clever one :)
+# gets only hostname from URI
 
-arg=`echo $@ | sed -e 's#^http[s]*://##'`
+arg=`echo ${@} | sed -e 's#\(^[a-zA-Z]*://\)*\([[:alnum:]\.-]*\).*#\2#'`
 /usr/bin/host $arg

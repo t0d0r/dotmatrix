@@ -29,7 +29,9 @@
 
 sudo route delete 192.168.1.0/24 172.16.16.254
 sudo route delete 192.168.2.0/24 172.16.16.254
-scutil --nc start "tim.vpn"
+sudo route delete 172.30.30.0/24 172.16.16.254
+scutil --nc start "vpn.tim"
 sleep 5
 sudo route add 192.168.1.0/24 172.16.16.254
 sudo route add 192.168.2.0/24 172.16.16.254
+sudo route add 172.30.30.0/24 172.16.16.254
