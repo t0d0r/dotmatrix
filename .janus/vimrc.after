@@ -8,6 +8,9 @@ set complete-=i
 set spelllang=en,bg
 set hidden
 set nonumber
+set shell=/bin/bash
+" disable autowrap when cursor reach textwidth size
+set formatoptions-=t
 colorscheme koehler
 
 " commands
@@ -22,6 +25,8 @@ let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 let NERDTreeShowBookmarks=1
+let NERDTreeWinSize=30
+let g:NERDTreeOpened=0
 let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
 let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z' " 24h format for timestamp.vim plugin
 
@@ -35,7 +40,7 @@ nnoremap <F1> <ESC>
 inoremap <F1> <ESC>
 nnoremap <F3> i<C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR><Esc>
 inoremap <F3> <C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR>
-nnoremap <F4> :NERDTreeToggle<CR>
+nnoremap <F4> :call NERDTreeToggleFix()<CR>
 nnoremap <S-F4> :NERDTreeFocus<CR>
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :BuffergatorToggle<CR>
@@ -100,4 +105,18 @@ function! HighlightIP()
   hi link topsecret NonText
 endfunction
 
+function! NERDTreeToggleFix()
+  if g:NERDTreeOpened > 0
+    NERDTreeToggle
+  else
+    let g:NERDTreeOpened=1
+    NERDTree
+  endif
+endfunction
 
+" FIXME:
+" let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
+" dr will move cursor to right
+""" 'AndrewRadev/splitjoin.vim'
+""" nnoremap dr diwh"0p
+""" nnoremap dt diw"0p

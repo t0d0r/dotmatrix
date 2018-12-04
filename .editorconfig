@@ -1,0 +1,56 @@
+# Editor configuration, see http://editorconfig.org
+root = true
+
+[*]
+# charset = utf-8
+indent_style = tab
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+#max_line_length = 120
+max_line_length = 100
+
+
+[*.rb]
+# Change these settings to your own preference
+indent_style = space
+indent_size = 2
+
+
+[*.sh]
+indent_size = 2
+
+[*.html]
+indent_style = tab
+indent_size = 2
+
+[*.{js,json}]
+indent_size = 2
+
+[*.{css,styl,scss,less,sass}]
+indent_size = 2
+
+[*.php]
+indent_size = 4
+
+[*.py]
+indent_size = 4
+indent_style = space
+
+[*.txt]
+indent_size = 4
+
+[*.{c,cpp}]
+indent_size = 4
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.go]
+indent_size = 2
+indent_style = tab
+
+[*.md]
+indent_style = tab
+max_line_length = off
+trim_trailing_whitespace = false

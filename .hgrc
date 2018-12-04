@@ -14,7 +14,7 @@ cdiff = -q
 # добавя cdiff, color and glog команди
 
 [extensions]
-hgshelve=~/.hgext/hgshelve/hgshelve.py
+#hgshelve=~/.hgext/hgshelve/hgshelve.py
 #fold=~/.hgext/hgfold/fold.py
 
 [extensions]
