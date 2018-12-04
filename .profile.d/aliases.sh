@@ -43,5 +43,9 @@ alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 alias weather='curl -s wttr.in | head -7'
 alias rpry="pry -r ./config/environment"
 
+alias pssh='parallel-ssh -h hosts -P'
+alias psshs='parallel-ssh -h hosts -P sudo'
+
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
+alias zabbix="cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog"
 
