@@ -1,9 +1,10 @@
 #!/bin/bash
 
-while true; do 
+while true; do
   clear
-  cat ~/tmp/zabbix.status | sed -e 's#PROBLEM NACK ##' |  clog
+  cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog
   stat ~/tmp/zabbix.status | grep Change
+  echo "   UTC: `date -u '+%Y-%m-%d %H:%M:%S.%N %z'`"
   echo "CTRL+C for exit"
   sleep 60
 done
