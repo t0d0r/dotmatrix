@@ -80,6 +80,13 @@ function! GUIinfo()
   set columns=104
 endfunction
 
+" http://misc.nybergh.net/pub/fonts/terminus/ttf_for_osx/
+function! GUIterminus()
+	set guifont=terminus:h24 antialias
+	set linespace=0
+	colorscheme dejavu
+endfunction
+
 " good old full screen console with nice pixellised font
 function! GUIconsole()
   set guifont=basis33:h36 antialias
@@ -131,9 +138,14 @@ function! GUIstatusline()
 endfunction
 
 function! SetEncoding(enc)
-  exec ":set encoding=" . a:enc
-  exec ":set fileencoding=" . a:enc
-  echo "Set encoding to " . a:enc . ", please type :e! to reload the file."
+	try
+		exec ":set encoding=" . a:enc
+		exec ":set fileencoding=" . a:enc
+		exec ":e ++enc=" . a:enc . " %:p"
+		echo "Changed encoding and fileencoding to " . a:enc . ", file reloaded!"
+	catch
+		echoerr "Failed to change the encoding... " . v:exception
+	endtry
 endfunction
 
 "function! ReduceWhiteSpaceToOne
@@ -144,6 +156,7 @@ command! FR set filetype=ruby
 command! FJS set filetype=javascript
 " set big font for using in my 20" DELL display
 command! DELL set guifont=Terminus\ (TTF):h18 noantialias
+command! TERMINUS call GUIterminus()
 " deprecated, Envy Code R did not support cyrillic...
 "command! ENVY set guifont=Envy\ Code\ R:h18 antialias
 command! FIRA set guifont=Fira\ Mono:h18 antialias
@@ -164,6 +177,7 @@ command! FULL call GUIfullscreen()
 command! NOFULL set nofullscreen
 command! WHITE colorscheme lingodirector
 command! BLACK colorscheme t0d0r
+command! LATIN1 call SetEncoding('latin1')
 command! CP1251 call SetEncoding('cp1251')
 command! UTF8 call SetEncoding('utf8')
 command! NOCLOSE let NERDTreeQuitOnOpen=0
