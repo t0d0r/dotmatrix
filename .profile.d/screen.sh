@@ -7,6 +7,7 @@ if [ -d ~/.screen.d ]; then
   for i in `ls ~/.screen.d`; do
     alias ssh.${i}.list="grep '[s]creen -t' ~/.screen.d/${i}"
     alias ssh.${i}="ssh.${i}.list"
+    alias ssh.${i}.ip="ssh.${i}.list | awk '{ print \$6 }'"
   done
 
 fi
