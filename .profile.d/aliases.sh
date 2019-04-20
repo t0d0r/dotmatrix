@@ -45,6 +45,7 @@ alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias sca="./scp_all.rb"
 alias sea="./ssh_exec_all.rb"
 alias ssh.edit="vim ~/.ssh/config"
+alias ssh.agent='eval "$(ssh-agent -s)"'
 alias t='todo.sh'
 alias todo='todo.sh'
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
@@ -53,6 +54,7 @@ alias Sketch.app='timehack Sketch'
 
 alias pssh='parallel-ssh -h hosts -P'
 alias psshs='parallel-ssh -h hosts -P sudo'
+alias pscp='parallel-scp -r -v -h hosts'
 
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 alias zabbix="cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog"
