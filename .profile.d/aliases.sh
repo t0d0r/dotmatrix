@@ -46,7 +46,6 @@ alias rpry="pry -r ./config/environment"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias sca="./scp_all.rb"
 alias sea="./ssh_exec_all.rb"
-alias ssh.edit="vim ~/.ssh/config"
 alias ssh.agent='eval "$(ssh-agent -s)"'
 alias t='todo.sh'
 alias todo='todo.sh'
