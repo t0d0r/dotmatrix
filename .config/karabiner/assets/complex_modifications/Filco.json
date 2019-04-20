@@ -1,0 +1,25 @@
+{
+  "title": "Filco",
+  "rules": [
+    {
+      "manipulators": [
+        {
+          "description": "Change right_shift+scroll_lock to media play.",
+          "from": {
+            "key_code": "scroll_lock",
+            "modifiers": {
+              "mandatory": ["right_shift"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "play_or_pause"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
+
