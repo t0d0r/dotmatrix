@@ -70,6 +70,10 @@ autocmd FileType go colorscheme dejavu
 autocmd FileType vimwiki call HighlightIP()
 autocmd FileType vimwiki CONSOLE
 
+
+" fix for "E382: Cannot write, 'buftype' option is set"
+autocmd BufRead scp://* :set bt=acwrite
+
 " settings for timestamp.vim plugin
 let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z'
 
