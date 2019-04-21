@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # exclude these files from creating links
-EXCLUDE="^.git|^README|^janus"
+EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^janus"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
@@ -13,6 +13,8 @@ if [ `basename ${pwd}` != 'dotmatrix' ] ; then
   usage
 fi
 
+# self update
+git pull
 # update submodules (vim-janus)
 git submodule update --init
 
@@ -23,6 +25,17 @@ for i in `find . -maxdepth 1 -exec basename {} \;`; do
     echo "${HOME}/$i already exists"
     continue
   fi
+  if [ -d ${HOME}/${i} ] ; then
+    echo "${HOME}/$i already exists"
+    continue
+  fi
+  ln -vs ${pwd}/$i ${HOME}/$i
+done
+
+# .config directory
+echo "===== .config/ ====="
+for i in `find .config -type d -mindepth 1 -maxdepth 1`; do
+#	echo "> ${i}"
   if [ -d ${HOME}/${i} ] ; then
     echo "${HOME}/$i already exists"
     continue
