@@ -6,5 +6,5 @@
 CMD=$1
 
 sudo date 0102030405
-open /Applications/${CMD}.app
-sudo sntp -sS time.windows.com
+open "/Applications/${CMD}.app"
+sudo sntp -s time.windows.com
