@@ -1,8 +1,4 @@
 # vim syntax:muttrc
-# bst
-source ~/.mutt/acc/bst
-folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
-
 # gmail
 source ~/.mutt/acc/gmail
 folder-hook todor.dragnev@imap.gmail.com:993/ 'source ~/.mutt/acc/gmail'
@@ -15,8 +11,9 @@ folder-hook todor@tcv.bg@imap.tcv.bg:993/ 'source ~/.mutt/acc/tcv'
 source ~/.mutt/acc/catenate
 folder-hook todor.dragnev@catenate.com@imap.gmail.com:993/ 'source ~/.mutt/acc/catenate'
 
-
-
+# bst
+source ~/.mutt/acc/bst
+folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
 
 
 # Shortcuts
