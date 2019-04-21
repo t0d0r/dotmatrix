@@ -21,7 +21,7 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias less='less -R'
 alias r='rails'
-alias mvim='mvim --servername `basename $PWD`'
+alias mvim='mvim --servername `basename $PWD` --remote-tab-silent'
 
 alias +='pushd .'
 alias ++='popd'
