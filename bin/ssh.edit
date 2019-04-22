@@ -1,0 +1,28 @@
+#!/bin/bash
+# author: t0d0r
+
+base_path=~/.ssh
+editor="vim"
+
+# vim:syntax=sshconfig:wrap:noexpandtab
+
+arg=$1
+
+# if no args load default config
+if [ "x${arg}" = "x" ]; then
+	$editor ~/.ssh/config
+fi
+
+match=`find ~/.ssh -name "*${arg}*" -type d -print -quit`
+if [ -f "${match}/config" ]; then
+	before=`stat -f "%m %z %b %N" ${match}/config`
+	$editor ${match}/config
+	after=`stat -f "%m %z %b %N" ${match}/config`
+	if [ "${before}" != "${after}" ]; then
+		echo "File '${match}/config' has changed..."
+		ssh.config
+	fi
+else
+	echo "Sorry, can't find ssh config matching '${arg}'."
+	exit
+fi
