@@ -3,8 +3,9 @@
 # Cmnd_Alias      TIMETRAVEL = /bin/date, /usr/bin/sntp
 # %admin          ALL = (root) NOPASSWD:TIMETRAVEL
 
-CMD=$1
+CMD=$@
 
+echo ${CMD}
 sudo date 0102030405
 open "/Applications/${CMD}.app"
 sudo sntp -s time.windows.com
