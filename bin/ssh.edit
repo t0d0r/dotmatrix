@@ -4,20 +4,35 @@
 base_path=~/.ssh
 editor="vim"
 
-# vim:syntax=sshconfig:wrap:noexpandtab
+OS=`uname`
+
+case "$OS" in
+	Darwin|*BSD)
+		f_stat='/usr/bin/stat -f'
+		;;
+	Linux)
+		f_stat='/usr/bin/stat -c'
+		;;
+	*)
+		echo "Your OS is not osX, BSD, or Linux."
+		exit 1
+		;;
+esac
 
 arg=$1
 
-# if no args load default config
-if [ "x${arg}" = "x" ]; then
-	$editor ~/.ssh/config
-fi
+# # if no args load default config
+# if [ "x${arg}" = "x" ]; then
+# 	$editor ~/.ssh/config
+# 	exit
+# fi
 
 match=`find ~/.ssh -name "*${arg}*" -type d -print -quit`
 if [ -f "${match}/config" ]; then
-	before=`stat -f "%m %z %b %N" ${match}/config`
+  echo ${match}
+	before=`${f_stat} "%m %z %b %N" ${match}/config`
 	$editor ${match}/config
-	after=`stat -f "%m %z %b %N" ${match}/config`
+	after=`${f_stat} "%m %z %b %N" ${match}/config`
 	if [ "${before}" != "${after}" ]; then
 		echo "File '${match}/config' has changed..."
 		ssh.config
@@ -26,3 +41,4 @@ else
 	echo "Sorry, can't find ssh config matching '${arg}'."
 	exit
 fi
+# vim:syntax=sshconfig:wrap:noexpandtab
