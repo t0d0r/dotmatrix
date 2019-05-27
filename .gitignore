@@ -4,8 +4,11 @@
 .ansible/hosts
 .ansible/log/execution.log
 .bash_env
+.config/karabiner/automatic_backups/
+.config/*
 .mutt/acc/
 .mutt/cache/bodies/
 .mutt/cache/headers
 .netrc
 .unison/
+bin/knock-*

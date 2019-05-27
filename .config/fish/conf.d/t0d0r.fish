@@ -1,4 +1,7 @@
-set PATH ~/bin /Applications/MacVim.app/Contents/bin $PATH
+# vim:noexpandtab
+set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
+set GOPATH ~/go
+set -gx  LC_ALL en_US.UTF-8
 set fish_greeting ""
 #set fish_greeting "Your computer account is overdrawn.  Please see Big Brother."
 #set fish_greeting "Real Users never know what they want, but they always know when your program doesn't deliver it."
@@ -7,11 +10,18 @@ if status --is-interactive
 
 	source ~/.bash_env
 
+	# replace fancu utf+8 chars with something normal...
+	set __fish_git_prompt_char_untrackedfiles '?'
+	set __fish_git_prompt_char_dirtystate '+'
+
+	# long pwd in prompt
+	set fish_prompt_pwd_dir_length 0
+
 	# function fish_greeting
-	# 	set -l cows_dir /usr/local/Cellar/cowsay/3.03/share/cows
-	# 	set -l avatar (ls $cows_dir | gshuf -n1|cut -d'.' -f1)
-	# 	echo $avatar
-	# 	cowsay -f $avatar 'Le chat miaule, what should I do?'
+	#		set -l cows_dir /usr/local/Cellar/cowsay/3.03/share/cows
+	#		set -l avatar (ls $cows_dir | gshuf -n1|cut -d'.' -f1)
+	#		echo $avatar
+	#		cowsay -f $avatar 'Le chat miaule, what should I do?'
 	# end
 
 	alias ls='exa -g'
@@ -32,7 +42,6 @@ if status --is-interactive
 	alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 	alias sca="./scp_all.rb"
 	alias sea="./ssh_exec_all.rb"
-	alias ssh.edit="vim ~/.ssh/config"
 	alias t='todo.sh'
 	alias todo='todo.sh'
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
