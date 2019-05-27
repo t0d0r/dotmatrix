@@ -10,5 +10,7 @@
 .mutt/cache/bodies/
 .mutt/cache/headers
 .netrc
+.profile.d/*.disabled
+.profile.d/*.off
 .unison/
 bin/knock-*
