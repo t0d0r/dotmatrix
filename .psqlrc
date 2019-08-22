@@ -1,0 +1,23 @@
+\set PROMPT1 '%~%#%x '
+\x auto
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+\set HISTFILE ~/.psql_history-:DBNAME
+
+\set VERBOSITY verbose
+
+-- \pset null '⦱'
+-- \pset null '¤'
+-- \pset linestyle 'unicode'
+
+-- \pset unicode_border_linestyle single
+-- \pset unicode_column_linestyle single
+-- \pset unicode_header_linestyle double
+
+set intervalstyle to 'postgres_verbose';
+
+\setenv LESS '-iMFXSx4R'
+
+-- Switch pagers with :x and :xx commands
+\set x '\\setenv PAGER less'
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse\''
