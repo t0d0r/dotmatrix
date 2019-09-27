@@ -3,6 +3,8 @@ set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
 set GOPATH ~/go
 set -gx  LC_ALL en_US.UTF-8
 set fish_greeting ""
+# disable mosh escape key
+set MOSH_ESCAPE_KEY 0
 #set fish_greeting "Your computer account is overdrawn.  Please see Big Brother."
 #set fish_greeting "Real Users never know what they want, but they always know when your program doesn't deliver it."
 if status --is-interactive
@@ -50,4 +52,10 @@ if status --is-interactive
 	alias Sketch.app='timehack Sketch'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
+
+	function dotmatrix
+		cd /Users/t0d0r/work/github/dotmatrix;
+		git pull; git status
+	end
+
 end
