@@ -12,6 +12,7 @@ set shell=/bin/bash
 " disable autowrap when cursor reach textwidth size
 set formatoptions-=t
 colorscheme koehler
+set modeline
 
 " commands
 command! FR set filetype=ruby
