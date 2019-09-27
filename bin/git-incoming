@@ -49,7 +49,7 @@ if $diff
 then git diff HEAD..."$1"
 else
      git cherry -v HEAD "$@"                           |
-     cut -c1-9 -c43-                                   |
+     cut -c1-9,43-                                     |
      sed -e "s/^\(.\) \(.......\)/\1 $SHA\2$RESET/"    |
      sed -e "s/^-/$REM-$RESET/" -e "s/^+/$ADD+$RESET/"
 fi
