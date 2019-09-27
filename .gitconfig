@@ -1,29 +1,47 @@
+[core]
+	excludesfile = $HOME/.gitignore_global
+	quotepath = false
 [user]
 	name = Todor Dragnev
-	email = todor.dragnev@gmail.com
+	email = todor@bstconsult.com
 [color]
 	ui = auto
 [alias]
-	cb           = !git-cut-branch
-	sh           = !git-sh
-	grab         = !git-grab
-	thanks       = !git-thanks
-	track        = !git-track
-	ll           = log --pretty=oneline --abbrev-commit --max-count=15
-	wip          = !git add -u && git commit -m ...
-	wipc         = !date >> WIP && git add WIP && git commit -m ...
-	fp           = format-patch --stdout
-	ci           = commit
-	x            = checkout HEAD
-	bv           = !git branch --color -v | cut -c1-100
-	incoming     = !git-incoming
-	in           = !git-incoming
-	outgoing     = !git-outgoing
-	out          = !git-outgoing
-	s            = status -sb -uno --ignore-submodules=untracked
-	st           = status
-	sa           = status -sb --ignore-submodules=untracked
-
+	bv        = !git branch --color -v | cut -c1-100
+	cb        = !git-cut-branch
+	ci        = commit
+	df        = diff --word-diff
+	dfw       = diff --word-diff
+	diff-word = diff --word-diff
+	dw        = diff --word-diff
+	fp        = format-patch --stdout
+	grab      = !git-grab
+	in        = !git-incoming
+	incoming  = !git-incoming
+	ll        = log --pretty                                     = oneline --abbrev-commit --max-count = 15
+	out       = !git-outgoing
+	outgoing  = !git-outgoing
+	s         = status -sb -uno --ignore-submodules              = untracked
+	sa        = status -sb --ignore-submodules                   = untracked
+	sh        = !git-sh
+	st        = status
+	st        = status
+	thanks    = !git-thanks
+	track     = !git-track
+	wip       = !git add -u && git commit -m ...
+	wipc      = !date >> WIP && git add WIP && git commit -m ...
+	x         = checkout HEAD
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = $HOME/.stCommitMsg
 [github]
 	user = t0d0r
-	token = my_token_from_guthub_site
+[push]
+	default = simple
+[diff]
+	wordRegex = [^[:space:],]+|[,]+
