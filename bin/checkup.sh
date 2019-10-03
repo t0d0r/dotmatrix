@@ -14,7 +14,7 @@
 #
 # Set version number for internal reference.
 #
-ver=1.04
+ver=1.05
 
 #
 # Define default hosts to check, can be IP addresses or (resolvable) hostnames, seperated by spaces.
@@ -31,7 +31,7 @@ timer=30
 #
 # Define fping path.
 #
-fping="/usr/bin/fping"
+fping="fping"
 
 #
 # FPing timeout
@@ -187,7 +187,7 @@ do
 #
 #		Print output to screen and send to logfile if enabled.
 #
-		echo -e "$timestamp - $host is "$color"$status"
+		printf "$timestamp - $host is "$color"$status\n"
 		if [ "$nolog" -ne "1" ]
 		then
 			echo "$timestamp$seperator$host$seperator$numstat" >> $log
