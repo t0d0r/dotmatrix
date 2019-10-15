@@ -57,7 +57,8 @@ set allow_8bit
 set auto_tag                             # If something is tagged run commands on all tagged msgs
 unset mark_old                           # Don't mark messages as old when I pass over them with the cursor
 #set editor              = "nano +9"
-set editor               = "vim +9"
+#set editor               = "vim +9"
+set editor							 = "vim +/^$ ++1"
 unset beep
 unset beep_new
 set read_inc            = 100            # Read counter ticks every 100 msgs.
@@ -102,7 +103,8 @@ unset sig_dashes                         # dashes before sig
 
 # Index View Options -----------------------------
 set date_format         = "%y/%m/%d"
-set index_format        = "%4C│%Z│%D %-20.20F (%4c) %s"
+#set index_format        = "%4C│%Z│%D %-20.20F (%4c) %s"
+set index_format        = "%4C│%Z│%[%m/%d]│%-20.20F│%4c│ %s"
 
 #set index_format        = "[%Z] %D %-20.20F (%4c) %s"
 #set index_format="%4C %Z %{%b %d} %-15.15F (%4c) %s"

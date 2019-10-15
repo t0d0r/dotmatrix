@@ -19,6 +19,9 @@ alias ll='ls -al'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
+
+[ -f /usr/local/bin/trash ] && alias rm="trash"
+
 alias less='less -R'
 alias r='rails'
 alias mvim='mvim --servername `basename $PWD` --remote-tab-silent'
