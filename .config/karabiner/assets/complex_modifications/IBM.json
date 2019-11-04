@@ -1,486 +1,484 @@
 {
-  "title": "IBM Model M",
-  "rules": [
-							{
-									"description": "Spectacle: Move Upper-Left. Change keypad_7 to control+command+left_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_7",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "left_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_control"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Upper-Right. Change keypad_9 to control+command+right_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_9",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "right_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_control"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Lower-Left. Change keypad_1 to shift+control+command+left_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_1",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "left_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_control",
-																			"left_shift"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Lower-Right. Change keypad_3 to shift+control+command+right_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_3",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "right_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_control",
-																			"left_shift"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Half-Left. Change keypad_4 to option+command+left_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_4",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "left_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Half-Right. Change keypad_6 to option+command+right_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_6",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "right_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Half-Up. Change keypad_8 to option+command+up_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_8",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "up_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Move Half-Bottom. Change keypad_2 to option+command+down_arrow.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_2",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "down_arrow",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Undo. Change keypad_/ to options+command+z.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_slash",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "z",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Fullscreen. Change keypad_* to options+command+f.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_asterisk",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "f",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Center. Change keypad_5 to options+command+c.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_5",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "c",
-																	"modifiers": [
-																			"left_command",
-																			"left_option"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Make Smaller.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_hyphen",
-															"modifiers": {
-																	"mandatory": [
-																			"left_shift"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "left_arrow",
-																	"modifiers": [
-																			"left_control",
-																			"left_option",
-																			"left_shift"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Spectacle: Make Larger.",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_plus",
-															"modifiers": {
-																	"mandatory": [
-																			"left_shift"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "right_arrow",
-																	"modifiers": [
-																			"left_control",
-																			"left_option",
-																			"left_shift"
-																	]
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Media: Volume Increment",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_plus",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "volume_increment"
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Media: Volume Decrement",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_hyphen",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "volume_decrement"
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Media: Play/Pause",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "keypad_plus",
-															"modifiers": {
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "volume_increment"
-															}
-													],
-													"type": "basic"
-											}
-									]
-							},
-							{
-									"description": "Change right_command+hjkl to arrow keys",
-									"manipulators": [
-											{
-													"from": {
-															"key_code": "h",
-															"modifiers": {
-																	"mandatory": [
-																			"right_command"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "left_arrow"
-															}
-													],
-													"type": "basic"
-											},
-											{
-													"from": {
-															"key_code": "j",
-															"modifiers": {
-																	"mandatory": [
-																			"right_command"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "down_arrow"
-															}
-													],
-													"type": "basic"
-											},
-											{
-													"from": {
-															"key_code": "k",
-															"modifiers": {
-																	"mandatory": [
-																			"right_command"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "up_arrow"
-															}
-													],
-													"type": "basic"
-											},
-											{
-													"from": {
-															"key_code": "l",
-															"modifiers": {
-																	"mandatory": [
-																			"right_command"
-																	],
-																	"optional": [
-																			"any"
-																	]
-															}
-													},
-													"to": [
-															{
-																	"key_code": "right_arrow"
-															}
-													],
-													"type": "basic"
-											}
-									]
-							}
-]
+	"title": "IBM Model M",
+	"rules": [
+		{
+			"description": "Spectacle: Move Upper-Left. Change keypad_7 to control+command+left_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_7",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_arrow",
+							"modifiers": [
+								"left_command",
+								"left_control"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Upper-Right. Change keypad_9 to control+command+right_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_9",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_arrow",
+							"modifiers": [
+								"left_command",
+								"left_control"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Lower-Left. Change keypad_1 to shift+control+command+left_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_1",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_arrow",
+							"modifiers": [
+								"left_command",
+								"left_control",
+								"left_shift"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Lower-Right. Change keypad_3 to shift+control+command+right_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_3",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_arrow",
+							"modifiers": [
+								"left_command",
+								"left_control",
+								"left_shift"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Half-Left. Change keypad_4 to option+command+left_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_4",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_arrow",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Half-Right. Change keypad_6 to option+command+right_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_6",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_arrow",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Half-Up. Change keypad_8 to option+command+up_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_8",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "up_arrow",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Move Half-Bottom. Change keypad_2 to option+command+down_arrow.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_2",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "down_arrow",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Undo. Change keypad_/ to options+command+z.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_slash",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "z",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Fullscreen. Change keypad_* to options+command+f.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_asterisk",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "f",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Center. Change keypad_5 to options+command+c.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_5",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "c",
+							"modifiers": [
+								"left_command",
+								"left_option"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Make Smaller.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_hyphen",
+						"modifiers": {
+							"mandatory": [
+								"left_shift"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_arrow",
+							"modifiers": [
+								"left_control",
+								"left_option",
+								"left_shift"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Spectacle: Make Larger.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_plus",
+						"modifiers": {
+							"mandatory": [
+								"left_shift"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_arrow",
+							"modifiers": [
+								"left_control",
+								"left_option",
+								"left_shift"
+							]
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Media: Volume Increment",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_plus",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "volume_increment"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Media: Volume Decrement",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_hyphen",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "volume_decrement"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Media: Play/Pause",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "keypad_plus",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "volume_increment"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Change right_command+hjkl to arrow keys",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "h",
+						"modifiers": {
+							"mandatory": [
+								"right_command"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_arrow"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "j",
+						"modifiers": {
+							"mandatory": [
+								"right_command"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "down_arrow"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "k",
+						"modifiers": {
+							"mandatory": [
+								"right_command"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "up_arrow"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "l",
+						"modifiers": {
+							"mandatory": [
+								"right_command"
+							],
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_arrow"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		}
+	]
 }
-
-

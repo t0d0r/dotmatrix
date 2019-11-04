@@ -1,0 +1,43 @@
+{
+	"title": "KeyCool",
+	"rules": [
+		{
+			"description": "Change right_shift+right_control to volume up.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "right_control",
+						"modifiers": {
+							"mandatory": ["right_shift"]
+						}
+					},
+					"to": [
+						{
+							"consumer_key_code": "volume_increment"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Change right_shift+right_alt to volume down.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "right_alt",
+						"modifiers": {
+							"mandatory": ["right_shift"]
+						}
+					},
+					"to": [
+						{
+							"consumer_key_code": "volume_decrement"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		}
+	]
+}
