@@ -30,6 +30,8 @@ let NERDTreeWinSize=30
 let g:NERDTreeOpened=0
 let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
 let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z' " 24h format for timestamp.vim plugin
+" vim-go
+let g:go_fmt_autosave=0
 
 " save files as root without prior sudo (included in janus)
 cmap w!! w !sudo tee % >/dev/null
