@@ -35,7 +35,8 @@ indent_size = 2
 indent_size = 2
 
 [*.php]
-indent_size = 4
+indent_size = 8
+indent_style = tab
 
 [*.py]
 indent_size = 4
@@ -50,7 +51,7 @@ trim_trailing_whitespace = false
 insert_final_newline = false
 
 [*.go]
-indent_size = 2
+indent_size = 8
 indent_style = tab
 
 [*.md]
