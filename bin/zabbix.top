@@ -1,10 +1,19 @@
 #!/bin/bash
 
 while true; do
-  clear
-  cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog
-  stat ~/tmp/zabbix.status | grep Change
-  echo "   UTC: `date -u '+%Y-%m-%d %H:%M:%S.%N %z'`"
-  echo "CTRL+C for exit"
-  sleep 60
+	WC=`wc -l ~/tmp/zabbix.status| cut -d ' ' -f 1`
+	if [ $WC -ne 9 ]; then
+#		clear
+#		echo $WC
+		cat ~/tmp/weather.varna | ~/bin/slowcat.pl -b 480
+		cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog \
+			 | ~/bin/slowcat.pl -b 120
+		echo -n "UTC: `date -u '+%Y-%m-%d %H:%M:%S'` " | ~/bin/slowcat.pl -b 240
+		stat ~/tmp/zabbix.status | grep Change | ~/bin/slowcat.pl -b 240
+#		echo " / CTRL+C for exit"
+	else
+		echo -n '.'
+	fi
+  sleep 3
 done
+# vim: ts=8 sts=8 sw=8 noexpandtab

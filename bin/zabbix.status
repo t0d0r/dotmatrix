@@ -10,7 +10,6 @@ if [ ! -f $GOPATH/bin/zabbixctl ]; then
   exit
 fi
 
-
 $ZBXCTL --version
 if [ -h ${zbxconf} ]; then
   rm ${zbxconf}

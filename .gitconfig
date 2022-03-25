@@ -18,19 +18,19 @@
 	grab      = !git-grab
 	in        = !git-incoming
 	incoming  = !git-incoming
-	ll        = log --pretty                                     = oneline --abbrev-commit --max-count = 15
+	ll        = log --pretty=oneline --abbrev-commit --max-count=15
 	out       = !git-outgoing
 	outgoing  = !git-outgoing
-	s         = status -sb -uno --ignore-submodules              = untracked
-	sa        = status -sb --ignore-submodules                   = untracked
+	s         = status -sb -uno --ignore-submodules=untracked
+	sa        = status -sb --ignore-submodules=untracked
 	sh        = !git-sh
-	st        = status
 	st        = status
 	thanks    = !git-thanks
 	track     = !git-track
 	wip       = !git add -u && git commit -m ...
 	wipc      = !date >> WIP && git add WIP && git commit -m ...
 	x         = checkout HEAD
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

@@ -1,8 +1,9 @@
-#!/bin/sh
 
+#!/bin/sh
 html_path=~/public_html/ssh-keys
 
-hostname=${1:-`hostname -s`}
+#hostname=${1:-`hostname -s`}
+hostname=`hostname -s`
 case $hostname in
   do)
     hostname='do-linuxfan'
@@ -12,7 +13,7 @@ case $hostname in
   ;;
 esac
 
-# functions 
+# functions
 ###############################################################################
 can_i_run_on () {
   case $1 in
@@ -27,18 +28,19 @@ can_i_run_on () {
 
 public_url_for () {
   suffix=$1;
-  url='http://do.linuxfan.org/~todor/ssh-keys'
+  url='https://do.linuxfan.org/~todor/ssh-keys'
   echo "${url}/${suffix}"
 }
 
 show_shared_keys () {
+	filter=$1
   # TODO: to create cleanup logic for ~/public_html/ssh-keys
   if [ `can_i_run_on ${hostname}` = 'yes' ]; then
     cd ${html_path}
-    for public_key in `find . -type f -name "*.pub"`; do
+    for public_key in `find . -type f -name "*.pub" | grep "${filter}"`; do
       public_url_for "${public_key}"
     done
   fi
 }
 
-show_shared_keys
+show_shared_keys $1
