@@ -5,13 +5,14 @@
 #default rule /critical/     --> bold red line
 #default rule /critical/     --> blank
 #default rule /ignore/       --> suppress
-default rule /zabbixctl.conf/ --> black on bright white line
+#default rule /zabbixctl.conf/ --> bold yellow on red line
+default rule /zabbixctl.conf/   --> white line
 default rule /manual build/  --> suppress
-default rule /WARN/   --> blue on bright green line
-default rule /INFO/   --> blue line
-default rule /AVG/    --> color11 on yellow line
-default rule /HIGH/   --> color9 line
-default rule /DISASTER/   --> white on bright red line
+default rule /WARN/   --> green line
+default rule /INFO/   --> bold white line
+default rule /AVG/    --> bold yellow line
+default rule /HIGH/   --> bold red line
+default rule /DISASTER/   --> bold white on bright red line
 
 # Apache access.log status codes
 apache rule / 2[0-9][0-9] / --> green match
