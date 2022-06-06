@@ -79,7 +79,8 @@ hi StatusLineNC     guifg=#868686     guibg=#202020     gui=NONE      ctermfg=bl
 "hi Folded           guifg=#a0a8b0     guibg=#202020     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Folded           guifg=#caca00     guibg=#000000     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
+"hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
+hi Visual           guifg=NONE        guibg=#E18964     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
 
 hi SpecialKey       guifg=#ffc71f     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 

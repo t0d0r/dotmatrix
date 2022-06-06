@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo rsync do to local
+rsync -a -L --progress -e ssh do:~/work/clients ~/work/
+echo --------------------------------------------------
+echo rsync local to do
+rsync -a -L --progress -e ssh ~/work/clients do:~/work/

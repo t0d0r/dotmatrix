@@ -1,0 +1,5 @@
+#!/bin/bash
+
+what=$@
+
+whois -h whois.radb.net -- "-i ${what}" | egrep '^route:' | awk '{ print $2 }' | cat -n

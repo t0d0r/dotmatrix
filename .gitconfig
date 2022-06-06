@@ -1,5 +1,5 @@
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = /Users/t0d0r/.gitignore_global
 	quotepath = false
 [user]
 	name = Todor Dragnev
@@ -18,11 +18,11 @@
 	grab      = !git-grab
 	in        = !git-incoming
 	incoming  = !git-incoming
-	ll        = log --pretty                                     = oneline --abbrev-commit --max-count = 15
+	ll        = log --pretty=oneline --abbrev-commit --max-count=15
 	out       = !git-outgoing
 	outgoing  = !git-outgoing
-	s         = status -sb -uno --ignore-submodules              = untracked
-	sa        = status -sb --ignore-submodules                   = untracked
+	s         = status -sb -uno --ignore-submodules=untracked
+	sa        = status -sb --ignore-submodules=untracked
 	sh        = !git-sh
 	st        = status
 	st        = status
@@ -33,7 +33,7 @@
 	x         = checkout HEAD
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -45,3 +45,5 @@
 	default = simple
 [diff]
 	wordRegex = [^[:space:],]+|[,]+
+# [url "git@github.com:"]
+#	insteadOf = https://github.com/
