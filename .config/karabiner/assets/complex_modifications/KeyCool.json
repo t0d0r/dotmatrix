@@ -38,6 +38,63 @@
 					"type": "basic"
 				}
 			]
+		},
+		{
+			"description": "Rewind...",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "f5",
+						"modifiers": {
+							"mandatory": ["right_shift"]
+						}
+					},
+					"to": [
+						{
+							"consumer_key_code": "rewind"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "FastForward...",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "f6",
+						"modifiers": {
+							"mandatory": ["right_shift"]
+						}
+					},
+					"to": [
+						{
+							"consumer_key_code": "fastforward"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Play/Stop.",
+			"manipulators": [
+				{
+					"from": {
+						"key_code": "f7",
+						"modifiers": {
+							"mandatory": ["right_shift"]
+						}
+					},
+					"to": [
+						{
+							"consumer_key_code": "play_or_pause"
+						}
+					],
+					"type": "basic"
+				}
+			]
 		}
 	]
 }

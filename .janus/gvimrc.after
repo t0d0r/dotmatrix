@@ -185,6 +185,7 @@ command! TERMINUS call GUIterminus()
 command! FIRA set guifont=Fira\ Mono:h18 antialias
 command! MONODELL set guifont=monofur:h24 antialias
 command! BASIS set guifont=basis33:h36 antialias
+command! IOSEVKA set guifont=Iosevka-Fixed-Light:h24
 command! CONSOLE call GUIconsole()
 command! VT220 call GUIvt220()
 command! BIG call GUIbig()

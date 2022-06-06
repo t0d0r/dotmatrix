@@ -23,6 +23,7 @@ convert=
 fetch=
 graphlog=
 hgext.churn=
+hgext.convert=
 hgext.extdiff=
 #hgext.hgshelve=
 record=
