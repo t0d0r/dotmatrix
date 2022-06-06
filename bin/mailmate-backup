@@ -1,0 +1,9 @@
+#!/bin/bash
+# https://manual.mailmate-app.com/rebuild
+DEST="/Users/t0d0r/Dropbox/backup/MailMate/"
+
+/usr/bin/rsync -a -v "/Users/t0d0r/Library/Application Support/MailMate/"*.plist \
+	"/Users/t0d0r/Library/Application Support/MailMate/Resources/" \
+	"/Users/t0d0r/Library/Application Support/MailMate/Managed/Bundles/" \
+	"/Users/t0d0r/Library/Preferences/com.freron.MailMate.plist" \
+	${DEST}
