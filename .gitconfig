@@ -3,7 +3,7 @@
 	quotepath = false
 [user]
 	name = Todor Dragnev
-	email = todor@bstconsult.com
+	email = todor@linuxfan.org
 [color]
 	ui = auto
 [alias]
@@ -25,7 +25,6 @@
 	sa        = status -sb --ignore-submodules=untracked
 	sh        = !git-sh
 	st        = status
-	st        = status
 	thanks    = !git-thanks
 	track     = !git-track
 	wip       = !git add -u && git commit -m ...
@@ -33,17 +32,24 @@
 	x         = checkout HEAD
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = $HOME/.stCommitMsg
-[github]
-	user = t0d0r
+	template = ~/.stCommitMsg
 [push]
 	default = simple
+[pull]
+	rebase = false
 [diff]
 	wordRegex = [^[:space:],]+|[,]+
-# [url "git@github.com:"]
-#	insteadOf = https://github.com/
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[github]
+	user = t0d0r
+[url "git@github.com:"]
+	insteadOf = https://github.com/
