@@ -30,6 +30,7 @@
 	wip       = !git add -u && git commit -m ...
 	wipc      = !date >> WIP && git add WIP && git commit -m ...
 	x         = checkout HEAD
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =

@@ -20,6 +20,7 @@ command! ORG set filetype=org
 command! RO set nomodifiable
 command! RW set modifiable
 command! HLIP call HighlightIP()
+command! NOCLOSE let NERDTreeQuitOnOpen=0
 
 " settings for various plugins
 let NERDTreeChDirMode=1
