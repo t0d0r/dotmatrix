@@ -16,9 +16,12 @@ macro index o \
     "<shell-escape>offlineimap -qf INBOX<enter>" \
     "run offlineimap to sync inbox"
 
-macro index A  \
-    "<save-message>+/archive<enter>" \
-    "Archive conversation"
+#macro index A  \
+#    "<save-message>+/archive<enter>" \
+#    "Archive conversation"
+macro index,pager A \
+		"<save-message>=Archive<enter>" \
+		"Archive Message"
 
 #macro index D \
 #    "<save-message>+/trash<enter>" \
@@ -44,7 +47,7 @@ macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 macro index <Esc>u "| egrep 'urgency=|Subject:' | vim -R - <enter>" 'Grep/Search urgency status from aptitude emails'
 macro index <Esc>Z "<delete-pattern>~s 'backupninja:'|~s 'Ubuntu package update'<enter>" "Mark for deleting all backupninja"
 macro index <Esc>z \
-    "<delete-pattern>~f zabbix@support.catenate.com|~f no-reply@monitor.us|~s 'PROFILE DELETION'|~s 'erfolgreicher Import'|~s 'Geburtstagsecard'|~s 'Report Domain'<enter>" \
+    "<delete-pattern>~f zabbix@|~f no-reply@bstconsult.com|~f no-reply@monitor.us|~s 'PROFILE DELETION'|~s 'erfolgreicher Import'|~s 'Geburtstagsecard'|~s 'Antivirus'|~s 'Report Domain'<enter>" \
     "Mark for deleting all spam"
 # browser filter emails
 macro index .i "<limit>(~N|~F)<Enter>"  "view new/flag"
