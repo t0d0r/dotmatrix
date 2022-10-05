@@ -11,6 +11,10 @@ folder-hook todor@tcv.bg@imap.tcv.bg:993/ 'source ~/.mutt/acc/tcv'
 source ~/.mutt/acc/catenate
 folder-hook todor.dragnev@catenate.com@imap.gmail.com:993/ 'source ~/.mutt/acc/catenate'
 
+# catenate
+source ~/.mutt/acc/catenate.support
+folder-hook support@catenate.com@imap.gmail.com:993/ 'source ~/.mutt/acc/catenate.support'
+
 # bst
 source ~/.mutt/acc/bst
 folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
@@ -19,6 +23,7 @@ folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
 # Shortcuts
 macro index,pager gG '<sync-mailbox><enter-command>source ~/.mutt/acc/gmail<enter><change-folder>!<enter>'
 macro index,pager gC '<sync-mailbox><enter-command>source ~/.mutt/acc/catenate<enter><change-folder>!<enter>'
+macro index,pager gS '<sync-mailbox><enter-command>source ~/.mutt/acc/catenate.support<enter><change-folder>!<enter>'
 macro index,pager gB '<sync-mailbox><enter-command>source ~/.mutt/acc/bst<enter><change-folder>!<enter>'
 macro index,pager gT '<sync-mailbox><enter-command>source ~/.mutt/acc/tcv<enter><change-folder>!<enter>'
 #macro index,pager gTA '<sync-mailbox><enter-command>source ~/.mutt/acc/tcv.app<enter><change-folder>!<enter>'
