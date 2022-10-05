@@ -104,7 +104,7 @@ unset sig_dashes                         # dashes before sig
 # Index View Options -----------------------------
 set date_format         = "%y/%m/%d"
 #set index_format        = "%4C│%Z│%D %-20.20F (%4c) %s"
-set index_format        = "%4C│%Z│%[%m/%d]│%-20.20F│%4c│ %s"
+set index_format        = "%4C│%Z│%[%y/%m/%d %H:%M]│%-20.20F│%4c│ %s"
 
 #set index_format        = "[%Z] %D %-20.20F (%4c) %s"
 #set index_format="%4C %Z %{%b %d} %-15.15F (%4c) %s"
