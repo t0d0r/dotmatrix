@@ -22,7 +22,8 @@ indent_style = space
 indent_size = 2
 
 [*.sh]
-indent_size = 2
+indent_size = 8
+indent_style = tab
 
 [*.html]
 indent_style = tab
@@ -35,7 +36,8 @@ indent_size = 2
 indent_size = 2
 
 [*.php]
-indent_size = 4
+indent_size = 8
+indent_style = tab
 
 [*.py]
 indent_size = 4
@@ -50,10 +52,20 @@ trim_trailing_whitespace = false
 insert_final_newline = false
 
 [*.go]
-indent_size = 2
+indent_size = 8
 indent_style = tab
 
 [*.md]
 indent_style = tab
 max_line_length = off
 trim_trailing_whitespace = false
+
+[*.groovy]
+# Change these settings to your own preference
+indent_style = space
+indent_size = 2
+# We recommend you to keep these unchanged
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
