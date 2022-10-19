@@ -27,6 +27,8 @@ arg=$1
 # 	exit
 # fi
 
+(cd ~/.ssh; git pull)
+
 match=`find ~/.ssh -name "*${arg}*" -type d -print -quit`
 if [ -f "${match}/config" ]; then
   echo ${match}

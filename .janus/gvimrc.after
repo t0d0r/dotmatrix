@@ -1,15 +1,16 @@
-" put following code in ~/.vim/janus/vim/vimrc
-" it is a fix for: ModuleNotFoundError: No module named 'encodings'
-if has('python3')
-    command! -nargs=1 Py py3 <args>
-    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
-    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
-else
-    command! -nargs=1 Py py <args>
-    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
-    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
-endif
-" to here
+" 2021-09-09 deprecated, workaround is placed by vendor macvim/vimrc
+"" put following code in ~/.vim/janus/vim/vimrc
+"" it is a fix for: ModuleNotFoundError: No module named 'encodings'
+"if has('python3')
+"    command! -nargs=1 Py py3 <args>
+"    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/Current/Python
+"    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/Current
+"else
+"    command! -nargs=1 Py py <args>
+"    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+"    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+"endif
+"" to here
 set guioptions-=T " remove toolbar
 set guioptions-=r " remove right-hand scrollbar
 set guioptions-=L " remove left-hand scrollbar
@@ -19,6 +20,7 @@ set wim=list
 set smartcase
 set cursorline
 set balloonexpr=
+set mouse=nv " default is mouse=a
 setlocal balloonexpr=
 " default font and size
 " basis33 can be downloaded from here:
@@ -40,12 +42,12 @@ let g:gvim_default_font_size = "36"
 function! GUIbig()
   set antialias
   set nofullscreen
-  "colorscheme dejavu
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
   set guifont=Menlo\ Regular:h24
   call GUIstatusline()
-  colorscheme t0d0r
+  "colorscheme t0d0r
+  colorscheme dejavu
 endfunction
 
 function! GUInormal()
@@ -60,10 +62,34 @@ function! GUInormal()
   colorscheme t0d0r
 endfunction
 
+function! GUIxcode()
+  set antialias
+  set nofullscreen
+	set linespace=0
+	set columnspace=0
+	set number
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  set guifont=SFMono-Regular:h11
+"  set guifont=SFMono-Medium:h12
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+  call GUIstatusline()
+"  colorscheme t0d0r
+	colorscheme lingodirector
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+endfunction
+
 function! GUIsmall()
   set noantialias
   set nofullscreen
   set guifont=Monaco:h10
+  call GUIstatusline()
+endfunction
+
+function! GUI_RETINA_small()
+	set antialias
+  set nofullscreen
+  set guifont=SFMono-Regular:h10
   call GUIstatusline()
 endfunction
 
@@ -101,6 +127,7 @@ function! GUIvt220()
   "set guifont=VT220:h36 antialias
   set guifont=VT220:h28 antialias
   set linespace=-2
+	set columnspace=-1
   "  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
@@ -162,11 +189,14 @@ command! TERMINUS call GUIterminus()
 command! FIRA set guifont=Fira\ Mono:h18 antialias
 command! MONODELL set guifont=monofur:h24 antialias
 command! BASIS set guifont=basis33:h36 antialias
+command! IOSEVKA set guifont=Iosevka-Fixed-Light:h24
 command! CONSOLE call GUIconsole()
 command! VT220 call GUIvt220()
 command! BIG call GUIbig()
 command! NORMAL call GUInormal()
+command! XCODE call GUIxcode()
 command! SMALL call GUIsmall()
+command! RETINASMALL call GUI_RETINA_small()
 command! MICRO call GUImicro()
 command! RUBYMINE call GUIrubymine()
 command! STATUSLINE call GUIstatusline()
@@ -230,3 +260,32 @@ augroup seeingIsBelievingSettings
   autocmd FileType ruby nmap <buffer> <F6> <Plug>(seeing-is-believing-run)
   autocmd FileType ruby imap <buffer> <F6> <Plug>(seeing-is-believing-run)
 augroup END
+
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  let isfirst = 1
+  let words = []
+  for word in split(a:cmdline)
+    if isfirst
+      let isfirst = 0  " don't change first word (shell command)
+    else
+      if word[0] =~ '\v[%#<]'
+        let word = expand(word)
+      endif
+      let word = shellescape(word, 1)
+    endif
+    call add(words, word)
+  endfor
+  let expanded_cmdline = join(words)
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:  ' . a:cmdline)
+  call setline(2, 'Expanded to:  ' . expanded_cmdline)
+  call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+  silent execute '$read !'. expanded_cmdline
+  1
+endfunction
+
+command! -complete=file -nargs=* RunJS call s:RunShellCommand('node '.<q-args>)
+
