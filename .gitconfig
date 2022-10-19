@@ -1,6 +1,7 @@
 [core]
 	excludesfile = $HOME/.gitignore_global
 	quotepath = false
+	whitespace = cr-at-eol
 [user]
 	name = Todor Dragnev
 	email = todor@bstconsult.com
