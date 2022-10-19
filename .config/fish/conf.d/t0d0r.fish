@@ -1,5 +1,8 @@
 # vim:noexpandtab
 set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
+set PATH /usr/local/opt/python/libexec/bin $PATH
+
+set GROOVY_HOME /usr/local/opt/groovy/libexec
 set GOPATH ~/go
 set -gx  LC_ALL en_US.UTF-8
 set fish_greeting ""
@@ -35,8 +38,15 @@ if status --is-interactive
 	alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 	alias moon='curl -s wttr.in/Moon'
 	alias mutt.local="mutt -f /var/mail/$USER"
-	alias pg.start='postgres -D /usr/local/var/postgres'
-	alias pg.stop='pg_ctl stop -D /usr/local/var/postgres'
+<<<<<<< HEAD
+	alias pg.start='pg_ctl -D /usr/local/var/postgresql@11 start'
+	alias pg.stop='pg_ctl -D /usr/local/var/postgresql@11 stop'
+=======
+	alias pg11.start='postgres -D /usr/local/var/postgres/11'
+	alias pg11.stop='pg_ctl stop -D /usr/local/var/postgres/11'
+	alias pg.start='postgres -D /usr/local/var/postgres/13'
+	alias pg.stop='pg_ctl stop -D /usr/local/var/postgres/13'
+>>>>>>> c991e9e571700b0c62d4bd8fa84a79c2cfc84cd1
 	alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 	alias ppjson=json_reformat
 	alias rehash='hash -r'

@@ -1,8 +1,10 @@
 #!/bin/sh
 
+sleeptime=30
+
 while (true); do
   ssh $@
   date
-  echo 'retrying (after 45 sec)...'
-  sleep 45
+  echo "retrying (after ${sleeptime} sec)..."
+  sleep ${sleeptime}
 done
