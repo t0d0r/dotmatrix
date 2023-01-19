@@ -1,60 +1,87 @@
-[submodule ".janus/ruby-runner"]
-	path = .janus/ruby-runner
-	url = https://github.com/henrik/vim-ruby-runner
-[submodule ".janus/l9"]
-	path = .janus/l9
-	url = https://github.com/vim-scripts/L9.git
-[submodule ".janus/vim-gista"]
-	path = .janus/vim-gista
-	url = https://github.com/lambdalisue/vim-gista.git
-[submodule ".janus/vim-repress"]
-	path = .janus/vim-repress
-	url = https://github.com/vim-scripts/VimRepress.git
-[submodule ".janus/YouCompleteMe"]
-	path = .janus/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule ".janus/tabular"]
-	path = .janus/tabular
+[submodule ".vim/pack/plugins/start/ack-vim"]
+	path = .vim/pack/plugins/start/ack-vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/pack/plugins/start/nerdtree"]
+	path = .vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule ".vim/pack/plugins/start/nerdtree-git-plugin"]
+	path = .vim/pack/plugins/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule ".vim/pack/colors/start/one"]
+	path = .vim/pack/colors/start/one
+	url = https://github.com/rakr/vim-one.git
+[submodule ".vim/pack/syntax/opt/elixir"]
+	path = .vim/pack/syntax/opt/elixir
+	url = https://github.com/elixir-lang/vim-elixir
+[submodule ".vim/pack/plugins/start/tabular"]
+	path = .vim/pack/plugins/start/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule ".janus/vim-signify"]
-	path = .janus/vim-signify
+[submodule ".vim/pack/plugins/start/vim-rails"]
+	path = .vim/pack/plugins/start/vim-rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/pack/plugins/start/rails"]
+	path = .vim/pack/plugins/start/rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule ".vim/pack/plugins/start/bundler"]
+	path = .vim/pack/plugins/start/bundler
+	url = https://github.com/tpope/vim-bundler.git
+[submodule ".vim/pack/plugins/start/dispatch"]
+	path = .vim/pack/plugins/start/dispatch
+	url = https://tpope.io/vim/dispatch.git
+[submodule ".vim/pack/plugins/start/nerdtree-ack"]
+	path = .vim/pack/plugins/start/nerdtree-ack
+	url = https://github.com/vim-scripts/nerdtree-ack.git
+[submodule ".vim/pack/plugins/start/ruby-runner"]
+	path = .vim/pack/plugins/start/ruby-runner
+	url = https://github.com/henrik/vim-ruby-runner
+[submodule ".vim/pack/plugins/start/vim-orgmode"]
+	path = .vim/pack/plugins/start/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule ".vim/pack/plugins/start/vim-gista"]
+	path = .vim/pack/plugins/start/vim-gista
+	url = https://github.com/lambdalisue/vim-gista.git
+[submodule ".vim/pack/plugins/start/vim-signify"]
+	path = .vim/pack/plugins/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule ".janus/timestamp.vim"]
-	path = .janus/timestamp.vim
+[submodule ".vim/pack/plugins/start/rename2"]
+	path = .vim/pack/plugins/start/rename2
+	url = https://github.com/vim-scripts/Rename2.git
+[submodule ".vim/pack/plugins/start/vim-repress"]
+	path = .vim/pack/plugins/start/vim-repress
+	url = https://github.com/vim-scripts/VimRepress.git
+[submodule ".vim/pack/plugins/start/timestamp.vim"]
+	path = .vim/pack/plugins/start/timestamp.vim
 	url = https://github.com/vim-scripts/timestamp.vim.git
-[submodule ".janus/QFGrep"]
-	path = .janus/QFGrep
+[submodule ".vim/pack/plugins/start/QFGrep"]
+	path = .vim/pack/plugins/start/QFGrep
 	url = https://github.com/vim-scripts/QFGrep.vim.git
-[submodule ".janus/vim-mikrotik"]
-	path = .janus/vim-mikrotik
+[submodule ".vim/pack/plugins/start/vim-mikrotik"]
+	path = .vim/pack/plugins/start/vim-mikrotik
 	url = https://github.com/zainin/vim-mikrotik.git
-[submodule ".janus/emmet"]
-	path = .janus/emmet
+[submodule ".vim/pack/plugins/start/dirdiff"]
+	path = .vim/pack/plugins/start/dirdiff
+	url = https://github.com/vim-scripts/DirDiff.vim.git
+[submodule ".vim/pack/plugins/start/emmet"]
+	path = .vim/pack/plugins/start/emmet
 	url = https://github.com/mattn/emmet-vim.git
-[submodule ".janus/editorconfig"]
-	path = .janus/editorconfig
+[submodule ".vim/pack/plugins/start/editorconfig"]
+	path = .vim/pack/plugins/start/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule ".janus/vim-rubocop"]
-	path = .janus/vim-rubocop
+[submodule ".vim/pack/plugins/start/vim-rubocop"]
+	path = .vim/pack/plugins/start/vim-rubocop
 	url = https://github.com/ngmy/vim-rubocop.git
-[submodule ".janus/evervim"]
-	path = .janus/evervim
-	url = https://github.com/kakkyz81/evervim.git
-[submodule ".janus/vim-trackperlvars"]
-	path = .janus/vim-trackperlvars
-	url = git@github.com:mvgrimes/vim-trackperlvars.git
-[submodule ".janus/vim-seeing-is-believing"]
-	path = .janus/vim-seeing-is-believing
-	url = https://github.com/hwartig/vim-seeing-is-believing.git
-[submodule ".janus/vim-go"]
-	path = .janus/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule ".janus/dracula-theme"]
-	path = .janus/dracula-theme
-	url = https://github.com/dracula/vim.git
-[submodule ".janus/nerdtree-ack"]
-	path = .janus/nerdtree-ack
-	url = https://github.com/t0d0r/nerdtree-ack.git
-[submodule ".janus/vimwiki"]
-	path = .janus/vimwiki
+[submodule ".vim/pack/plugins/start/vim-trackperlvars"]
+	path = .vim/pack/plugins/start/vim-trackperlvars
+	url = https://github.com/mvgrimes/vim-trackperlvars.git
+[submodule ".vim/pack/plugins/start/ctrp"]
+	path = .vim/pack/plugins/start/ctrp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule ".vim/pack/plugins/start/vimwiki"]
+	path = .vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule ".vim/pack/plugins/start/vim-terraform"]
+	path = .vim/pack/plugins/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
+[submodule ".vim/pack/plugins/start/vim-commentary"]
+	path = .vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # exclude these files from creating links
-EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^janus"
+EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^vim.d|^vim.submodules"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
@@ -16,8 +16,8 @@ fi
 
 # self update
 git pull
-# update submodules (vim-janus)
-git submodule update --init
+# update submodules (vim.d)
+git submodule update --remote --merge
 
 #for i in `find . -depth 1 -exec basename {} \;`; do
 for i in `find . -maxdepth 1 -exec basename {} \;`; do
