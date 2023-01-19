@@ -33,3 +33,13 @@ It is possible git submodule commands to fail, try [this to solve it](http://sta
 
 # Notes
   * .netrc - part of goobook mutt helper
+
+# Convert .gitmodule files to commands:
+	
+```
+cat .gitmodules | grep -v submodule \
+	| paste -s -d' \n' - | tr -s '\t' -t \
+	| awk '{ print "git submodule add " $6 " " $3}'
+
+git submodule update --remote --merge
+```
