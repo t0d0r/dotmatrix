@@ -1,0 +1,137 @@
+" settings
+
+source ~/.vim/settings.vim " copied from janus/vim/core/before/plugin/settings.vim
+
+set visualbell
+" set dictionary=/usr/share/dict/words
+set complete+=k
+set complete-=i
+" add dictionary to CTRL-P completion, and remove include search
+"set lcs=tab:\ \ ,eol:$,trail:~,extends:>,precedes:<
+set spelllang=en,bg
+set hidden
+set nonumber
+set shell=/bin/bash
+" disable autowrap when cursor reach textwidth size
+set formatoptions-=t
+colorscheme koehler
+set modeline
+set hls
+
+" commands
+command! FR set filetype=ruby
+command! ORG set filetype=org
+command! RO set nomodifiable
+command! RW set modifiable
+command! HLIP call HighlightIP()
+
+" settings for various plugins
+let NERDTreeChDirMode=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeMinimalUI=1
+let NERDTreeShowBookmarks=1
+let NERDTreeWinSize=30
+let g:NERDTreeOpened=0
+let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
+let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z' " 24h format for timestamp.vim plugin
+" vim-go
+let g:go_fmt_autosave=0
+
+" save files as root without prior sudo (included in janus)
+cmap w!! w !sudo tee % >/dev/null
+map Q gq
+" clear recent search highlighting with space
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" no help needed, was <nop>
+nnoremap <F1> <ESC>
+inoremap <F1> <ESC>
+nnoremap <F3> i<C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR><Esc>
+inoremap <F3> <C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR>
+nnoremap <F4> :call NERDTreeToggleFix()<CR>
+nnoremap <S-F4> :NERDTreeFocus<CR>
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <F6> :BuffergatorToggle<CR>
+map <F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
+nnoremap <C-a> <nop>
+nnoremap <C-x> <nop>
+
+" Strip trailing whitespace,janus command :FixWhitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"
+" execute opened buffer as GoLang code
+autocmd FileType go :map <F10> :!go run %<CR>
+autocmd FileType go colorscheme dejavu
+
+autocmd FileType vimwiki call HighlightIP()
+if has("gui_running")
+autocmd FileType vimwiki CONSOLE
+endif
+
+
+" fix for "E382: Cannot write, 'buftype' option is set"
+autocmd BufRead scp://* :set bt=acwrite
+
+" settings for timestamp.vim plugin
+let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z'
+
+" set nice folding stype
+function! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let lineCount = line("$")
+    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endf
+set foldtext=CustomFoldText()
+
+" highlight the ip addresses and masks
+" FIXME - highlight is lost when vimwiki page is reloaded
+function! HighlightIP()
+  syn match ipaddr /\(\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\.\)\{3\}\(25\_[0-5]\|2\_[0-4]\_[0-9]\|\_[01]\?\_[0-9]\_[0-9]\?\)\(\/\_[0-3]\_[0-9]\)\?/
+  hi link ipaddr Identifier
+  syn match topsecret /^.* :: [t]opsecret/
+  hi link topsecret NonText
+endfunction
+
+function! NERDTreeToggleFix()
+  if g:NERDTreeOpened > 0
+    NERDTreeToggle
+  else
+    let g:NERDTreeOpened=1
+    NERDTree
+  endif
+endfunction
+
+" FIXME:
+" let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
+" dr will move cursor to right
+""" 'AndrewRadev/splitjoin.vim'
+""" nnoremap dr diwh"0p
+""" nnoremap dt diw"0p
+
+synt on
