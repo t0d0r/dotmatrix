@@ -1,0 +1,9 @@
+[submodule ".vim/pack/colors/start/one"]
+	path = .vim/pack/colors/start/one
+	url = https://github.com/rakr/vim-one.git
+[submodule ".vim/pack/syntax/opt/elixir"]
+	path = .vim/pack/syntax/opt/elixir
+	url = https://github.com/elixir-lang/vim-elixir
+[submodule ".vim/pack/plugins/start/ack-vim"]
+	path = .vim/pack/plugins/start/ack-vim
+	url = https://github.com/mileszs/ack.vim.git
