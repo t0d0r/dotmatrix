@@ -4,8 +4,8 @@
 .ansible/hosts
 .ansible/log/execution.log
 .bash_env
-.config/karabiner/automatic_backups/
 .config/*
+.config/karabiner/automatic_backups/
 .mutt/acc/
 .mutt/cache/bodies/
 .mutt/cache/headers
@@ -13,4 +13,6 @@
 .profile.d/*.disabled
 .profile.d/*.off
 .unison/
+.vim/_backup/
+.vim/_temp/
 bin/knock-*
