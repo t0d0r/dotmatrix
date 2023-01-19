@@ -60,6 +60,7 @@ if status --is-interactive
 
 	function dotmatrix
 		cd /Users/t0d0r/work/github/dotmatrix;
+		brew leaves > brew.leaves
 		git pull; git status
 	end
 
