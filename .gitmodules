@@ -55,3 +55,6 @@
 [submodule ".janus/nerdtree-ack"]
 	path = .janus/nerdtree-ack
 	url = https://github.com/t0d0r/nerdtree-ack.git
+[submodule ".janus/vimwiki"]
+	path = .janus/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git

@@ -41,6 +41,7 @@ Must be execited in 'dotmatrix' directory!
   git submodule add https://github.com/hwartig/vim-seeing-is-believing.git .janus/vim-seeing-is-believing
   git submodule add https://github.com/fatih/vim-go.git .janus/vim-go
   git submodule add https://github.com/dracula/vim.git .janus/dracula-theme
+  git submodule add https://github.com/vimwiki/vimwiki.git .janus/vimwiki
 ```
 
 # Useful modules or commands

@@ -5,6 +5,9 @@ test_subject=~/.janus
 if [ -L ${test_subject} ]; then
   full_path=`readlink ${test_subject}`
   echo "cd `dirname ${full_path}`;"
+	if [ -f /usr/local/bin/brew ]; then
+		echo "brew leaves > brew.leaves"
+  fi
   echo "git pull; git status"
 else
   echo 'echo Sorry, but for me dotmatrix.git is not installed...'
