@@ -1,0 +1,293 @@
+" 2021-09-09 deprecated, workaround is placed by vendor macvim/vimrc
+"" put following code in ~/.vim/janus/vim/vimrc
+"" it is a fix for: ModuleNotFoundError: No module named 'encodings'
+"if has('python3')
+"    command! -nargs=1 Py py3 <args>
+"    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/Current/Python
+"    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/Current
+"else
+"    command! -nargs=1 Py py <args>
+"    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+"    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+"endif
+"" to here
+set guioptions-=T " remove toolbar
+set guioptions-=r " remove right-hand scrollbar
+set guioptions-=L " remove left-hand scrollbar
+set guitablabel=%N>%M%t
+set wildmenu " change style when use <tab>
+set wim=list
+set smartcase
+set cursorline
+set balloonexpr=
+set mouse=nv " default is mouse=a
+setlocal balloonexpr=
+" default font and size
+" basis33 can be downloaded from here:
+" https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
+let g:gvim_default_font = "basis33"
+let g:gvim_default_font_size = "36"
+
+" test script to get resolution on mac
+"function! GUIresolution()
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"  if has('mac')
+"    let system_resolution = substitute(system('system_profiler SPDisplaysDataType |grep Resolution'), '\n', '', '')
+""          Resolution: 1440 x 900
+"    echo system_resolution
+"let hostname = substitute(system('hostname'), '\n', '', '')
+"endfunction
+
+"functions and commands to switch fast between fonts and styles
+function! GUIbig()
+  set antialias
+  set nofullscreen
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+  set guifont=Menlo\ Regular:h24
+  call GUIstatusline()
+  "colorscheme t0d0r
+  colorscheme dejavu
+endfunction
+
+function! GUInormal()
+  set antialias
+  set nofullscreen
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+  set guifont=Menlo\ Regular:h15
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+  call GUIstatusline()
+  colorscheme t0d0r
+endfunction
+
+function! GUIxcode()
+  set antialias
+  set nofullscreen
+	set linespace=0
+	set columnspace=0
+	set number
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  set guifont=SFMono-Regular:h11
+"  set guifont=SFMono-Medium:h12
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+  call GUIstatusline()
+"  colorscheme t0d0r
+	colorscheme lingodirector
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+endfunction
+
+function! GUIsmall()
+  set noantialias
+  set nofullscreen
+  set guifont=Monaco:h10
+  call GUIstatusline()
+endfunction
+
+function! GUI_RETINA_small()
+	set antialias
+  set nofullscreen
+  set guifont=SFMono-Regular:h10
+  call GUIstatusline()
+endfunction
+
+function! GUImicro()
+  set noantialias
+  set nofullscreen
+  set guifont=Monaco:h9
+  call GUIstatusline()
+endfunction
+
+" styling for catenate/info.org
+function! GUIinfo()
+  call GUIsmall()
+  set columns=104
+endfunction
+
+" http://misc.nybergh.net/pub/fonts/terminus/ttf_for_osx/
+function! GUIterminus()
+	set guifont=terminus:h24 antialias
+	set linespace=0
+	colorscheme dejavu
+endfunction
+
+" good old full screen console with nice pixellised font
+function! GUIconsole()
+  set guifont=basis33:h36 antialias
+  set linespace=-2
+"  set nofullscreen
+"  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
+"
+" good old full screen console with MORE pixellised font
+function! GUIvt220()
+  "set guifont=VT220:h36 antialias
+  set guifont=VT220:h28 antialias
+  set linespace=-2
+	set columnspace=-1
+  "  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
+
+" RubyMine like setup
+function! GUIrubymine()
+  set guifont=Monaco:h12 antialias
+  colorscheme darcula
+endfunction
+
+function! GUIfullscreen()
+  set nofullscreen
+  sleep 1
+  set fullscreen
+endfunction
+
+function! GUIstatusline()
+  set statusline=
+  set statusline +=%1*\ %n\ %*            "buffer number
+  set statusline +=%4*\ %<%f%*            "full path
+  set statusline +=%2*%m%*                "modified flag
+  set statusline +=%1*%=%5l%*             "current line
+  set statusline +=%2*/%L%*               "total lines
+  set statusline +=%1*%4v\ %*             "virtual column number
+  set statusline +=%3*%{strlen(&fenc)?&fenc:&enc}
+  set statusline +=%5*\ %{&ff}%*            "file format
+  set statusline +=%3*%y%*                "file type
+  set statusline +=%2*\ 0x%04B%*          "character under cursor
+
+  hi User1 guifg=#eea040 guibg=#222222
+  hi User2 guifg=#dd3333 guibg=#222222
+  hi User3 guifg=#ff66ff guibg=#222222
+  hi User4 guifg=#a0ee40 guibg=#222222
+  hi User5 guifg=#eeee40 guibg=#222222
+
+	set laststatus=2
+endfunction
+
+function! SetEncoding(enc)
+	try
+		exec ":set encoding=" . a:enc
+		exec ":set fileencoding=" . a:enc
+		exec ":e ++enc=" . a:enc . " %:p"
+		echo "Changed encoding and fileencoding to " . a:enc . ", file reloaded!"
+	catch
+		echoerr "Failed to change the encoding... " . v:exception
+	endtry
+endfunction
+
+"function! ReduceWhiteSpaceToOne
+"  %s![^ ]\zs  \+! !g
+"endfunction
+
+command! FR set filetype=ruby
+command! FJS set filetype=javascript
+" set big font for using in my 20" DELL display
+command! DELL set guifont=Terminus\ (TTF):h18 noantialias
+command! TERMINUS call GUIterminus()
+" deprecated, Envy Code R did not support cyrillic...
+"command! ENVY set guifont=Envy\ Code\ R:h18 antialias
+command! FIRA set guifont=Fira\ Mono:h18 antialias
+command! MONODELL set guifont=monofur:h24 antialias
+command! BASIS set guifont=basis33:h36 antialias
+command! IOSEVKA set guifont=Iosevka-Fixed-Light:h24
+command! CONSOLE call GUIconsole()
+command! VT220 call GUIvt220()
+command! BIG call GUIbig()
+command! NORMAL call GUInormal()
+command! XCODE call GUIxcode()
+command! SMALL call GUIsmall()
+command! RETINASMALL call GUI_RETINA_small()
+command! MICRO call GUImicro()
+command! RUBYMINE call GUIrubymine()
+command! STATUSLINE call GUIstatusline()
+command! Zmanual set foldmethod=manual
+command! Zindent set foldmethod=indent
+command! Zsyntax set foldmethod=syntax
+command! FULL call GUIfullscreen()
+command! NOFULL set nofullscreen
+command! WHITE colorscheme lingodirector
+command! BLACK colorscheme t0d0r
+command! LATIN1 call SetEncoding('latin1')
+command! CP1251 call SetEncoding('cp1251')
+command! UTF8 call SetEncoding('utf8')
+command! NOCLOSE let NERDTreeQuitOnOpen=0
+
+autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
+" set some session options for :mksession command
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
+
+NORMAL "set normal font size
+
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set number cursorline
+    autocmd WinLeave * set nonumber nocursorline
+    autocmd WinEnter * set balloonexpr=
+    autocmd WinEnter * setlocal balloonexpr=
+augroup END
+
+" Always request updated gists in :Gista list
+let g:gista#command#list#default_options = {
+      \ 'cache': 0,
+      \}
+
+"augroup NoSimultaneousEdits
+    "autocmd!
+    "autocmd SwapExists * let v:swapchoice = 'o'
+    "autocmd SwapExists * echo 'Duplicate edit session (readonly)'
+    "autocmd SwapExists * echohl None
+"augroup END
+"
+autocmd FileType ruby nmap <buffer> <D-m> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <D-m> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <D-m> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <D-R> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <D-R> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <D-R> <Plug>(xmpfilter-run)
+
+" Enable seeing-is-believing mappings only for Ruby
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  autocmd FileType ruby nmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+  autocmd FileType ruby xmap <buffer> <Enter> <Plug>(seeing-is-believing-mark-and-run)
+
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby xmap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-mark)
+
+  autocmd FileType ruby nmap <buffer> <F6> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F6> <Plug>(seeing-is-believing-run)
+augroup END
+
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  let isfirst = 1
+  let words = []
+  for word in split(a:cmdline)
+    if isfirst
+      let isfirst = 0  " don't change first word (shell command)
+    else
+      if word[0] =~ '\v[%#<]'
+        let word = expand(word)
+      endif
+      let word = shellescape(word, 1)
+    endif
+    call add(words, word)
+  endfor
+  let expanded_cmdline = join(words)
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:  ' . a:cmdline)
+  call setline(2, 'Expanded to:  ' . expanded_cmdline)
+  call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+  silent execute '$read !'. expanded_cmdline
+  1
+endfunction
+
+command! -complete=file -nargs=* RunJS call s:RunShellCommand('node '.<q-args>)
+
