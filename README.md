@@ -11,17 +11,6 @@ Dot files from my Mac OS X.
   cd dotmatrix && ./bin/dotmatrix-install
 ```
 
-# Janus: `~/.vim` is replaced by janus plugin
-
-```bash
-  curl -Lo- https://bit.ly/janus-bootstrap | bash
-```
-
-After installing janus, don't forget to execute:
-```bash
-  git submodule init
-  git submodule update
-```
 
 If you prefer zsh, here is how to install it:
 
