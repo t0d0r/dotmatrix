@@ -17,6 +17,7 @@ fi
 # self update
 git pull
 # update submodules (vim.d)
+git submodule update --init
 git submodule update --remote --merge
 
 #for i in `find . -depth 1 -exec basename {} \;`; do
