@@ -32,6 +32,7 @@ if status --is-interactive
 	alias ls='exa -g'
 	alias aea='ansible all -m shell -o -a '
 	alias beep='echo -en "\007"'
+	alias code='code -n'
 	alias groovysh="groovysh -C off"
 	alias less='less -R'
 	alias lmk='say '\''Process complete.'\'''
