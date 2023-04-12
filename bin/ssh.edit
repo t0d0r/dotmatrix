@@ -2,7 +2,7 @@
 # author: t0d0r
 
 base_path=~/.ssh
-editor="vim"
+editor=${VISUAL:-vim}
 
 OS=`uname`
 

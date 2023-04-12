@@ -21,14 +21,18 @@ fortune
 fping
 go@1.15
 golangci-lint
+groff
 haproxy
 hcloud
+helm
 imagemagick@6
 ipcalc
 jenv
+john-jumbo
 k9s
 kafka
 knock
+kubernetes-cli
 lazydocker
 lazygit
 lynx
@@ -37,7 +41,6 @@ mas
 maven
 mercurial
 midnight-commander
-minikube
 mosh
 most
 mtr

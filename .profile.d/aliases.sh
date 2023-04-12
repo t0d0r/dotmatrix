@@ -30,6 +30,7 @@ alias mvim='mvim --servername `basename $PWD` --remote-tab-silent'
 #alias ++='popd'
 alias aea='ansible all -m shell -o -a '
 alias beep='echo -en "\007"'
+alias code='code -n'
 alias dotmatrix='eval $(~/bin/dotmatrix)'
 alias groovysh="groovysh -C off"
 alias less='less -R'
