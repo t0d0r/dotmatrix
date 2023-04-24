@@ -14,6 +14,8 @@ module.exports = {
         '*catenate.com/*',
         'app.getguru.com/*',
         'app.asana.com/*',
+        'docs.google.com/*',
+        'drive.google.com/*'
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
       ],
       browser: "Google Chrome"
