@@ -1,4 +1,12 @@
-" settings
+
+" FIXME:
+" let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
+" dr will move cursor to right
+""" 'AndrewRadev/splitjoin.vim'
+""" nnoremap dr diwh"0p
+""" nnoremap dt diw"0p
+
+synt on
 
 source ~/.vim/settings.vim " copied from janus/vim/core/before/plugin/settings.vim
 
@@ -24,6 +32,7 @@ command! ORG set filetype=org
 command! RO set nomodifiable
 command! RW set modifiable
 command! HLIP call HighlightIP()
+command! FixWhitespace call TrimWhiteSpace()
 
 " settings for various plugins
 let NERDTreeChDirMode=1
@@ -79,6 +88,11 @@ if has("gui_running")
 autocmd FileType vimwiki CONSOLE
 endif
 
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
 
 " fix for "E382: Cannot write, 'buftype' option is set"
 autocmd BufRead scp://* :set bt=acwrite
