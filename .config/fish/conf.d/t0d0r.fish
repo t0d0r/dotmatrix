@@ -1,6 +1,9 @@
-# vim:noexpandtab
+# vim:noexpandtab syntax=bash
 set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
 set PATH /usr/local/opt/python/libexec/bin $PATH
+
+fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/sbin
 
 set GROOVY_HOME /usr/local/opt/groovy/libexec
 set GOPATH ~/go
@@ -41,8 +44,8 @@ if status --is-interactive
 	alias mutt.local="mutt -f /var/mail/$USER"
 	alias pg11.start='postgres -D /usr/local/var/postgres/11'
 	alias pg11.stop='pg_ctl stop -D /usr/local/var/postgres/11'
-	alias pg.start='postgres -D /usr/local/var/postgres/13'
-	alias pg.stop='pg_ctl stop -D /usr/local/var/postgres/13'
+	alias pg.start='postgres -D /usr/local/var/postgres/14'
+	alias pg.stop='pg_ctl stop -D /usr/local/var/postgres/14'
 	alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 	alias ppjson=json_reformat
 	alias rehash='hash -r'
