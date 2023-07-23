@@ -85,3 +85,6 @@
 [submodule ".vim/pack/plugins/start/vim-commentary"]
 	path = .vim/pack/plugins/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/pack/plugins/start/vim-buffergator"]
+	path = .vim/pack/plugins/start/vim-buffergator
+	url = http://github.com/jeetsukumaran/vim-buffergator
