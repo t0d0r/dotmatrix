@@ -2,7 +2,7 @@
 
 # fish version is in .config/fish/conf.d/t0d0r.fish
 
-test_subject=~/.janus
+test_subject=~/bin
 
 if [ -L ${test_subject} ]; then
   full_path=`readlink ${test_subject}`
