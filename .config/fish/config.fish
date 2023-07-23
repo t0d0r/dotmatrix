@@ -1,6 +1,4 @@
 set -g fish_user_paths "/usr/local/opt/postgresql@11/bin" $fish_user_paths
-status --is-interactive; and source (rbenv init -|psub)
-#fish_add_path /usr/local/opt/go@1.15/bin
 fish_add_path /usr/local/sbin
 fish_add_path '/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
 # The next line updates PATH for the Google Cloud SDK.
