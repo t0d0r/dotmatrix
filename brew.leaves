@@ -9,6 +9,7 @@ composer
 ctop
 dict
 direnv
+doctl
 dog
 dos2unix
 duf
@@ -22,6 +23,8 @@ fping
 go@1.15
 golangci-lint
 groff
+guile
+hadolint
 haproxy
 hcloud
 helm
@@ -29,12 +32,15 @@ imagemagick@6
 ipcalc
 jenv
 john-jumbo
+jpeg
 k9s
 kafka
 knock
+kompose
 kubernetes-cli
 lazydocker
 lazygit
+lua@5.3
 lynx
 macvim
 mas
@@ -48,6 +54,7 @@ mutt
 navi
 ncdu
 ncftp
+neovim
 nghttp2
 nmap
 node
@@ -56,6 +63,8 @@ optipng
 pngquant
 podman
 postgresql@11
+postgresql@13
+pre-commit
 procs
 pssh
 pstree
