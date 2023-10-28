@@ -21,6 +21,14 @@ module.exports = {
       ],
       browser: "Google Chrome"
     },
+    {
+      match: [
+        "fos-support.com/*",
+        "mandrillapp.com/*",
+      ],
+      browser: "Firefox"
+    }
+
 //  {
 //    match: [
 //      // "google.com*", // match google.com urls

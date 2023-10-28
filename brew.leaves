@@ -47,6 +47,7 @@ koekeishiya/formulae/yabai
 kompose
 lazydocker
 lazygit
+llvm
 lsd
 lua@5.3
 lynx
@@ -69,10 +70,10 @@ nghttp2
 nmap
 nvm
 openjdk@17
+openssh
 optipng
 pngquant
 podman
-postgresql@11
 postgresql@13
 postgresql@14
 pre-commit
@@ -92,6 +93,7 @@ shellcheck
 shellinabox
 siege
 snyk/tap/snyk
+tcptraceroute
 telnet
 terminal-notifier
 terraform
