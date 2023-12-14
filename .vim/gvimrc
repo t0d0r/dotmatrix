@@ -65,9 +65,9 @@ endfunction
 function! GUIxcode()
   set antialias
   set nofullscreen
-	set linespace=0
-	set columnspace=0
-	set number
+  set linespace=0
+  set columnspace=0
+  set number
   "colorscheme dejavu
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   set guifont=SFMono-Regular:h11
@@ -75,7 +75,7 @@ function! GUIxcode()
 "  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
   call GUIstatusline()
 "  colorscheme t0d0r
-	colorscheme lingodirector
+  colorscheme lingodirector
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
 endfunction
 
@@ -87,7 +87,7 @@ function! GUIsmall()
 endfunction
 
 function! GUI_RETINA_small()
-	set antialias
+  set antialias
   set nofullscreen
   set guifont=SFMono-Regular:h10
   call GUIstatusline()
@@ -108,9 +108,9 @@ endfunction
 
 " http://misc.nybergh.net/pub/fonts/terminus/ttf_for_osx/
 function! GUIterminus()
-	set guifont=terminus:h24 antialias
-	set linespace=0
-	colorscheme dejavu
+  set guifont=terminus:h24 antialias
+  set linespace=0
+  colorscheme dejavu
 endfunction
 
 " good old full screen console with nice pixellised font
@@ -127,7 +127,7 @@ function! GUIvt220()
   "set guifont=VT220:h36 antialias
   set guifont=VT220:h28 antialias
   set linespace=-2
-	set columnspace=-1
+  set columnspace=-1
   "  set fullscreen
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
@@ -163,18 +163,18 @@ function! GUIstatusline()
   hi User4 guifg=#a0ee40 guibg=#222222
   hi User5 guifg=#eeee40 guibg=#222222
 
-	set laststatus=2
+  set laststatus=2
 endfunction
 
 function! SetEncoding(enc)
-	try
-		exec ":set encoding=" . a:enc
-		exec ":set fileencoding=" . a:enc
-		exec ":e ++enc=" . a:enc . " %:p"
-		echo "Changed encoding and fileencoding to " . a:enc . ", file reloaded!"
-	catch
-		echoerr "Failed to change the encoding... " . v:exception
-	endtry
+  try
+    exec ":set encoding=" . a:enc
+    exec ":set fileencoding=" . a:enc
+    exec ":e ++enc=" . a:enc . " %:p"
+    echo "Changed encoding and fileencoding to " . a:enc . ", file reloaded!"
+  catch
+    echoerr "Failed to change the encoding... " . v:exception
+  endtry
 endfunction
 
 "function! ReduceWhiteSpaceToOne
@@ -191,7 +191,8 @@ command! TERMINUS call GUIterminus()
 command! FIRA set guifont=Fira\ Mono:h18 antialias
 command! MONODELL set guifont=monofur:h24 antialias
 command! BASIS set guifont=basis33:h36 antialias
-command! IOSEVKA set guifont=Iosevka-Fixed-Light:h24
+command! IOSEVKA set guifont=Iosevka:h18
+command! IOSEVKA24 set guifont=Iosevka-Fixed-Light:h24
 command! CONSOLE call GUIconsole()
 command! VT220 call GUIvt220()
 command! BIG call GUIbig()
