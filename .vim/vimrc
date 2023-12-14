@@ -143,6 +143,11 @@ function! NERDTreeToggleFix()
   endif
 endfunction
 
+" reopen file on same line as it was closed
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " FIXME:
 " let you use dr to replace word under cursor with contents of register 0 (i.e. what you last copied)
 " dr will move cursor to right
