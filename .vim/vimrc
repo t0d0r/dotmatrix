@@ -44,7 +44,11 @@ let g:NERDTreeOpened=0
 let g:org_todo_keywords=['TODO', 'VERIFY', '|', 'DONE', 'NOTMONITORED', 'RESIGN']
 let g:timestamp_rep='%a %d %b %Y %H:%M:%S %Z' " 24h format for timestamp.vim plugin
 " vim-go
-let g:go_fmt_autosave=0
+let g:go_fmt_autosave=1
+" execute opened buffer as GoLang code
+"autocmd FileType go :map <F10> :!go run %<CR>
+"autocmd FileType go colorscheme dejavu
+
 
 " save files as root without prior sudo (included in janus)
 cmap w!! w !sudo tee % >/dev/null
@@ -64,6 +68,8 @@ map <F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
 nnoremap <C-a> <nop>
 nnoremap <C-x> <nop>
+" more keys mappings
+source ~/.vim/smart_keys.vim
 
 " Strip trailing whitespace,janus command :FixWhitespace
 function! <SID>StripTrailingWhitespaces()
@@ -79,10 +85,6 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 " autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 "
-" execute opened buffer as GoLang code
-autocmd FileType go :map <F10> :!go run %<CR>
-autocmd FileType go colorscheme dejavu
-
 autocmd FileType vimwiki call HighlightIP()
 if has("gui_running")
 autocmd FileType vimwiki CONSOLE
@@ -147,5 +149,6 @@ endfunction
 """ 'AndrewRadev/splitjoin.vim'
 """ nnoremap dr diwh"0p
 """ nnoremap dt diw"0p
+
 
 synt on

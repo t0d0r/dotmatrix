@@ -5,16 +5,17 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # padding set to 12px
-yabai -m config top_padding 6
-yabai -m config bottom_padding 6
-yabai -m config left_padding 6
-yabai -m config right_padding 6
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
 yabai -m config window_gap 12
 
 # -- mouse settings --
 
 # center mouse on window with focus
 yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autofocus
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
@@ -35,5 +36,7 @@ yabai -m rule --add app="^Numi$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
 yabai -m rule --add app="^Step Two$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^TripMode$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
 
 # vim: syntax=bash
