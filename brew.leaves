@@ -3,6 +3,7 @@ ansible
 awscli
 azure-cli
 bandwhich
+bat
 bfg
 clog
 composer
@@ -22,8 +23,11 @@ fish
 fortune
 fping
 git
+go@1.15
 golangci-lint
+groff
 guile
+hadolint
 haproxy
 hcloud
 helm
@@ -32,6 +36,8 @@ http-server
 imagemagick@6
 ipcalc
 jenv
+john-jumbo
+jpeg
 jq
 k9s
 kafka
@@ -41,6 +47,8 @@ koekeishiya/formulae/yabai
 kompose
 lazydocker
 lazygit
+llvm
+lsd
 lua@5.3
 lynx
 macvim
@@ -57,15 +65,18 @@ mutt
 navi
 ncdu
 ncftp
+neovim
 nghttp2
 nmap
 nvm
 openjdk@17
+openssh
 optipng
 pngquant
 podman
-postgresql@11
+postgresql@13
 postgresql@14
+pre-commit
 procs
 pssh
 pstree
@@ -82,6 +93,7 @@ shellcheck
 shellinabox
 siege
 snyk/tap/snyk
+tcptraceroute
 telnet
 terminal-notifier
 terraform
