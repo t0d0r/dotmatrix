@@ -32,7 +32,7 @@ if status --is-interactive
 	#		cowsay -f $avatar 'Le chat miaule, what should I do?'
 	# end
 
-	alias ls='exa -g'
+	#alias ls='exa -g'
 	alias aea='ansible all -m shell -o -a '
 	alias beep='echo -en "\007"'
 	alias code='code -n'
@@ -42,10 +42,8 @@ if status --is-interactive
 	alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 	alias moon='curl -s wttr.in/Moon'
 	alias mutt.local="mutt -f /var/mail/$USER"
-	alias pg11.start='postgres -D /usr/local/var/postgres/11'
-	alias pg11.stop='pg_ctl stop -D /usr/local/var/postgres/11'
-	alias pg.start='postgres -D /usr/local/var/postgres/14'
-	alias pg.stop='pg_ctl stop -D /usr/local/var/postgres/14'
+	alias pg.start='postgres -D /opt/homebrew/var/postgresql@14'
+	alias pg.stop='pg_ctl stop -D /opt/homebrew/var/postgresql@14'
 	alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 	alias ppjson=json_reformat
 	alias rehash='hash -r'

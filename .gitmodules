@@ -88,3 +88,9 @@
 [submodule ".vim/pack/plugins/start/vim-buffergator"]
 	path = .vim/pack/plugins/start/vim-buffergator
 	url = http://github.com/jeetsukumaran/vim-buffergator
+[submodule "https:/github.com/fatih/vim-go"]
+	path = https:/github.com/fatih/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/pack/plugins/start/vim-go"]
+	path = .vim/pack/plugins/start/vim-go
+	url = https://github.com/fatih/vim-go.git

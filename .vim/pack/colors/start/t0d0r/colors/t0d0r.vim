@@ -62,12 +62,13 @@ endif
 
 let colors_name = "t0d0r"
 
+set listchars=tab:▸\ ,eol:¬
 
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
 hi Normal           guifg=#f6f3e8     guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText          guifg=#707070     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+hi NonText          guifg=#343434     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
@@ -82,7 +83,9 @@ hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NO
 "hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
 hi Visual           guifg=NONE        guibg=#E18964     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
 
-hi SpecialKey       guifg=#ffc71f     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+" This is used for whitespaces
+"hi SpecialKey       guifg=#ffc71f     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi SpecialKey       guifg=#343434     guibg=#000000     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 hi WildMenu         guifg=#ff3333     guibg=#202020    gui=NONE      ctermfg=black       ctermbg=yellow      cterm=NONE
 hi PmenuSbar        guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=NONE
