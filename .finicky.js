@@ -26,7 +26,7 @@ module.exports = {
         "fos-support.com/*",
         "mandrillapp.com/*",
       ],
-      browser: "Firefox"
+      browser: "Firefox Proxy"
     }
 
 //  {
