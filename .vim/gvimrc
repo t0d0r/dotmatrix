@@ -132,6 +132,16 @@ function! GUIvt220()
   echo "type :WHITE for changing color scheme to lignodirector"
 endfunction
 
+" good old full screen console with MORE pixellised font
+function! GUI_IBM()
+  "set guifont=VT220:h36 antialias
+  set guifont=PxPlus_IBM_BIOS-2y:h16 antialias
+  set linespace=0
+  set columnspace=0
+  "  set fullscreen
+  echo "type :WHITE for changing color scheme to lignodirector"
+endfunction
+
 " RubyMine like setup
 function! GUIrubymine()
   set guifont=Monaco:h12 antialias
@@ -170,6 +180,7 @@ function! SetEncoding(enc)
   try
     exec ":set encoding=" . a:enc
     exec ":set fileencoding=" . a:enc
+    print  ":e ++enc=" . a:enc . " %:p"
     exec ":e ++enc=" . a:enc . " %:p"
     echo "Changed encoding and fileencoding to " . a:enc . ", file reloaded!"
   catch
@@ -197,6 +208,7 @@ command! CONSOLE call GUIconsole()
 command! VT220 call GUIvt220()
 command! BIG call GUIbig()
 command! NORMAL call GUInormal()
+command! IBM call GUI_IBM()
 command! XCODE call GUIxcode()
 command! SMALL call GUIsmall()
 command! RETINASMALL call GUI_RETINA_small()
@@ -219,7 +231,8 @@ autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
-NORMAL "set normal font size
+"NORMAL "set normal font size
+IBM
 
 augroup BgHighlight
     autocmd!
