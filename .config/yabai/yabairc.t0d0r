@@ -15,7 +15,6 @@ yabai -m config window_gap 10
 
 # center mouse on window with focus
 yabai -m config mouse_follows_focus on
-yabai -m config focus_follows_mouse autofocus
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier alt
@@ -38,9 +37,6 @@ yabai -m rule --add app="^Numi$" manage=off
 yabai -m rule --add app="^QuickTime Player$" manage=off
 yabai -m rule --add app="^Step Two$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^TripMode$" manage=off
-yabai -m rule --add app="^Calendar$" manage=off
-#
 # Unmanaged
 yabai -m rule --add app="^(System Preferences|Music|Finder|Mail)$"  manage=off border=off
 yabai -m rule --add app="^(Linux Minecraft Launcher|Minecraft|Launcher Settings)$"  manage=off border=off
