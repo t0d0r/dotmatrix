@@ -1,9 +1,7 @@
 *.pyc
 *~
 .DS_Store
-.ansible/collections/
-.ansible/hosts
-.ansible/log/execution.log
+.ansible/
 .bash_env
 .config/karabiner/automatic_backups/
 .gitmodules
