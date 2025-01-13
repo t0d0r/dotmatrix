@@ -10,21 +10,32 @@ module.exports = {
     {
       // Open google.com and *.google.com urls in Google Chrome
       match: [
-        '*catenate.bg/*',
-        '*catenate.com/*',
-        'app.getguru.com/*',
         'app.asana.com/*',
+        'app.hibob.com/*',
         'docs.google.com/*',
         'drive.google.com/*',
 				'graylog.oddspedia:9000/*',
+        'confidential-mail.google.com/*',
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
       ],
       browser: "Google Chrome"
     },
     {
       match: [
+        '*catenate.bg/*',
+        '*catenate.com/*',
+        'app.getguru.com/*',
+        'catenate1.sharepoint.com/*',
+        'catenate1-my.*'
+      ],
+      browser: "Microsoft Edge"
+    },
+    {
+      match: [
         "fos-support.com/*",
         "mandrillapp.com/*",
+        "docs.1dxr.com/*",
+        "*1dxr.com/*",
       ],
       browser: "Firefox"
     }

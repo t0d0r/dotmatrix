@@ -31,12 +31,13 @@ arg=$1
 
 match=`find ~/.ssh -name "*${arg}*" -type d -print -quit`
 if [ -f "${match}/config" ]; then
-  echo ${match}
-	before=`${f_stat} "%m %z %b %N" ${match}/config`
-	$editor ${match}/config
-	after=`${f_stat} "%m %z %b %N" ${match}/config`
+	config_file="${match}/config"
+	echo "${match} - ${config_file}"
+	before=`${f_stat} "%m %z %b %N" ${config_file}`
+	$editor ${config_file}
+	after=`${f_stat} "%m %z %b %N" ${config_file}`
 	if [ "${before}" != "${after}" ]; then
-		echo "File '${match}/config' has changed..."
+		echo "File '${config_file}' has changed..."
 		ssh.config
 	fi
 else
