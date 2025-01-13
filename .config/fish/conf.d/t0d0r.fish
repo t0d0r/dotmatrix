@@ -32,7 +32,9 @@ if status --is-interactive
 	#		cowsay -f $avatar 'Le chat miaule, what should I do?'
 	# end
 
-	alias ls='exa -g'
+	ulimit -n 2048
+
+	alias ls='ls -G'
 	alias aea='ansible all -m shell -o -a '
 	alias beep='echo -en "\007"'
 	alias code='code -n'
@@ -59,6 +61,7 @@ if status --is-interactive
 	alias weather='curl -s wttr.in | head -7'
 	alias rm=trash
 	alias Sketch.app='timehack Sketch'
+	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/t0d0r/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
