@@ -28,3 +28,4 @@ git submodule add --force https://github.com/vimwiki/vimwiki.git .vim/pack/plugi
 git submodule add --force https://github.com/hashivim/vim-terraform.git .vim/pack/plugins/start/vim-terraform
 git submodule add --force https://github.com/tpope/vim-commentary.git .vim/pack/plugins/start/vim-commentary
 git submodule add --force http://github.com/jeetsukumaran/vim-buffergator .vim/pack/plugins/start/vim-buffergator
+git submodule add --force https://github.com/fatih/vim-go.git  .vim/pack/plugins/start/vim-go
