@@ -2,6 +2,7 @@
 *~
 .DS_Store
 .ansible/hosts
+.ansible/collections/
 .ansible/log/execution.log
 .bash_env
 #.config/*
