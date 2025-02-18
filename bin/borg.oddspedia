@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# check if .borg_passphrase exists
+if [ ! -f ~/.borg_passphrase ]; then
+	echo "No passphrase file found"
+	exit 1
+fi
+
+# path to borg command
+export PATH=/opt/homebrew/bin/:$PATH
+
+# Define variables for directories
+LOG_DIR=~/work/backup/logs
+BACKUP_DIR=~/work/backup
+REMOTE_DIR=gitlab.oddspedia.com:/srv
+LOCAL_DIR=gitlab.oddspedia
+
+# Create logging directory if it doesn't exist
+mkdir -p $LOG_DIR
+
+# rsync from gitlab.oddspedia to backup with logging
+rsync -a --progress -e "ssh -l root -p 23" --delete $REMOTE_DIR $LOCAL_DIR | tee -a $LOG_DIR/rsync-$(date +\%Y-\%m-\%d).log
+
+BORG_PASSCOMMAND="cat ~/.borg_passphrase" borg create --progress --stats \
+	$BACKUP_DIR/borg.backup::backup-$(date +\%Y-\%m-\%d) \
+	$BACKUP_DIR/$LOCAL_DIR
