@@ -88,3 +88,6 @@
 [submodule ".vim/pack/plugins/start/vim-buffergator"]
 	path = .vim/pack/plugins/start/vim-buffergator
 	url = http://github.com/jeetsukumaran/vim-buffergator
+[submodule ".vim/pack/plugins/start/copilot"]
+	path = .vim/pack/plugins/start/copilot
+	url = https://github.com/github/copilot.vim.git
