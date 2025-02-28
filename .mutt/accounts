@@ -1,19 +1,19 @@
 # vim syntax:muttrc
-# gmail
-source ~/.mutt/acc/gmail
-folder-hook todor.dragnev@imap.gmail.com:993/ 'source ~/.mutt/acc/gmail'
-
-# tcv
-source ~/.mutt/acc/tcv
-folder-hook todor@tcv.bg@imap.tcv.bg:993/ 'source ~/.mutt/acc/tcv'
-
-# bst
-source ~/.mutt/acc/bst
-folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
-
-
-# Shortcuts
-macro index,pager gG '<sync-mailbox><enter-command>source ~/.mutt/acc/gmail<enter><change-folder>!<enter>'
-macro index,pager gB '<sync-mailbox><enter-command>source ~/.mutt/acc/bst<enter><change-folder>!<enter>'
-macro index,pager gT '<sync-mailbox><enter-command>source ~/.mutt/acc/tcv<enter><change-folder>!<enter>'
+# # gmail
+# source ~/.mutt/acc/gmail
+# folder-hook todor.dragnev@imap.gmail.com:993/ 'source ~/.mutt/acc/gmail'
+#
+# # tcv
+# source ~/.mutt/acc/tcv
+# folder-hook todor@tcv.bg@imap.tcv.bg:993/ 'source ~/.mutt/acc/tcv'
+#
+# # bst
+# source ~/.mutt/acc/bst
+# folder-hook todor@bstconsult.com@imap.gmail.com:993/ 'source ~/.mutt/acc/bst'
+#
+#
+# # Shortcuts
+# macro index,pager gG '<sync-mailbox><enter-command>source ~/.mutt/acc/gmail<enter><change-folder>!<enter>'
+# macro index,pager gB '<sync-mailbox><enter-command>source ~/.mutt/acc/bst<enter><change-folder>!<enter>'
+# macro index,pager gT '<sync-mailbox><enter-command>source ~/.mutt/acc/tcv<enter><change-folder>!<enter>'
 #macro index,pager gTA '<sync-mailbox><enter-command>source ~/.mutt/acc/tcv.app<enter><change-folder>!<enter>'
