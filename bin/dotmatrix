@@ -7,7 +7,8 @@ test_subject=~/bin
 if [ -L ${test_subject} ]; then
   full_path=`readlink ${test_subject}`
   echo "cd `dirname ${full_path}`;"
-	if [ -f /usr/local/bin/brew ]; then
+	which_brew=`which brew`
+	if [ -f ${which_brew} ]; then
 		echo "brew leaves | tee brew.leaves"
   fi
   echo "git pull; git status"

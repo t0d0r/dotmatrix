@@ -2,23 +2,32 @@
 // Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
 
 module.exports = {
-  defaultBrowser: "Safari",
+  defaultBrowser: "Safari Technology Preview",
   options: {
     logRequests: true,
   },
   handlers: [
     {
-      // Open google.com and *.google.com urls in Google Chrome
+      // oddspedia
       match: [
         'app.asana.com/*',
         'app.hibob.com/*',
         'docs.google.com/*',
         'drive.google.com/*',
-				'graylog.oddspedia:9000/*',
-        'confidential-mail.google.com/*',
+        'graylog.oddspedia:9000/*',
+        'netman.okta.com/*',
+				'miro.com/*',
+				'mg.mail.notion.so/*',
+        'netmanagement.atlassian.net/*',
+				'gitlab.oddspedia.com/*',
+				'jenkins.oddspedia.com/*',
+				'zabbix.oddspedia/*',
+				'*.safelinks.protection.outlook.com/*',
+				'*.microsoft.com/*',
+				'*.miro.com/*',
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
       ],
-      browser: "Google Chrome"
+      browser: "Microsoft Edge"
     },
     {
       match: [
@@ -26,7 +35,7 @@ module.exports = {
         '*catenate.com/*',
         'app.getguru.com/*',
         'catenate1.sharepoint.com/*',
-        'catenate1-my.*'
+        'catenate1-my.*',
       ],
       browser: "Microsoft Edge"
     },

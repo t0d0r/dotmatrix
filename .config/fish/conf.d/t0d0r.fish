@@ -1,5 +1,5 @@
 # vim:noexpandtab syntax=bash
-set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
+set PATH ~/bin /Users/$USER/go/bin /Applications/MacVim.app/Contents/bin $PATH
 set PATH /usr/local/opt/python/libexec/bin $PATH
 
 fish_add_path /opt/homebrew/bin
@@ -18,7 +18,7 @@ if status --is-interactive
 
 	source ~/.bash_env
 
-	# replace fancu utf+8 chars with something normal...
+	# replace fancy utf+8 chars with something normal...
 	set __fish_git_prompt_char_untrackedfiles '?'
 	set __fish_git_prompt_char_dirtystate '+'
 
@@ -60,12 +60,12 @@ if status --is-interactive
 	alias weather='curl -s wttr.in | head -7'
 	alias rm=trash
 	alias Sketch.app='timehack Sketch'
-	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/t0d0r/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
+	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/$USER/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
 	function dotmatrix
-		cd /Users/t0d0r/work/github/dotmatrix;
+		cd /Users/$USER/work/github/dotmatrix;
 		brew leaves > brew.leaves
 		git pull; git status
 	end
