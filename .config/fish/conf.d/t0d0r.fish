@@ -54,8 +54,8 @@ if status --is-interactive
 	alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 	alias sca="./scp_all.rb"
 	alias sea="./ssh_exec_all.rb"
-	alias t='todo.sh'
-	alias todo='todo.sh'
+	alias todo='todo.sh -t'
+	alias t='todo.sh -t'
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 	alias weather='curl -s wttr.in | head -7'
 	alias rm=trash
@@ -63,6 +63,8 @@ if status --is-interactive
 	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/t0d0r/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
+
+	todo list
 
 	function dotmatrix
 		cd /Users/t0d0r/work/github/dotmatrix;

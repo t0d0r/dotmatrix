@@ -14,9 +14,16 @@ module.exports = {
         'app.hibob.com/*',
         'docs.google.com/*',
         'drive.google.com/*',
-				'graylog.oddspedia:9000/*',
-        'confidential-mail.google.com/*',
+        'graylog.oddspedia:9000/*',
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
+      ],
+      browser: "Microsoft Edge"
+    },
+    {
+      match: [
+        "meet.google.com/*",
+        'confidential-mail.google.com/*',
+
       ],
       browser: "Google Chrome"
     },
