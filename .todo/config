@@ -42,6 +42,13 @@ export LIGHT_CYAN='\\033[1;36m'
 export WHITE='\\033[1;37m'
 export DEFAULT='\\033[0m'
 
+# There is highlighting for projects, contexts, dates, and item numbers.
+#
+# export COLOR_PROJECT=$RED
+# export COLOR_CONTEXT=$RED
+export COLOR_DATE=$BLUE
+# export COLOR_NUMBER=$LIGHT_GREY
+
 # === COLORS ===
 
 ## Uncomment and edit to override these defaults.
