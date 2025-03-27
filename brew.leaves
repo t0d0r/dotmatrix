@@ -19,7 +19,6 @@ ctop
 dict
 direnv
 dive
-docker
 doctl
 dos2unix
 duckdb
