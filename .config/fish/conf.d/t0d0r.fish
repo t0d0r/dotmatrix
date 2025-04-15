@@ -58,7 +58,7 @@ if status --is-interactive
 	alias t='todo.sh -t'
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 	alias weather='curl -s wttr.in | head -7'
-	alias rm=trash
+	alias rm=rmtrash
 	alias Sketch.app='timehack Sketch'
 	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/$USER/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
 
