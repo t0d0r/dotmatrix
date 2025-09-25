@@ -1,3 +1,5 @@
+" file is sourced from ~/.vim/vimrc
+
 function! IsQuickfixOpen()
   return len(filter(range(1, winnr('$')), 'getwinvar(v:val, "&buftype") == "quickfix"')) > 0
 endfunction
