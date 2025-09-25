@@ -29,7 +29,7 @@ arg=$1
 
 (cd ~/.ssh; git pull)
 
-match=`find ~/.ssh -name "*${arg}*" -type d -print -quit`
+match=`find ~/.ssh/ -name "*${arg}*" -type d -print -quit`
 if [ -f "${match}/config" ]; then
 	config_file="${match}/config"
 	echo "${match} - ${config_file}"
