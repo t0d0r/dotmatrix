@@ -1,3 +1,5 @@
+" file is sourced from ~/.vim/vimrc
+
 ""
 "" Basic Setup
 ""
