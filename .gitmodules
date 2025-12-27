@@ -70,9 +70,6 @@
 [submodule ".vim/pack/plugins/start/vim-rubocop"]
 	path = .vim/pack/plugins/start/vim-rubocop
 	url = https://github.com/ngmy/vim-rubocop.git
-[submodule ".vim/pack/plugins/start/vim-trackperlvars"]
-	path = .vim/pack/plugins/start/vim-trackperlvars
-	url = https://github.com/mvgrimes/vim-trackperlvars.git
 [submodule ".vim/pack/plugins/start/ctrp"]
 	path = .vim/pack/plugins/start/ctrp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
