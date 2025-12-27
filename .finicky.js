@@ -12,22 +12,28 @@ module.exports = {
       match: [
         '*catenate.bg/*',
         '*catenate.com/*',
-        'app.getguru.com/*',
         'app.asana.com/*',
-        'docs.google.com/*',
-        'drive.google.com/*',
 				'graylog.oddspedia:9000/*',
+				'login.microsoftonline.com/*',
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
       ],
-      browser: "Google Chrome"
+      browser: "Microsoft Edge"
     },
     {
       match: [
         "fos-support.com/*",
         "mandrillapp.com/*",
+        "books.1dxr.com/*",
       ],
       browser: "Firefox Proxy"
-    }
+    },
+		{
+			match: [
+        'docs.google.com/*',
+        'drive.google.com/*',
+			],
+			browser: "Google Chrome"
+		}
 
 //  {
 //    match: [
