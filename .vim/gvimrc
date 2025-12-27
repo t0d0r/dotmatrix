@@ -25,8 +25,10 @@ setlocal balloonexpr=
 " default font and size
 " basis33 can be downloaded from here:
 " https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
-let g:gvim_default_font = "basis33"
-let g:gvim_default_font_size = "36"
+" set guifont=BigBlueTermPlus_Nerd_Font:h24 from rVim
+
+let g:gvim_default_font = "BigBlueTermPlus_Nerd_Font"
+let g:gvim_default_font_size = "22"
 
 " test script to get resolution on mac
 "function! GUIresolution()
@@ -51,6 +53,19 @@ function! GUIbig()
 endfunction
 
 function! GUInormal()
+  set antialias
+  set nofullscreen
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+"  set guifont=Menlo\ Regular:h15
+  set guifont=BigBlueTermPlus_Nerd_Font:h15
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+  call GUIstatusline()
+  colorscheme t0d0r
+endfunction
+
+function! GUImenlo()
   set antialias
   set nofullscreen
   "colorscheme dejavu
@@ -197,6 +212,7 @@ command! CONSOLE call GUIconsole()
 command! VT220 call GUIvt220()
 command! BIG call GUIbig()
 command! NORMAL call GUInormal()
+command! MENLO call GUImenlo()
 command! XCODE call GUIxcode()
 command! SMALL call GUIsmall()
 command! RETINASMALL call GUI_RETINA_small()
@@ -219,7 +235,8 @@ autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
-NORMAL "set normal font size
+" NORMAL "set normal font size
+IOSEVKA
 
 augroup BgHighlight
     autocmd!
