@@ -2,20 +2,30 @@
 // Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
 
 module.exports = {
+  //defaultBrowser: "Safari Technology Preview",
   defaultBrowser: "Safari",
   options: {
     logRequests: true,
   },
   handlers: [
     {
-      // Open google.com and *.google.com urls in Google Chrome
       match: [
+				'*.microsoft.com/*',
+				'*.miro.com/*',
+				'*.safelinks.protection.outlook.com/*',
+				'gitlab.oddspedia.com/*',
+				'jenkins.oddspedia.com/*',
+				'mg.mail.notion.so/*',
+				'miro.com/*',
+				'zabbix.oddspedia/*',
         '*catenate.bg/*',
         '*catenate.com/*',
-        'app.asana.com/*',
-				'graylog.oddspedia:9000/*',
-				'login.microsoftonline.com/*',
-        // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
+        'app.hibob.com/*',
+        'catenate1-my.*',
+        'catenate1.sharepoint.com/*',
+        'graylog.oddspedia:9000/*',
+        'netman.okta.com/*',
+        'netmanagement.atlassian.net/*',
       ],
       browser: "Microsoft Edge"
     },
@@ -24,17 +34,20 @@ module.exports = {
         "fos-support.com/*",
         "mandrillapp.com/*",
         "books.1dxr.com/*",
+        "docs.1dxr.com/*",
+        "*1dxr.com/*",
       ],
       browser: "Firefox Proxy"
     },
 		{
 			match: [
+        'confidential-mail.google.com/*',
         'docs.google.com/*',
         'drive.google.com/*',
+        'meet.google.com/*',
 			],
 			browser: "Google Chrome"
-		}
-
+		},
 //  {
 //    match: [
 //      // "google.com*", // match google.com urls

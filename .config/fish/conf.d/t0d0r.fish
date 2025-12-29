@@ -1,5 +1,5 @@
 # vim:noexpandtab syntax=bash
-set PATH ~/bin /Users/t0d0r/go/bin /Applications/MacVim.app/Contents/bin $PATH
+set PATH ~/bin /Users/$USER/go/bin /Applications/MacVim.app/Contents/bin $PATH
 set PATH /usr/local/opt/python/libexec/bin $PATH
 
 fish_add_path /opt/homebrew/bin
@@ -18,7 +18,7 @@ if status --is-interactive
 
 	source ~/.bash_env
 
-	# replace fancu utf+8 chars with something normal...
+	# replace fancy utf+8 chars with something normal...
 	set __fish_git_prompt_char_untrackedfiles '?'
 	set __fish_git_prompt_char_dirtystate '+'
 
@@ -32,6 +32,9 @@ if status --is-interactive
 	#		cowsay -f $avatar 'Le chat miaule, what should I do?'
 	# end
 
+	ulimit -n 2048
+
+	alias ls='ls -G'
 	#alias ls='exa -g'
 	alias aea='ansible all -m shell -o -a '
 	alias beep='echo -en "\007"'
@@ -51,17 +54,20 @@ if status --is-interactive
 	alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 	alias sca="./scp_all.rb"
 	alias sea="./ssh_exec_all.rb"
-	alias t='todo.sh'
-	alias todo='todo.sh'
+	alias todo='todo.sh -t'
+	alias t='todo.sh -t'
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 	alias weather='curl -s wttr.in | head -7'
-	alias rm=trash
+	alias rm=rmtrash
 	alias Sketch.app='timehack Sketch'
+	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/$USER/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 
+	todo list
+
 	function dotmatrix
-		cd /Users/t0d0r/work/github/dotmatrix;
+		cd /Users/$USER/work/github/dotmatrix;
 		brew leaves > brew.leaves
 		git pull; git status
 	end

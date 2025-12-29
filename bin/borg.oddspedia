@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# check if .borg_passphrase exists
+if [ ! -f ~/.borg_passphrase ]; then
+	echo "No passphrase file found"
+	exit 1
+fi
+
+# path to borg command
+export PATH=/opt/homebrew/bin/:$USER/bin/:$PATH
+
+# Define variables for directories
+LOG_DIR=~/work/backup/logs
+BACKUP_DIR=/Users/borg
+REMOTE_DIR=gitlab.oddspedia.com:/srv
+LOCAL_DIR=gitlab.oddspedia
+
+# Create logging directory if it doesn't exist
+mkdir -p $LOG_DIR
+
+# rsync from gitlab.oddspedia to backup with logging
+echo Executing rsync -a --progress -e "ssh -l root -p 23" --delete --exclude srv/docker/ --log-file=$LOG_DIR/rsync-$(date +\%Y-\%m-\%d).log $REMOTE_DIR $LOCAL_DIR
+rsync -a --progress -e "ssh -l root -p 23" --delete --exclude srv/docker/ --log-file=$LOG_DIR/rsync-$(date +\%Y-\%m-\%d).log $REMOTE_DIR $LOCAL_DIR
+
+# Define the current backup name
+CURRENT_BACKUP=backup-$(date +\%Y-\%m-\%d)
+
+# Remove the current daily backup if it exists
+echo Executing borg delete $BACKUP_DIR/borg.backup::$CURRENT_BACKUP
+BORG_PASSPHRASE=`cat $HOME/.borg_passphrase` borg delete $BACKUP_DIR/borg.backup::$CURRENT_BACKUP
+
+BORG_PASSPHRASE=`cat $HOME/.borg_passphrase` borg create --progress --stats \
+	$BACKUP_DIR/borg.backup::$CURRENT_BACKUP \
+	$BACKUP_DIR/$LOCAL_DIR
+
+# Cleanup old backups, keep only 2 weeks of backups
+BORG_PASSPHRASE=`cat $HOME/.borg_passphrase` borg prune --keep-daily=14 --prefix 'backup-' $BACKUP_DIR/borg.backup

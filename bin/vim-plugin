@@ -1,0 +1,317 @@
+#!/usr/bin/env bash
+#
+# vim-plugin - Manage vim plugins as git submodules
+#
+# Usage:
+#   vim-plugin add <github-url> [plugin-name] [type]
+#   vim-plugin remove <plugin-name>
+#   vim-plugin update [plugin-name]
+#   vim-plugin list
+#   vim-plugin health
+#   vim-plugin helptags
+#
+
+set -e
+
+# Resolve symlinks to find the actual script location
+SCRIPT_PATH="${BASH_SOURCE[0]}"
+while [ -L "$SCRIPT_PATH" ]; do
+    SCRIPT_DIR="$(cd -P "$(dirname "$SCRIPT_PATH")" && pwd)"
+    SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
+    [[ $SCRIPT_PATH != /* ]] && SCRIPT_PATH="$SCRIPT_DIR/$SCRIPT_PATH"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SCRIPT_PATH")" && pwd)"
+
+DOTMATRIX_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+VIM_DIR="$DOTMATRIX_DIR/.vim"
+SUBMODULES_FILE="$DOTMATRIX_DIR/vim.submodules"
+
+# Plugin types: start (auto-load), opt (manual load), colors, syntax
+DEFAULT_TYPE="start"
+
+usage() {
+    cat <<EOF
+vim-plugin - Manage vim plugins as git submodules
+
+Usage:
+  vim-plugin add <github-url> [plugin-name] [type]
+      Add a new plugin from GitHub
+      type: start (default), opt, colors, syntax
+
+  vim-plugin remove <plugin-name>
+      Remove a plugin
+
+  vim-plugin update [plugin-name]
+      Update one or all plugins
+
+  vim-plugin list
+      List all installed plugins
+
+  vim-plugin health
+      Check plugin health and show status
+
+  vim-plugin helptags
+      Generate helptags for all plugins
+
+Examples:
+  vim-plugin add https://github.com/tpope/vim-fugitive.git
+  vim-plugin add https://github.com/rakr/vim-one.git vim-one colors
+  vim-plugin remove vim-fugitive
+  vim-plugin update vim-fugitive
+  vim-plugin update
+EOF
+    exit 1
+}
+
+# Extract plugin name from URL
+get_plugin_name() {
+    local url="$1"
+    basename "$url" .git
+}
+
+# Get plugin path based on type
+get_plugin_path() {
+    local name="$1"
+    local type="${2:-start}"
+
+    case "$type" in
+        colors)
+            echo "$VIM_DIR/pack/colors/start/$name"
+            ;;
+        syntax)
+            echo "$VIM_DIR/pack/syntax/opt/$name"
+            ;;
+        opt)
+            echo "$VIM_DIR/pack/plugins/opt/$name"
+            ;;
+        *)
+            echo "$VIM_DIR/pack/plugins/start/$name"
+            ;;
+    esac
+}
+
+# Add a plugin
+add_plugin() {
+    local url="$1"
+    local name="${2:-$(get_plugin_name "$url")}"
+    local type="${3:-$DEFAULT_TYPE}"
+    local path
+
+    if [ -z "$url" ]; then
+        echo "Error: GitHub URL required"
+        usage
+    fi
+
+    path=$(get_plugin_path "$name" "$type")
+
+    # Check if plugin already exists
+    if [ -d "$path" ]; then
+        echo "Error: Plugin '$name' already exists at $path"
+        exit 1
+    fi
+
+    echo "Adding plugin: $name"
+    echo "  URL: $url"
+    echo "  Path: $path"
+    echo "  Type: $type"
+
+    # Add as git submodule
+    cd "$DOTMATRIX_DIR"
+    git submodule add --force "$url" "$path"
+
+    # Update vim.submodules file
+    echo "git submodule add --force $url $path" >> "$SUBMODULES_FILE"
+
+    # Generate helptags
+    if [ -d "$path/doc" ]; then
+        vim -u NONE -c "helptags $path/doc" -c q 2>/dev/null || true
+    fi
+
+    echo "Plugin '$name' added successfully!"
+    echo "Remember to commit the changes: git add .gitmodules $path $SUBMODULES_FILE && git commit"
+}
+
+# Remove a plugin
+remove_plugin() {
+    local name="$1"
+    local found=0
+
+    if [ -z "$name" ]; then
+        echo "Error: Plugin name required"
+        usage
+    fi
+
+    # Search for plugin in all possible locations
+    for type in start opt colors syntax; do
+        local path=$(get_plugin_path "$name" "$type")
+        if [ -d "$path" ]; then
+            found=1
+            echo "Removing plugin: $name"
+            echo "  Path: $path"
+
+            cd "$DOTMATRIX_DIR"
+            git rm -f "$path"
+
+            # Remove from .gitmodules (git rm should handle this)
+            # Remove from vim.submodules
+            if [ -f "$SUBMODULES_FILE" ]; then
+                sed -i.bak "/$path/d" "$SUBMODULES_FILE"
+                rm -f "$SUBMODULES_FILE.bak"
+            fi
+
+            echo "Plugin '$name' removed successfully!"
+            echo "Remember to commit the changes: git commit -am 'Remove $name plugin'"
+            break
+        fi
+    done
+
+    if [ $found -eq 0 ]; then
+        echo "Error: Plugin '$name' not found"
+        exit 1
+    fi
+}
+
+# Update plugin(s)
+update_plugin() {
+    local name="$1"
+
+    cd "$DOTMATRIX_DIR"
+
+    if [ -z "$name" ]; then
+        # Update all plugins
+        echo "Updating all plugins..."
+        git submodule update --remote --merge
+        echo "Generating helptags..."
+        vim -u NONE -c "helptags ALL" -c q 2>/dev/null || true
+        echo "All plugins updated!"
+    else
+        # Update specific plugin
+        local found=0
+        for type in start opt colors syntax; do
+            local path=$(get_plugin_path "$name" "$type")
+            if [ -d "$path" ]; then
+                found=1
+                echo "Updating plugin: $name"
+                git submodule update --remote --merge "$path"
+
+                # Generate helptags
+                if [ -d "$path/doc" ]; then
+                    vim -u NONE -c "helptags $path/doc" -c q 2>/dev/null || true
+                fi
+
+                echo "Plugin '$name' updated!"
+                break
+            fi
+        done
+
+        if [ $found -eq 0 ]; then
+            echo "Error: Plugin '$name' not found"
+            exit 1
+        fi
+    fi
+}
+
+# List all plugins
+list_plugins() {
+    echo "Installed Vim Plugins:"
+    echo ""
+
+    for category in "plugins/start" "plugins/opt" "colors/start" "syntax/opt"; do
+        local dir="$VIM_DIR/pack/$category"
+        if [ -d "$dir" ]; then
+            local count=$(find "$dir" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+            if [ "$count" -gt 0 ]; then
+                echo "[$category] ($count plugins)"
+                find "$dir" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | sed 's/^/  - /'
+                echo ""
+            fi
+        fi
+    done
+}
+
+# Check plugin health
+health_check() {
+    echo "Vim Plugin Health Check"
+    echo "======================="
+    echo ""
+
+    local total=0
+    local ok=0
+    local issues=0
+
+    # Check submodules
+    cd "$DOTMATRIX_DIR"
+
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^\[submodule.*\.vim ]]; then
+            ((total++))
+
+            # Extract path
+            read -r path_line
+            if [[ "$path_line" =~ path\ =\ (.+) ]]; then
+                local path="${BASH_REMATCH[1]}"
+
+                if [ -d "$path/.git" ] || [ -f "$path/.git" ]; then
+                    echo "✓ $path"
+                    ((ok++))
+                else
+                    echo "✗ $path (not initialized)"
+                    ((issues++))
+                fi
+            fi
+        fi
+    done < .gitmodules
+
+    echo ""
+    echo "Summary: $ok OK, $issues issues, $total total"
+
+    if [ $issues -gt 0 ]; then
+        echo ""
+        echo "To fix issues, run: git submodule update --init --recursive"
+    fi
+}
+
+# Generate helptags
+generate_helptags() {
+    echo "Generating helptags for all plugins..."
+
+    for category in "plugins/start" "plugins/opt" "colors/start" "syntax/opt"; do
+        local dir="$VIM_DIR/pack/$category"
+        if [ -d "$dir" ]; then
+            find "$dir" -mindepth 1 -maxdepth 1 -type d | while read -r plugin; do
+                if [ -d "$plugin/doc" ]; then
+                    local name=$(basename "$plugin")
+                    echo "  Processing: $name"
+                    vim -u NONE -c "helptags $plugin/doc" -c q 2>/dev/null || true
+                fi
+            done
+        fi
+    done
+
+    echo "Helptags generated!"
+}
+
+# Main command handler
+case "${1:-}" in
+    add)
+        add_plugin "$2" "$3" "$4"
+        ;;
+    remove|rm)
+        remove_plugin "$2"
+        ;;
+    update|up)
+        update_plugin "$2"
+        ;;
+    list|ls)
+        list_plugins
+        ;;
+    health|check)
+        health_check
+        ;;
+    helptags|help-tags)
+        generate_helptags
+        ;;
+    *)
+        usage
+        ;;
+esac
