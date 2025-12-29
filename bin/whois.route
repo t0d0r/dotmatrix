@@ -1,5 +1,9 @@
 #!/bin/bash
 
 what=$@
+if [ -z "$what" ]; then
+		echo "Usage: $0 <ip or as>"
+		exit 1
+fi
 
 whois -h whois.radb.net -- "-i ${what}" | egrep '^route:' | awk '{ print $2 }' | cat -n

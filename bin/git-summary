@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+# Git Changelog Generator by Author Email
+#
+# This script extracts Git commit history for a specific author using their email.
+# It generates a structured changelog document containing:
+# - Full commit messages
+# - Commit checksums with timestamps
+# - List of changed files per commit
+#
+# Features:
+# - Accepts author's email as a command-line argument
+# - Outputs a formatted Markdown changelog (`CHANGELOG.md` by default)
+# - Includes commit timestamps for better traceability
+# - Checks if the output file already exists and exits with an error unless forced
+#
+# Usage:
+# python git-summary "author@example.com" --output custom_changelog.md --force
+#
+# This tool helps track contributions of specific developers and maintain clear project history.
+
+import subprocess
+import argparse
+import os
+import sys
+
+def get_commits_by_author(author_email):
+    """Get all commit hashes by a specific author email."""
+    result = subprocess.run(
+        ["git", "log", "--author", author_email, "--pretty=format:%H"],
+        capture_output=True, text=True
+    )
+    return result.stdout.strip().split("\n") if result.stdout else []
+
+def get_commit_details(commit_hash):
+    """Get full commit message, date, and changed files for a given commit hash."""
+    message_result = subprocess.run(
+        ["git", "log", "-1", "--pretty=format:%B", commit_hash],
+        capture_output=True, text=True
+    )
+    date_result = subprocess.run(
+        ["git", "log", "-1", "--pretty=format:%ci", commit_hash],
+        capture_output=True, text=True
+    )
+    files_result = subprocess.run(
+        ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", commit_hash],
+        capture_output=True, text=True
+    )
+    return {
+        "commit": commit_hash,
+        "date": date_result.stdout.strip(),
+        "message": message_result.stdout.strip(),
+        "files": files_result.stdout.strip().split("\n") if files_result.stdout else []
+    }
+
+def generate_changelog(author_email, output_file, force):
+    """Generate a changelog document for commits by the given author email."""
+    if os.path.exists(output_file) and not force:
+        print(f"Error: Output file '{output_file}' already exists. Use --force to overwrite.", file=sys.stderr)
+        sys.exit(1)
+
+    commits = get_commits_by_author(author_email)
+    changelog = "# Changelog\n\n"
+
+    for commit in commits:
+        details = get_commit_details(commit)
+        changelog += f"## Commit: {details['commit']} ({details['date']})\n"
+        changelog += f"{details['message']}\n\n"
+        if details["files"]:
+            changelog += "### Changed Files:\n"
+            changelog += "\n".join([f"- {file}" for file in details["files"]])
+            changelog += "\n\n"
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(changelog)
+
+    print(f"Changelog written to {output_file}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate a Git changelog for a specific author.")
+    parser.add_argument("author_email", help="Email of the author")
+    parser.add_argument("--output", default="CHANGELOG.md", help="Output file name (default: CHANGELOG.md)")
+    parser.add_argument("--force", action="store_true", help="Force overwrite of the output file if it exists")
+
+    args = parser.parse_args()
+    generate_changelog(args.author_email, args.output, args.force)
+

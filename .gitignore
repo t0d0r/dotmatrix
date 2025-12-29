@@ -1,11 +1,10 @@
 *.pyc
 *~
 .DS_Store
-.ansible/hosts
-.ansible/log/execution.log
+.ansible/
 .bash_env
-#.config/*
 .config/karabiner/automatic_backups/
+.gitmodules
 .mutt/acc/
 .mutt/cache/bodies/
 .mutt/cache/headers
@@ -15,4 +14,6 @@
 .unison/
 .vim/_backup/
 .vim/_temp/
+.vim/pack/
 bin/knock-*
+galaxy_token
