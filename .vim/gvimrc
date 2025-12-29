@@ -236,7 +236,6 @@ autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 NORMAL "set normal font size
-source ~/.vim/gvimrc.local
 " IOSEVKA
 " IBM
 
@@ -283,7 +282,6 @@ augroup seeingIsBelievingSettings
   autocmd FileType ruby imap <buffer> <F6> <Plug>(seeing-is-believing-run)
 augroup END
 
-
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
   let isfirst = 1
@@ -310,3 +308,7 @@ function! s:RunShellCommand(cmdline)
 endfunction
 
 command! -complete=file -nargs=* RunJS call s:RunShellCommand('node '.<q-args>)
+
+if filereadable(expand("~/.vim/gvimrc.local"))
+  source ~/.vim/gvimrc.local
+endif
