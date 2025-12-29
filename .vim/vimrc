@@ -155,5 +155,5 @@ endif
 """ nnoremap dr diwh"0p
 """ nnoremap dt diw"0p
 
-
+let g:copilot_enabled = 0
 synt on
