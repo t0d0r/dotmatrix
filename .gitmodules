@@ -16,9 +16,6 @@
 [submodule ".vim/pack/plugins/start/tabular"]
 	path = .vim/pack/plugins/start/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule ".vim/pack/plugins/start/vim-rails"]
-	path = .vim/pack/plugins/start/vim-rails
-	url = https://github.com/tpope/vim-rails.git
 [submodule ".vim/pack/plugins/start/rails"]
 	path = .vim/pack/plugins/start/rails
 	url = https://github.com/tpope/vim-rails.git
@@ -70,8 +67,8 @@
 [submodule ".vim/pack/plugins/start/vim-rubocop"]
 	path = .vim/pack/plugins/start/vim-rubocop
 	url = https://github.com/ngmy/vim-rubocop.git
-[submodule ".vim/pack/plugins/start/ctrp"]
-	path = .vim/pack/plugins/start/ctrp
+[submodule ".vim/pack/plugins/start/ctrlp"]
+	path = .vim/pack/plugins/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule ".vim/pack/plugins/start/vimwiki"]
 	path = .vim/pack/plugins/start/vimwiki
@@ -85,9 +82,9 @@
 [submodule ".vim/pack/plugins/start/vim-buffergator"]
 	path = .vim/pack/plugins/start/vim-buffergator
 	url = http://github.com/jeetsukumaran/vim-buffergator
-[submodule "https:/github.com/fatih/vim-go"]
-	path = https:/github.com/fatih/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule ".vim/pack/plugins/start/vim-go"]
-	path = .vim/pack/plugins/start/vim-go
-	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/pack/plugins/start/ansi-esc"]
+	path = .vim/pack/plugins/start/ansi-esc
+	url = https://github.com/powerman/vim-plugin-AnsiEsc.git
+[submodule ".vim/pack/plugins/start/copilot"]
+	path = .vim/pack/plugins/start/copilot
+	url = https://github.com/github/copilot.vim.git
