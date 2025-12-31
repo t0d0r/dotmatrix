@@ -1,0 +1,77 @@
+{
+  "title": "Application Switching with Hyper Key",
+  "rules": [
+    {
+      "description": "Hyper+I to focus iTerm2",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'iTerm.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper+E to focus Evernote",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Evernote.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Hyper+F to focus Firefox",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "control",
+                "option",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Firefox.app'"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
