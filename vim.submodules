@@ -23,10 +23,11 @@ git submodule add --force https://github.com/mattn/emmet-vim.git .vim/pack/plugi
 git submodule add --force https://github.com/editorconfig/editorconfig-vim.git .vim/pack/plugins/start/editorconfig
 git submodule add --force https://github.com/ngmy/vim-rubocop.git .vim/pack/plugins/start/vim-rubocop
 git submodule add --force https://github.com/mvgrimes/vim-trackperlvars.git .vim/pack/plugins/start/vim-trackperlvars
-git submodule add --force https://github.com/ctrlpvim/ctrlp.vim.git .vim/pack/plugins/start/ctrp
+git submodule add --force https://github.com/ctrlpvim/ctrlp.vim.git .vim/pack/plugins/start/ctrlp
 git submodule add --force https://github.com/vimwiki/vimwiki.git .vim/pack/plugins/start/vimwiki
 git submodule add --force https://github.com/hashivim/vim-terraform.git .vim/pack/plugins/start/vim-terraform
 git submodule add --force https://github.com/tpope/vim-commentary.git .vim/pack/plugins/start/vim-commentary
 git submodule add --force http://github.com/jeetsukumaran/vim-buffergator .vim/pack/plugins/start/vim-buffergator
 git submodule add --force https://github.com/fatih/vim-go.git  .vim/pack/plugins/start/vim-go
 git submodule add --force https://github.com/github/copilot.vim.git .vim/pack/plugins/start/copilot
+git submodule add --force https://github.com/powerman/vim-plugin-AnsiEsc.git .vim/pack/plugins/start/ansi-esc
