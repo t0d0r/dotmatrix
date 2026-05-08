@@ -1,23 +1,10 @@
-" 2021-09-09 deprecated, workaround is placed by vendor macvim/vimrc
-"" put following code in ~/.vim/janus/vim/vimrc
-"" it is a fix for: ModuleNotFoundError: No module named 'encodings'
-"if has('python3')
-"    command! -nargs=1 Py py3 <args>
-"    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/Current/Python
-"    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/Current
-"else
-"    command! -nargs=1 Py py <args>
-"    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
-"    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
-"endif
-"" to here
 set guioptions-=T " remove toolbar
 set guioptions-=r " remove right-hand scrollbar
 set guioptions-=L " remove left-hand scrollbar
 set guitablabel=%N>%M%t
 set wildmenu " change style when use <tab>
-"set wim=list " this breaks <tab> for unknown reason
-set wim=list:longest,full
+"set wildmode=list " this breaks <tab> for unknown reason
+set wildmode=list:longest,full
 set smartcase
 set cursorline
 set balloonexpr=
@@ -26,8 +13,10 @@ setlocal balloonexpr=
 " default font and size
 " basis33 can be downloaded from here:
 " https://dl.dropboxusercontent.com/u/1975326/fonts/basis33.regular.ttf
-let g:gvim_default_font = "basis33"
-let g:gvim_default_font_size = "36"
+" set guifont=BigBlueTermPlus_Nerd_Font:h24 from rVim
+
+let g:gvim_default_font = "BigBlueTermPlus_Nerd_Font"
+let g:gvim_default_font_size = "22"
 
 " test script to get resolution on mac
 "function! GUIresolution()
@@ -52,6 +41,19 @@ function! GUIbig()
 endfunction
 
 function! GUInormal()
+  set antialias
+  set nofullscreen
+  "colorscheme dejavu
+  "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
+  highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
+"  set guifont=Menlo\ Regular:h15
+  set guifont=BigBlueTermPlus_Nerd_Font:h15
+"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+  call GUIstatusline()
+  colorscheme t0d0r
+endfunction
+
+function! GUImenlo()
   set antialias
   set nofullscreen
   "colorscheme dejavu
@@ -201,39 +203,41 @@ command! DELL set guifont=Terminus\ (TTF):h18 noantialias
 command! TERMINUS call GUIterminus()
 " deprecated, Envy Code R did not support cyrillic...
 "command! ENVY set guifont=Envy\ Code\ R:h18 antialias
-command! FIRA set guifont=Fira\ Mono:h18 antialias
-command! MONODELL set guifont=monofur:h24 antialias
 command! BASIS set guifont=basis33:h36 antialias
+command! BIG call GUIbig()
+command! BLACK colorscheme t0d0r
+command! CONSOLE call GUIconsole()
+command! CP1251 call SetEncoding('cp1251')
+command! FIRA set guifont=Fira\ Mono:h18 antialias
+command! FULL call GUIfullscreen()
+command! IBM call GUI_IBM()
 command! IOSEVKA set guifont=Iosevka:h18
 command! IOSEVKA24 set guifont=Iosevka-Fixed-Light:h24
-command! CONSOLE call GUIconsole()
-command! VT220 call GUIvt220()
-command! BIG call GUIbig()
-command! NORMAL call GUInormal()
-command! IBM call GUI_IBM()
-command! XCODE call GUIxcode()
-command! SMALL call GUIsmall()
-command! RETINASMALL call GUI_RETINA_small()
-command! MICRO call GUImicro()
-command! RUBYMINE call GUIrubymine()
-command! STATUSLINE call GUIstatusline()
-command! Zmanual set foldmethod=manual
-command! Zindent set foldmethod=indent
-command! Zsyntax set foldmethod=syntax
-command! FULL call GUIfullscreen()
-command! NOFULL set nofullscreen
-command! WHITE colorscheme lingodirector
-command! BLACK colorscheme t0d0r
 command! LATIN1 call SetEncoding('latin1')
-command! CP1251 call SetEncoding('cp1251')
-command! UTF8 call SetEncoding('utf8')
+command! MENLO call GUImenlo()
+command! MICRO call GUImicro()
+command! MONODELL set guifont=monofur:h24 antialias
 command! NOCLOSE let NERDTreeQuitOnOpen=0
+command! NOFULL set nofullscreen
+command! NORMAL call GUInormal()
+command! RETINASMALL call GUI_RETINA_small()
+command! RUBYMINE call GUIrubymine()
+command! SMALL call GUIsmall()
+command! STATUSLINE call GUIstatusline()
+command! UTF8 call SetEncoding('utf8')
+command! VT220 call GUIvt220()
+command! WHITE colorscheme lingodirector
+command! XCODE call GUIxcode()
+command! Zindent set foldmethod=indent
+command! Zmanual set foldmethod=manual
+command! Zsyntax set foldmethod=syntax
 
 autocmd ColorScheme * STATUSLINE " hook to colorscheme to always set STATUSLINE
 " set some session options for :mksession command
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
 
 NORMAL "set normal font size
+" IOSEVKA
 " IBM
 
 augroup BgHighlight
@@ -279,7 +283,6 @@ augroup seeingIsBelievingSettings
   autocmd FileType ruby imap <buffer> <F6> <Plug>(seeing-is-believing-run)
 augroup END
 
-
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
   let isfirst = 1
@@ -307,3 +310,6 @@ endfunction
 
 command! -complete=file -nargs=* RunJS call s:RunShellCommand('node '.<q-args>)
 
+if filereadable(expand("~/.vim/gvimrc.local"))
+  source ~/.vim/gvimrc.local
+endif

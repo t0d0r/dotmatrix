@@ -5,315 +5,9 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Switch two spaces instead of one ",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "1",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "1",
-                                        "modifiers": ["control"]
-                                    },
-                                    {
-                                        "key_code": "5",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "2",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "2",
-                                        "modifiers": ["control"]
-                                    },
-                                    {
-                                        "key_code": "6",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "3",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "3",
-                                        "modifiers": ["control"]
-                                    },
-                                    {
-                                        "key_code": "7",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "4",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "4",
-                                        "modifiers": ["control"]
-                                    },
-                                    {
-                                        "key_code": "8",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change right_shift+ctrl to volume up.",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_control",
-                                    "modifiers": { "mandatory": ["right_shift"] }
-                                },
-                                "to": [{ "consumer_key_code": "volume_increment" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change right_shift+right_alt to volume down.",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "right_alt",
-                                    "modifiers": { "mandatory": ["right_shift"] }
-                                },
-                                "to": [{ "consumer_key_code": "volume_decrement" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Rewind...",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f5",
-                                    "modifiers": { "mandatory": ["right_shift"] }
-                                },
-                                "to": [{ "consumer_key_code": "rewind" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "FastForward...",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f6",
-                                    "modifiers": { "mandatory": ["right_shift"] }
-                                },
-                                "to": [{ "consumer_key_code": "fastforward" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Play/Stop.",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f7",
-                                    "modifiers": { "mandatory": ["right_shift"] }
-                                },
-                                "to": [{ "consumer_key_code": "play_or_pause" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 45890,
-                        "vendor_id": 1133
-                    },
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "grave_accent_and_tilde" },
-                            "to": [{ "key_code": "backslash" }]
-                        },
-                        {
-                            "from": { "key_code": "non_us_backslash" },
-                            "to": [{ "key_code": "grave_accent_and_tilde" }]
-                        },
-                        {
-                            "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_control" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 17733,
-                        "vendor_id": 1241
-                    },
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_alt" },
-                            "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "left_gui" },
-                            "to": [{ "key_code": "left_option" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 65535,
-                        "vendor_id": 1452
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "right_control" },
-                            "to": [{ "key_code": "volume_increment" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 16417,
-                        "vendor_id": 1155
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 8723,
-                        "vendor_id": 1367
-                    },
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_alt" },
-                            "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "left_gui" },
-                            "to": [{ "key_code": "left_option" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 2048,
-                        "vendor_id": 1118
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "key_code": "left_option" }]
-                        },
-                        {
-                            "from": { "key_code": "left_option" },
-                            "to": [{ "key_code": "left_command" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "non_us_backslash" },
-                            "to": [{ "key_code": "grave_accent_and_tilde" }]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    }
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": true,
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    }
-                }
-            ],
-            "fn_function_keys": [
-                {
-                    "from": { "key_code": "f3" },
-                    "to": [{ "key_code": "mission_control" }]
-                },
-                {
-                    "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "launchpad" }]
-                },
-                {
-                    "from": { "key_code": "f5" },
-                    "to": [{ "key_code": "illumination_decrement" }]
-                },
-                {
-                    "from": { "key_code": "f6" },
-                    "to": [{ "key_code": "illumination_increment" }]
-                },
-                {
-                    "from": { "key_code": "f9" },
-                    "to": [{ "consumer_key_code": "fastforward" }]
-                }
-            ],
-            "name": "K380 + Filco/ATEN",
-            "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "application" },
-                    "to": [{ "key_code": "volume_decrement" }]
-                }
-            ],
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "keyboard_type_v2": "ansi"
-            }
-        },
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "Spectacle: Move Upper-Left. Change keypad_7 to control+command+left_arrow.",
-                        "manipulators": [
-                            {
+                                "description": "Spectacle: Move Upper-Left. Change keypad_7 to control+command+left_arrow.",
                                 "from": {
                                     "key_code": "keypad_7",
                                     "modifiers": { "optional": ["any"] }
@@ -329,9 +23,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Upper-Right. Change keypad_9 to control+command+right_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Upper-Right. Change keypad_9 to control+command+right_arrow.",
                                 "from": {
                                     "key_code": "keypad_9",
                                     "modifiers": { "optional": ["any"] }
@@ -347,9 +41,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Lower-Left. Change keypad_1 to shift+control+command+left_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Lower-Left. Change keypad_1 to shift+control+command+left_arrow.",
                                 "from": {
                                     "key_code": "keypad_1",
                                     "modifiers": { "optional": ["any"] }
@@ -365,9 +59,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Lower-Right. Change keypad_3 to shift+control+command+right_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Lower-Right. Change keypad_3 to shift+control+command+right_arrow.",
                                 "from": {
                                     "key_code": "keypad_3",
                                     "modifiers": { "optional": ["any"] }
@@ -383,9 +77,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Half-Left. Change keypad_4 to option+command+left_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Half-Left. Change keypad_4 to option+command+left_arrow.",
                                 "from": {
                                     "key_code": "keypad_4",
                                     "modifiers": { "optional": ["any"] }
@@ -401,9 +95,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Half-Right. Change keypad_6 to option+command+right_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Half-Right. Change keypad_6 to option+command+right_arrow.",
                                 "from": {
                                     "key_code": "keypad_6",
                                     "modifiers": { "optional": ["any"] }
@@ -419,9 +113,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Half-Up. Change keypad_8 to option+command+up_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Half-Up. Change keypad_8 to option+command+up_arrow.",
                                 "from": {
                                     "key_code": "keypad_8",
                                     "modifiers": { "optional": ["any"] }
@@ -437,9 +131,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Move Half-Bottom. Change keypad_2 to option+command+down_arrow.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Move Half-Bottom. Change keypad_2 to option+command+down_arrow.",
                                 "from": {
                                     "key_code": "keypad_2",
                                     "modifiers": { "optional": ["any"] }
@@ -455,9 +149,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Undo. Change keypad_/ to options+command+z.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Undo. Change keypad_/ to options+command+z.",
                                 "from": {
                                     "key_code": "keypad_slash",
                                     "modifiers": { "optional": ["any"] }
@@ -473,9 +167,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Fullscreen. Change keypad_* to options+command+f.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Fullscreen. Change keypad_* to options+command+f.",
                                 "from": {
                                     "key_code": "keypad_asterisk",
                                     "modifiers": { "optional": ["any"] }
@@ -491,9 +185,9 @@
                         ]
                     },
                     {
-                        "description": "Spectacle: Center. Change keypad_5 to options+command+c.",
                         "manipulators": [
                             {
+                                "description": "Spectacle: Center. Change keypad_5 to options+command+c.",
                                 "from": {
                                     "key_code": "keypad_5",
                                     "modifiers": { "optional": ["any"] }
@@ -637,29 +331,17 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "Option+L to Lock Screen (macOS 10.13+)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["option"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "q",
-                                        "modifiers": ["left_control", "left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
             "devices": [
                 {
+                    "fn_function_keys": [
+                        {
+                            "from": { "key_code": "pause" },
+                            "to": [{ "key_code": "mute" }]
+                        }
+                    ],
                     "identifiers": {
                         "is_keyboard": true,
                         "product_id": 1,
@@ -673,64 +355,25 @@
                         },
                         {
                             "from": { "key_code": "keypad_0" },
-                            "to": [{ "key_code": "vk_mission_control" }]
+                            "to": [{ "consumer_key_code": "play_or_pause" }]
                         },
                         {
-                            "from": { "key_code": "left_alt" },
-                            "to": [{ "key_code": "left_command" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 2048,
-                        "vendor_id": 1118
-                    },
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "key_code": "left_option" }]
+                            "from": { "key_code": "keypad_period" },
+                            "to": [{ "consumer_key_code": "fastforward" }]
                         },
                         {
                             "from": { "key_code": "left_option" },
                             "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "print_screen" },
+                            "to": [{ "key_code": "mission_control" }]
+                        },
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "fn" }]
                         }
                     ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 50475,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 630,
-                        "vendor_id": 1452
-                    },
-                    "ignore": true
-                },
-                {
-                    "identifiers": {
-                        "is_pointing_device": true,
-                        "product_id": 50475,
-                        "vendor_id": 1133
-                    },
-                    "ignore": false
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 45890,
-                        "vendor_id": 1133
-                    },
-                    "manipulate_caps_lock_led": false
                 },
                 {
                     "identifiers": {
@@ -764,8 +407,127 @@
                     "to": [{ "consumer_key_code": "fastforward" }]
                 }
             ],
-            "name": "IBM/K380W",
-            "virtual_hid_keyboard": { "country_code": 0 }
+            "name": "IBM",
+            "virtual_hid_keyboard": {
+                "country_code": 0,
+                "keyboard_type_v2": "ansi"
+            }
+        },
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Caps Lock to Hyper key",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Option+L to Lock Screen (macOS 10.13+)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["left_control", "left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 1,
+                        "vendor_id": 3389
+                    },
+                    "manipulate_caps_lock_led": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 630,
+                        "vendor_id": 1452
+                    },
+                    "manipulate_caps_lock_led": false
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 16417,
+                        "vendor_id": 1155
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "non_us_backslash" },
+                            "to": [{ "key_code": "grave_accent_and_tilde" }]
+                        }
+                    ]
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "key_code": "mission_control" }]
+                },
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "launchpad" }]
+                },
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "illumination_decrement" }]
+                },
+                {
+                    "from": { "key_code": "f6" },
+                    "to": [{ "key_code": "illumination_increment" }]
+                },
+                {
+                    "from": { "key_code": "f9" },
+                    "to": [{ "consumer_key_code": "fastforward" }]
+                }
+            ],
+            "name": "Default",
+            "selected": true,
+            "virtual_hid_keyboard": {
+                "country_code": 0,
+                "keyboard_type_v2": "ansi"
+            }
         }
     ]
 }

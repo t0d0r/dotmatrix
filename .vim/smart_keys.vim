@@ -38,11 +38,23 @@ augroup END
 autocmd QuickFixCmdPost [^l]* cwindow
 autocmd QuickFixCmdPost    l* lwindow
 
+nnoremap <C-a> <nop>
+nnoremap <C-x> <nop>
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+inoremap <F3> <C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR>
+nnoremap <F3> i<C-R>=strftime("<%Y-%m-%d %a %H:%M>")<CR><Esc>
+nnoremap <F4> :call NERDTreeToggleFix()<CR>
 nnoremap <F4> :call ToggleOrFocusNERDTree()<CR>
-nnoremap <F7> :call SmartPrev()<CR>
+nnoremap <S-F4> :NERDTreeFocus<CR>
+nnoremap <F5> :GundoToggle<CR>
+nnoremap <F6> :BuffergatorToggle<CR>
+"nnoremap <F7> :call SmartPrev()<CR>
 " Toggle copen
-nnoremap <F8> :if &buftype ==# 'quickfix' \| cclose \| else \| copen \| endif<CR>
-nnoremap <F9> :call SmartNext()<CR>
+"nnoremap <F8> :if &buftype ==# 'quickfix' \| cclose \| else \| copen \| endif<CR>
+"nnoremap <F9> :call SmartNext()<CR>
+map <F7> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
 " shift + f7,f8,f9
 nnoremap <F19> :tabprev<CR>
 nnoremap <F20> :tabedit %<CR>
