@@ -31,36 +31,37 @@ export NODE_PATH="~/.npm"
 # interactive or not, that is the question...
 case "$-" in
   *i*)
-    # this file must be kept away from github :)
-    [[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
-#    # Ruby Version Manager
-#    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-    # bash completion
-#    [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
-    # mercurial completion
-    [[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
-    # fortune
-    [[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
-    # rbenv /rvm replacement/
-    [[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
-#    # mysql
-#    [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
-    # build aleases based on ~/.screen.d
-    #export PATH=$PATH:/usr/local/opt/go/libexec/bin
-    export GOPATH=~/go
-    export PATH=$PATH:$GOPATH/bin
-    [[ -f ~/.bashrc ]] && source ~/.bashrc
+	# this file must be kept away from github :)
+	[[ -s "$HOME/.bash_env" ]] && source "$HOME/.bash_env"
+#	 # Ruby Version Manager
+#	 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+	# bash completion
+#	 [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
+	# mercurial completion
+	[[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
+	# fortune
+	[[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
+	# rbenv /rvm replacement/
+	[[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+	[[ -f /opt/homebrew/bin/terraform ]] && complete -C /opt/homebrew/bin/terraform terraform
+#	 # mysql
+#	 [[ -s "$HOME/bin/mysql_env.sh" ]] && source "$HOME/bin/mysql_env.sh"
+	# build aleases based on ~/.screen.d
+	#export PATH=$PATH:/usr/local/opt/go/libexec/bin
+	export GOPATH=~/go
+	export PATH=$PATH:$GOPATH/bin
+	[[ -f ~/.bashrc ]] && source ~/.bashrc
 
-    [[ `hostname` = 'do.linuxfan.org' ]] && last | head
+	[[ `hostname` = 'do.linuxfan.org' ]] && last | head
 
-    if [ -d ~/.profile.d ]; then
-      for i in ~/.profile.d/*.sh; do
-        if [ -r $i ]; then
-          . $i
-        fi
-      done
-      unset i
-    fi
+	if [ -d ~/.profile.d ]; then
+	  for i in ~/.profile.d/*.sh; do
+		if [ -r $i ]; then
+		  . $i
+		fi
+	  done
+	  unset i
+	fi
 
   ;;
 esac
@@ -70,4 +71,3 @@ esac
 # locale fix for mosh /t0d0r
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-. "/Users/t0d0r/.acme.sh/acme.sh.env"

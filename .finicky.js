@@ -10,26 +10,19 @@ module.exports = {
   handlers: [
     {
       match: [
-        'confidential-mail.google.com/*',
-        'docs.google.com/*',
-        'drive.google.com/*',
-        'meet.google.com/*',
-        // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
-      ],
-      browser: "Google Chrome"
-    },
-    {
-      match: [
 				'*.microsoft.com/*',
 				'*.miro.com/*',
-				'miro.com/*',
 				'*.safelinks.protection.outlook.com/*',
 				'gitlab.oddspedia.com/*',
-        'app.asana.com/*',
-        'app.hibob.com/*',
 				'jenkins.oddspedia.com/*',
 				'mg.mail.notion.so/*',
+				'miro.com/*',
 				'zabbix.oddspedia/*',
+        '*catenate.bg/*',
+        '*catenate.com/*',
+        'app.hibob.com/*',
+        'catenate1-my.*',
+        'catenate1.sharepoint.com/*',
         'graylog.oddspedia:9000/*',
         'netman.okta.com/*',
         'netmanagement.atlassian.net/*',
@@ -39,24 +32,23 @@ module.exports = {
     },
     {
       match: [
-        '*catenate.bg/*',
-        '*catenate.com/*',
-        '*catenate.eu/*',
-        'catenate1.sharepoint.com/*',
-        'catenate1-my.*',
-      ],
-      browser: "Microsoft Edge"
-    },
-    {
-      match: [
         "fos-support.com/*",
         "mandrillapp.com/*",
+        "books.1dxr.com/*",
         "docs.1dxr.com/*",
         "*1dxr.com/*",
       ],
-      browser: "Firefox"
-    }
-
+      browser: "Firefox Proxy"
+    },
+		{
+			match: [
+        'confidential-mail.google.com/*',
+        'docs.google.com/*',
+        'drive.google.com/*',
+        'meet.google.com/*',
+			],
+			browser: "Google Chrome"
+		},
 //  {
 //    match: [
 //      // "google.com*", // match google.com urls
