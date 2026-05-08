@@ -50,3 +50,10 @@ nnoremap <F21> :tabnext<CR>
 nnoremap <S-F7> :tabprev<CR>
 nnoremap <S-F8> :tabedit %<CR>
 nnoremap <S-F9> :tabnext<CR>
+
+" copilot mappings (M-/Alt key unreliable in MacVim)
+let g:copilot_no_tab_map = 1
+imap <silent><script><expr> <C-j> copilot#Accept('')
+imap <C-l> <Plug>(copilot-next)
+imap <C-k> <Plug>(copilot-previous)
+"imap <C-l> <Plug>(copilot-suggest)

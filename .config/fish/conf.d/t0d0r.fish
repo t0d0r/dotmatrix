@@ -61,6 +61,7 @@ if status --is-interactive
 	alias rm=rmtrash
 	alias Sketch.app='timehack Sketch'
 	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/$USER/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=oddspedia hashicorp/terraform'
+	alias opencode='docker run --rm -it -v ~/.local/share/opencode:/root/.local/share/opencode -v "$(pwd)":/workspace -w /workspace -e HOST_PWD=(pwd) ghcr.io/anomalyco/opencode:latest'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 

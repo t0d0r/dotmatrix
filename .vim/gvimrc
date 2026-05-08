@@ -16,7 +16,8 @@ set guioptions-=r " remove right-hand scrollbar
 set guioptions-=L " remove left-hand scrollbar
 set guitablabel=%N>%M%t
 set wildmenu " change style when use <tab>
-set wim=list
+"set wim=list " this breaks <tab> for unknown reason
+set wim=list:longest,full
 set smartcase
 set cursorline
 set balloonexpr=

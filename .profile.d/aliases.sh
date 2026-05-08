@@ -28,7 +28,9 @@ alias mvim='mvim --servername `basename $PWD` --remote-tab-silent'
 
 #alias +='pushd .'
 #alias ++='popd'
+alias Sketch.app='timehack Sketch'
 alias aea='ansible all -m shell -o -a '
+alias be="bundle exec"
 alias beep='echo -en "\007"'
 alias code='code -n'
 alias dotmatrix='eval $(~/bin/dotmatrix)'
@@ -38,14 +40,19 @@ alias lmk='say '\''Process complete.'\'''
 alias lockme='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias moon='curl -s wttr.in/Moon'
 alias mutt.local="mutt -f /var/mail/$USER"
+alias opencode='docker run --rm -it -v ~/.local/share/opencode:/root/.local/share/opencode -v "$(pwd)":/workspace -w /workspace -e HOST_PWD=$(pwd) ghcr.io/anomalyco/opencode:latest'
 alias pg.start='pg_ctl -D /usr/local/var/postgresql@11 start'
 alias pg.stop='pg_ctl -D /usr/local/var/postgresql@11 stop'
-alias redis.start='redis-server /usr/local/etc/redis.conf'
-alias redis.stop='echo no info how to stop it...'
 alias pgw="ping -c 3 -s 1472 `netstat -rn| grep default | tr -s ' '| cut -d ' ' -f 2`"
 alias ppjson=json_reformat
+alias pscp='parallel-scp -r -v -h hosts'
+alias pssh='parallel-ssh -h hosts -P'
+alias psshs='parallel-ssh -h hosts -P sudo'
 alias rbenv.init='eval "$(rbenv init -)"'
+alias redis.start='redis-server /usr/local/etc/redis.conf'
+alias redis.stop='echo no info how to stop it...'
 alias rehash='hash -r'
+alias rpry="pry -r ./config/environment"
 alias rpry="pry -r ./config/environment"
 alias rvm-prompt='PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"'
 alias sca="./scp_all.rb"
@@ -55,12 +62,6 @@ alias t='todo.sh'
 alias todo='todo.sh'
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 alias weather='curl -s wttr.in | head -7'
-alias rpry="pry -r ./config/environment"
-alias be="bundle exec"
-alias Sketch.app='timehack Sketch'
-alias pssh='parallel-ssh -h hosts -P'
-alias psshs='parallel-ssh -h hosts -P sudo'
-alias pscp='parallel-scp -r -v -h hosts'
 #alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"
 alias zabbix="cat ~/tmp/zabbix.status | egrep -v 'PROBLEM ACK' | sed -e 's#PROBLEM NACK ##' |  clog"
 

@@ -41,6 +41,7 @@ module.exports = {
       match: [
         '*catenate.bg/*',
         '*catenate.com/*',
+        '*catenate.eu/*',
         'catenate1.sharepoint.com/*',
         'catenate1-my.*',
       ],
