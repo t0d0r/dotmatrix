@@ -83,9 +83,9 @@ hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NO
 "hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
 hi Visual           guifg=NONE        guibg=#E18964     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=REVERSE
 
-" This is used for whitespaces
+" This is used for mapwhitespaces
 "hi SpecialKey       guifg=#ffc71f     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi SpecialKey       guifg=#343434     guibg=#000000     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi SpecialKey       guifg=#808080     guibg=#000000     gui=NONE      ctermfg=244        ctermbg=NONE        cterm=NONE
 
 hi WildMenu         guifg=#ff3333     guibg=#202020    gui=NONE      ctermfg=black       ctermbg=yellow      cterm=NONE
 hi PmenuSbar        guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=NONE
