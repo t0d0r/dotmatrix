@@ -70,3 +70,4 @@ esac
 # locale fix for mosh /t0d0r
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+. "/Users/t0d0r/.acme.sh/acme.sh.env"
