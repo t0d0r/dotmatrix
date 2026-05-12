@@ -47,8 +47,8 @@ function! GUInormal()
   "highlight Cursor gui=reverse guifg=#ff0000 guibg=NONE
   highlight Cursor gui=reverse guifg=#00ff00 guibg=NONE
 "  set guifont=Menlo\ Regular:h15
-  set guifont=BigBlueTermPlus_Nerd_Font:h15
-"  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
+#  set guifont=BigBlueTermPlus_Nerd_Font:h15
+  let &guifont = g:gvim_default_font . ":h" . g:gvim_default_font_size
   call GUIstatusline()
   colorscheme t0d0r
 endfunction
