@@ -15,5 +15,6 @@
 .vim/_backup/
 .vim/_temp/
 .vim/pack/
+.vim/plugged/
 bin/knock-*
 galaxy_token
