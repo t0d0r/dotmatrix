@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # exclude these files from creating links
-EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^vim.d|^vim.submodules|^dot.claude$"
+EXCLUDE="^.git$|^.gitignore$|^README.md|^vim.d|^dot.claude$"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
@@ -16,9 +16,9 @@ fi
 
 # self update
 git pull
-# update submodules (vim.d)
-git submodule update --init
-git submodule update --remote --merge
+# install/update vim plugins via vim-plug
+echo "===== vim-plug ====="
+vim -u ~/.vim/vim-plugrc --noplugin +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 #for i in `find . -depth 1 -exec basename {} \;`; do
 for i in `find . -maxdepth 1 -exec basename {} \;`; do
