@@ -6,6 +6,8 @@
 """ nnoremap dr diwh"0p
 """ nnoremap dt diw"0p
 
+source ~/.vim/vim-plugrc
+
 synt on
 
 source ~/.vim/settings.vim " copied from janus/vim/core/before/plugin/settings.vim

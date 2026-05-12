@@ -1,32 +1,54 @@
 // Use https://finicky-kickstart.now.sh to generate basic configuration
 // Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
 
-module.exports = {
-  //defaultBrowser: "Safari Technology Preview",
-  defaultBrowser: "Safari",
+export default {
+  defaultBrowser: "Safari Technology Preview",
+  //defaultBrowser: "Safari",
   options: {
-    logRequests: true,
+    logRequests: false,
   },
   handlers: [
     {
       match: [
-				'*.microsoft.com/*',
-				'*.miro.com/*',
-				'*.safelinks.protection.outlook.com/*',
-				'gitlab.oddspedia.com/*',
-				'jenkins.oddspedia.com/*',
-				'mg.mail.notion.so/*',
-				'miro.com/*',
-				'zabbix.oddspedia/*',
-        '*catenate.bg/*',
-        '*catenate.com/*',
+        'confidential-mail.google.com/*',
+        'docs.google.com/*',
+        'drive.google.com/*',
+        'meet.google.com/*',
+        // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
+      ],
+      browser: "Google Chrome"
+    },
+    {
+      match: [
+        '*.microsoft.com/*',
+        '*.miro.com/*',
+        'miro.com/*',
+        '*.safelinks.protection.outlook.com/*',
+        'gitlab.oddspedia.com/*',
+        'app.asana.com/*',
         'app.hibob.com/*',
-        'catenate1-my.*',
-        'catenate1.sharepoint.com/*',
+        'jenkins.oddspedia.com/*',
+        'mg.mail.notion.so/*',
+        'www.notion.so/winasone/*',
+        'zabbix.oddspedia/*',
         'graylog.oddspedia:9000/*',
         'netman.okta.com/*',
         'netmanagement.atlassian.net/*',
+        '*.latticehq.com/*',
+        '*.sonos.com/*',
+        'calls01.zoom.us/*',
+        'vpn.nssmp.com:9443/*',
+        'identity.getpostman.com/*',
         // finicky.matchDomains(/.*\.catenate.bg/), // use helper function to match on domain only
+      ],
+      browser: "Microsoft Edge"
+    },
+    {
+      match: [
+        '*catenate.bg/*',
+        '*catenate.com/*',
+        'catenate1.sharepoint.com/*',
+        'catenate1-my.*',
       ],
       browser: "Microsoft Edge"
     },
@@ -34,21 +56,12 @@ module.exports = {
       match: [
         "fos-support.com/*",
         "mandrillapp.com/*",
-        "books.1dxr.com/*",
         "docs.1dxr.com/*",
         "*1dxr.com/*",
       ],
-      browser: "Firefox Proxy"
-    },
-		{
-			match: [
-        'confidential-mail.google.com/*',
-        'docs.google.com/*',
-        'drive.google.com/*',
-        'meet.google.com/*',
-			],
-			browser: "Google Chrome"
-		},
+      browser: "Firefox"
+    }
+
 //  {
 //    match: [
 //      // "google.com*", // match google.com urls
