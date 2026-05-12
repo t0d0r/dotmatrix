@@ -1,0 +1,53 @@
+" vim-plug plugin list
+" Run :PlugInstall to install, :PlugUpdate to update, :PlugClean to remove unused
+call plug#begin('~/.vim/plugged')
+
+" Colors & Syntax
+Plug 'rakr/vim-one'
+Plug 'elixir-lang/vim-elixir'
+Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
+Plug 'zainin/vim-mikrotik'
+Plug 'mvgrimes/vim-trackperlvars'
+
+" Navigation
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-scripts/nerdtree-ack'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+
+" Search
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/QFGrep.vim'
+Plug 'vim-scripts/DirDiff.vim'
+
+" Editing
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-commentary'
+Plug 'mattn/emmet-vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-scripts/Rename2'
+Plug 'vim-scripts/timestamp.vim'
+Plug 'powerman/vim-plugin-AnsiEsc'
+
+" Ruby/Rails
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-dispatch'
+Plug 'henrik/vim-ruby-runner'
+Plug 'ngmy/vim-rubocop'
+
+" Org/Wiki
+Plug 'jceb/vim-orgmode'
+Plug 'vimwiki/vimwiki'
+
+" VCS
+Plug 'mhinz/vim-signify'
+
+" Misc
+Plug 'lambdalisue/vim-gista'
+Plug 'vim-scripts/VimRepress'
+Plug 'github/copilot.vim'
+
+call plug#end()

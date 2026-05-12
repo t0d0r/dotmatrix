@@ -54,7 +54,7 @@ set smartcase   " ... unless they contain at least one capital letter
 ""
 
 " TODO: Investigate the precise meaning of these settings
-" set wildmode=list:longest,list:full
+set wildmode=list:longest,list:full
 
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
