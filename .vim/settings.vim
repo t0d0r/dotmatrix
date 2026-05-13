@@ -80,3 +80,6 @@ set wildignore+=*.swp,*~,._*
 
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
+
+let g:netrw_dirhistmax = 1000
+let g:netrw_home = expand("~/.vim/_temp")
