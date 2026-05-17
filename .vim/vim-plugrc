@@ -48,6 +48,6 @@ Plug 'mhinz/vim-signify'
 " Misc
 Plug 'lambdalisue/vim-gista'
 Plug 'vim-scripts/VimRepress'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
