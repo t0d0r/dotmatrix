@@ -10,7 +10,6 @@ if [ ! -f $GOPATH/bin/zabbixctl ]; then
   exit
 fi
 
-$ZBXCTL --version
 if [ -h ${zbxconf} ]; then
   rm ${zbxconf}
 else
@@ -30,7 +29,8 @@ else
   for profile in `find $HOME/.config/ -name "zabbixctl.conf.*" -type f`; do
     basename $profile
     ln -fs $profile ${zbxconf}
-    $ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
+    $ZBXCTL -Tp 2> /dev/null | sort -n | tr -s ' ' | cut -d ' ' -f 3-
+    #$ZBXCTL -Tp 2> /dev/null | tr -s ' ' | cut -d ' ' -f 3-
     echo
   done
 fi

@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Fuzzy-search ~/.ssh/config and show matched lines; then SSH
+
+CONFIG="${SSH_CONFIG:-$HOME/.ssh/config}"
+QUERY="$1"
+
+if [ -z "$QUERY" ]; then
+  echo "Usage: $0 <hostname|ip|text>"
+  exit 1
+fi
+[ -r "$CONFIG" ] || { echo "Config not readable: $CONFIG"; exit 1; }
+
+# Build menu: one entry per Host alias, plus matched line(s) for context
+mapfile -t ENTRIES < <(
+  awk -v q="$QUERY" '
+    BEGIN{IGNORECASE=1}
+    function add_match(a,l) { if (index(l,q)) { if (m[a]!="") m[a]=m[a]"; " l; else m[a]=l; } }
+    /^[ \t]*#/ { next }                                       # skip comments
+    /^[ \t]*Match[ \t]+/ { n=0; delete H; next }              # ignore Match sections
+    /^[ \t]*Host[ \t]+/ {
+      n=0; delete H
+      for (i=2;i<=NF;i++) { if ($i!~/^#/) { H[++n]=$i } }
+      next
+    }
+    n>0 {
+      line=$0
+      gsub(/^[ \t]+/,"",line)
+      for (i=1;i<=n;i++) {
+        a=H[i]
+        blk[a]=(a in blk?blk[a]"\n":"") line
+        # capture common directives for searching & display
+        if (line ~ /^(Hostname|User|IdentityFile|Port)[ \t]+/) info[a]=(a in info?info[a]"; ":"") line
+        add_match(a,line)
+      }
+      next
+    }
+    END{
+      for (a in blk) {
+        if ( index(a,q) || index(info[a],q) || index(blk[a],q) ) {
+          ml=(m[a]!=""?m[a]:info[a])
+          print a "\t" ml
+        }
+      }
+    }
+  ' "$CONFIG" | sort -f
+)
+
+if [ ${#ENTRIES[@]} -eq 0 ]; then
+  echo "No matching hosts found."
+  exit 1
+fi
+
+if [ ${#ENTRIES[@]} -eq 1 ]; then
+  # Only one match -> connect directly
+  HOST_ALIAS=$(printf "%s" "${ENTRIES[0]}" | cut -f1)
+  echo "Connecting to $HOST_ALIAS ..."
+	echo -ne "\033k$HOST_ALIAS\033\\"
+  exec ssh-retry "$HOST_ALIAS"
+else
+  # Multiple matches -> show menu
+  for i in "${!ENTRIES[@]}"; do
+    alias=$(printf "%s" "${ENTRIES[$i]}" | cut -f1)
+    match=$(printf "%s" "${ENTRIES[$i]}" | cut -f2-)
+    echo "$((i+1))) $alias  ->  $match"
+  done
+
+  read -r -p "Select host number: " N
+  if ! [[ "$N" =~ ^[0-9]+$ ]] || [ "$N" -lt 1 ] || [ "$N" -gt ${#ENTRIES[@]} ]; then
+    echo "Invalid choice."
+    exit 1
+  fi
+  HOST_ALIAS=$(printf "%s" "${ENTRIES[$((N-1))]}" | cut -f1)
+  echo "Connecting to $HOST_ALIAS ..."
+	echo -ne "\033k$HOST_ALIAS\033\\"
+  exec ssh-retry "$HOST_ALIAS"
+fi
+
+# never hit because of exec ssh
+#echo -ne "\033kbash\033\\"
