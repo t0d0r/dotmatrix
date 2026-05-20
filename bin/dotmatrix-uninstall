@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# exclude these files from removing links (mirrors dotmatrix-install)
+EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^vim.d|^vim.submodules"
+
+usage() {
+  echo "Please run this script from 'dotmatrix' directory!"
+  echo "Usage:  ./bin/dotmatrix-uninstall"
+  exit
+}
+
+pwd=`pwd`
+if [ `basename ${pwd}` != 'dotmatrix' ] ; then
+  usage
+fi
+
+for i in `find . -maxdepth 1 -exec basename {} \;`; do
+  echo ${i} | egrep ${EXCLUDE} 1> /dev/null && continue
+  target="${HOME}/${i}"
+  if [ -L "${target}" ]; then
+    link_dest=`readlink "${target}"`
+    case "${link_dest}" in
+      ${pwd}*)
+        rm -v "${target}"
+        ;;
+    esac
+  fi
+done
+
+# .config directory
+if [ -d .config ]; then
+  echo "===== .config/ ====="
+  for i in `find .config -mindepth 1 -maxdepth 1 -type d`; do
+    target="${HOME}/${i}"
+    if [ -L "${target}" ]; then
+      link_dest=`readlink "${target}"`
+      case "${link_dest}" in
+        ${pwd}*)
+          rm -v "${target}"
+          ;;
+      esac
+    fi
+  done
+fi
