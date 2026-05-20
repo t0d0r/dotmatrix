@@ -10,3 +10,6 @@ Use Conventional Commit format: `<type>(<scope>): <description>`
 
 Examples: `feat(auth): add oauth2 support` | `fix(api): handle null response`
 
+When answering any question, always end your response with a brief "🔒 Security
+Note:" section highlighting relevant security concerns or recommendations.
+Write same note to documents if created.
