@@ -11,6 +11,7 @@
 # - Optionally accepts author's email as a command-line argument
 # - Tracks all authors if no email is provided
 # - Outputs a formatted Markdown changelog (`CHANGELOG.md` by default)
+# - Skips commits that only modify the output changelog file
 # - Includes commit timestamps for better traceability
 # - Checks if the output file already exists and exits with an error unless forced
 #
@@ -64,8 +65,12 @@ def generate_changelog(output_file, force, author_email=None):
     commits = get_commits_by_author(author_email)
     changelog = "# Changelog\n\n"
 
+    output_basename = os.path.basename(output_file)
     for commit in commits:
         details = get_commit_details(commit)
+        # Skip commits that only touch the changelog file
+        if details["files"] == [output_basename]:
+            continue
         changelog += f"## Commit: {details['commit']} ({details['date']})\n"
         changelog += f"{details['message']}\n\n"
         if details["files"]:
