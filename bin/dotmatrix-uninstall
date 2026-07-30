@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# exclude these files from removing links (mirrors dotmatrix-install)
-EXCLUDE="^.git$|^.gitignore$|^.gitmodules$|^README.md|^vim.d|^vim.submodules"
+# exclude these files from removing links (shared with dotmatrix-install)
+. "$(dirname "$0")/dotmatrix-exclude.sh"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
@@ -15,7 +15,7 @@ if [ `basename ${pwd}` != 'dotmatrix' ] ; then
 fi
 
 for i in `find . -maxdepth 1 -exec basename {} \;`; do
-  echo ${i} | egrep ${EXCLUDE} 1> /dev/null && continue
+  echo "${i}" | grep -qE "${EXCLUDE}" && continue
   target="${HOME}/${i}"
   if [ -L "${target}" ]; then
     link_dest=`readlink "${target}"`
@@ -41,4 +41,22 @@ if [ -d .config ]; then
       esac
     fi
   done
+fi
+
+# dot.claude -> ~/.claude (contents were linked individually, not the dir)
+if [ -d dot.claude ]; then
+  echo "===== .claude/ ====="
+  for i in `find dot.claude -mindepth 1 -maxdepth 1`; do
+    target="${HOME}/.claude/`basename $i`"
+    if [ -L "${target}" ]; then
+      link_dest=`readlink "${target}"`
+      case "${link_dest}" in
+        ${pwd}*)
+          rm -v "${target}"
+          ;;
+      esac
+    fi
+  done
+  # remove ~/.claude only if we emptied it
+  rmdir ${HOME}/.claude 2>/dev/null && echo "removed empty ${HOME}/.claude"
 fi

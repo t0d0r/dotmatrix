@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# exclude these files from creating links
-EXCLUDE="^.git$|^.gitignore$|^README.md|^vim.d|^dot.claude$"
+# exclude these files from creating links (shared with dotmatrix-uninstall)
+. "$(dirname "$0")/dotmatrix-exclude.sh"
 
 usage() {
   echo "Please run this script from 'dotmatrix' directory!"
@@ -22,7 +22,7 @@ vim -u ~/.vim/vim-plugrc --noplugin +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 #for i in `find . -depth 1 -exec basename {} \;`; do
 for i in `find . -maxdepth 1 -exec basename {} \;`; do
-  echo ${i} | egrep ${EXCLUDE} 1> /dev/null && echo "skipping ${i}" &&  continue
+  echo "${i}" | grep -qE "${EXCLUDE}" && echo "skipping ${i}" && continue
   if [ -f ${HOME}/${i} -o -d ${HOME}/${i} -o -L  ${HOME}/${i} ]; then
     #echo "${HOME}/${i} already exists" && ls -ald ${HOME}/${i}
     ls -ald ${HOME}/${i} | awk '{ print $9,$10,$11 }' | grep -v ${pwd}
