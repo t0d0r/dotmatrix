@@ -1,0 +1,32 @@
+name: shellcheck
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Check shell scripts
+        run: |
+          set -eu
+          # every tracked file with a sh/bash shebang, minus the vendored ones
+          grep -vE '^\s*(#|$)' .shellcheck-exclude | sed 's/[[:space:]]*$//' | sort -u > /tmp/excluded
+          git ls-files -z |
+            while IFS= read -r -d '' f; do
+              [ -f "$f" ] || continue
+              head -n1 "$f" | grep -qE '^#!.*/(env +)?(ba)?sh\b' && printf '%s\n' "$f"
+            done | sort -u > /tmp/all
+          comm -23 /tmp/all /tmp/excluded > /tmp/tocheck
+          echo "checking $(wc -l < /tmp/tocheck) script(s):"
+          cat /tmp/tocheck
+          # --severity=error keeps the gate on real breakage, not style nits
+          xargs -r -a /tmp/tocheck shellcheck --severity=error --external-sources
