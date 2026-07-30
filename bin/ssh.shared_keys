@@ -1,4 +1,3 @@
-
 #!/bin/sh
 html_path=~/public_html/ssh-keys
 
