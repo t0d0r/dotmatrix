@@ -19,4 +19,9 @@
 !.vim/pack/colors/start/t0d0r
 .vim/plugged/
 bin/knock-*
+# Plaintext of the private overlay (see bin/private-seal). The paths
+# themselves are secret, so they are listed in .git/info/exclude, which
+# is local-only -- never name them here, this file is public.
+.private-manifest
+private.tar.gz
 galaxy_token

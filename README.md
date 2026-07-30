@@ -39,6 +39,27 @@ If you prefer zsh, here is how to install it:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+# Private overlay
+
+Some scripts here reference hosts and infrastructure that are not mine to
+publish. They are not in this repo in plaintext -- they ship as a single
+encrypted archive, `private.tar.gz.gpg`, and are restored to their normal
+paths on install, so anything calling them keeps working:
+
+```bash
+  ./bin/private-unseal        # decrypt (dotmatrix-install runs this)
+  ./bin/private-seal          # re-encrypt after editing, then commit the .gpg
+```
+
+`bin/private-seal` reads the path list from `.private-manifest`. Both the
+manifest and the decrypted files stay out of git via `.git/info/exclude`,
+which `private-unseal` maintains -- deliberately not `.gitignore`, since
+that file is public and the paths themselves are the thing being hidden.
+
+Encryption is `gpg --symmetric --cipher-algo AES256`; you are prompted for
+the passphrase. One archive rather than per-file `.gpg`s, so no filename
+discloses what it protects.
+
 # Notes
   * .netrc - part of goobook mutt helper
   * `bin/` is symlinked to `~/bin` and lands on `$PATH`, so anything added there

@@ -5,4 +5,5 @@
 #   - vim.d / vim.submodules      : aliases of .vim, handled by vim-plug
 #   - dot.claude                  : its *contents* are linked into ~/.claude
 #   - brew.leaves, cve_monitor    : repo data, not dotfiles
-EXCLUDE='^\.$|^\.git$|^\.github$|^\.gitignore$|^\.gitmodules$|^README\.md$|^vim\.d$|^vim\.submodules$|^dot\.claude$|^brew\.leaves$|^cve_monitor$'
+#   - private.tar.gz.gpg, .private-manifest, .shellcheck-exclude : repo data
+EXCLUDE='^\.$|^\.git$|^\.github$|^\.gitignore$|^\.gitmodules$|^README\.md$|^vim\.d$|^vim\.submodules$|^dot\.claude$|^brew\.leaves$|^cve_monitor$|^private\.tar\.gz(\.gpg)?$|^\.private-manifest$|^\.shellcheck-exclude$'
