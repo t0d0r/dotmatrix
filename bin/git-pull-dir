@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+#/ Usage: git-pull-dir [-d <depth>] [<dir>] [-- <git-pull-args>...]
+#/ Run `git pull` in every git repo found under <dir> (default: .).
+#/
+#/ Options:
+#/   -d, --depth <n>   How deep to look for .git (default: 2)
+#/   -h, --help        Show this message
+#/
+#/ Examples:
+#/   git-pull-dir                    # pull every repo below the current dir
+#/   git-pull-dir ~/work/github      # pull every repo below another dir
+#/   git-pull-dir -- --ff-only       # forward flags to git pull
+#/
+#/ Repos whose pull fails are listed at the end and cause a non-zero exit.
+set -uo pipefail
+
+# bail out with message to stderr and exit status 1
+die() {
+    echo "$(basename "$0"):" "$@" 1>&2
+    exit 1
+}
+
+usage() {
+    grep '^#/' <"$0" | cut -c4-
+}
+
+root=
+depth=2
+
+while [ $# -gt 0 ]
+do
+    case "$1" in
+        -h|--help)  usage; exit 2 ;;
+        -d|--depth) depth="$2"; shift 2 ;;
+        --)         shift; break ;;
+        -*)         usage 1>&2; die "unknown option: $1" ;;
+        *)
+            test -z "$root" || die "only one <dir> may be given"
+            root="$1"; shift
+            ;;
+    esac
+done
+
+root="${root:-.}"
+test -d "$root" || die "not a directory: $root"
+
+failed=()
+
+while IFS= read -r -d '' gitpath
+do
+    dir=$(dirname "$gitpath")
+    echo "$dir"
+    ( cd "$dir" && git pull "$@" ) || failed+=("$dir")
+done < <(find "$root" -maxdepth "$depth" -name .git -print0)
+
+test ${#failed[@]} -eq 0 || {
+    echo "$(basename "$0"): ${#failed[@]} repo(s) failed to pull:" 1>&2
+    printf '  %s\n' "${failed[@]}" 1>&2
+    exit 1
+}
