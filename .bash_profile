@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+# sourced by bash; uses bash-only syntax ([[ ]], function keyword)
 
 # workaround for cvs to use ssh as transfer protocol
 PATH="$HOME/bin:$PATH"
@@ -37,8 +38,6 @@ case "$-" in
 #	 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 	# bash completion
 #	 [[ -s "/opt/local/etc/bash_completion" ]] && source /opt/local/etc/bash_completion
-	# mercurial completion
-	[[ -s "$HOME/.bash_completion_hg" ]] && source "$HOME/.bash_completion_hg"
 	# fortune
 	[[ -s "/usr/local/bin/fortune" ]] && echo && /usr/local/bin/fortune
 	# rbenv /rvm replacement/
