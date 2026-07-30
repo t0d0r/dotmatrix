@@ -1,0 +1,27 @@
+# Example site configuration for bin/ssh.config.
+#
+# Copy to ~/.ssh/.sshconfigrc and fill in your own values:
+#
+#   install -m 600 bin/ssh.config.rc.example ~/.ssh/.sshconfigrc
+#
+# Kept outside the repo on purpose: these values name real hosts. Every
+# setting is optional -- unset ones just disable the feature that uses them.
+
+# Map short hostnames (as `hostname -s` reports them) to the canonical name
+# used under ~/.ssh/hosts/. Space separated, short=canonical.
+SSHCFG_HOST_ALIASES="laptop=laptop-example desktop=desktop-example"
+
+# Only this canonical hostname publishes public keys and bootstrap scripts.
+# Leave empty to never publish from anywhere.
+SSHCFG_PUBLISH_HOST="laptop-example"
+
+# Jump host. Its own ProxyJump line is commented out when the config is
+# generated on SSHCFG_PUBLISH_HOST, so it does not proxy through itself.
+SSHCFG_BASTION="bastion.example.org"
+
+# Where ~/public_html/ssh-keys and ~/public_html/add-<user> are served from.
+SSHCFG_KEYS_URL="https://bastion.example.org/~user/ssh-keys"
+SSHCFG_ADMIN_URL="https://bastion.example.org/~user/add-admin"
+
+# Unprivileged admin account created by the generated bootstrap scripts.
+SSHCFG_ADMIN_USER="admin"
