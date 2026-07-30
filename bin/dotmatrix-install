@@ -16,6 +16,19 @@ fi
 
 # self update
 git pull
+
+# host/client specific scripts, shipped encrypted (see bin/private-seal).
+# They restore to their own paths, so ~/bin/<script> keeps working.
+if [ -f private.tar.gz.gpg ]; then
+  echo "===== private overlay ====="
+  if ! command -v gpg > /dev/null; then
+    echo "gpg not installed -- skipping, run bin/private-unseal later"
+  else
+    # -f is deliberately not passed: never clobber local edits unasked
+    ./bin/private-unseal || echo "not unsealed -- run bin/private-unseal by hand"
+  fi
+fi
+
 # install/update vim plugins via vim-plug
 echo "===== vim-plug ====="
 vim -u ~/.vim/vim-plugrc --noplugin +PlugUpgrade +PlugInstall +PlugUpdate +qall

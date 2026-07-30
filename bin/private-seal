@@ -1,0 +1,61 @@
+#!/bin/sh
+#/ Usage: private-seal
+#/ Encrypt the private overlay into private.tar.gz.gpg for committing.
+#/
+#/ Some scripts here name clients, internal hosts or private IPs and must
+#/ not be published. They stay at their natural paths (bin/foo, .config/…)
+#/ so nothing that calls them has to change; they are kept out of git by
+#/ .git/info/exclude, and shipped as one symmetrically encrypted archive.
+#/
+#/ One blob, so no filename leaks a client name -- which is also why the
+#/ path list lives in .private-manifest (sealed with the files) instead of
+#/ in the public .gitignore.
+#/
+#/ Run after editing anything listed in .private-manifest, then commit the
+#/ .gpg. Unseal with private-unseal (dotmatrix-install does it for you).
+set -eu
+
+usage() {
+    grep '^#/' <"$0" | cut -c4-
+}
+
+die() {
+    echo "$(basename "$0"):" "$@" 1>&2
+    exit 1
+}
+
+[ "${1:-}" = "--help" ] && { usage; exit 2; }
+
+# always operate on the repo this script lives in, wherever we were invoked from
+repo=$(cd "$(dirname "$0")/.." && pwd)
+manifest="${repo}/.private-manifest"
+sealed="${repo}/private.tar.gz.gpg"
+
+command -v gpg >/dev/null || die "gpg is not installed"
+[ -f "$manifest" ] || die "no .private-manifest -- nothing to seal"
+
+# strip comments/blanks; verify every listed path actually exists before
+# encrypting, so a typo can't silently drop a file from the archive
+list=$(mktemp "${TMPDIR:-/tmp}/seal.XXXXXXXX") || die "mktemp failed"
+trap 'rm -f "$list"' EXIT INT TERM
+echo ".private-manifest" > "$list"
+grep -vE '^[[:space:]]*(#|$)' "$manifest" >> "$list" || true
+grep -qv '^\.private-manifest$' "$list" || die "manifest lists no paths"
+
+# redirect (not a pipe) so `missing` survives the loop
+missing=0
+while read -r p; do
+    [ -e "${repo}/${p}" ] || { echo "missing: $p" 1>&2; missing=$((missing + 1)); }
+done < "$list"
+[ "$missing" -eq 0 ] || die "$missing path(s) in the manifest do not exist"
+
+count=$(grep -c . "$list")
+echo "sealing ${count} path(s) listed in .private-manifest"
+
+# -c is symmetric: gpg prompts for the passphrase (twice on the way in).
+# --yes so re-sealing overwrites the previous archive.
+tar -czf - -C "$repo" -T "$list" |
+    gpg --symmetric --cipher-algo AES256 --yes --output "$sealed"
+
+echo "wrote private.tar.gz.gpg"
+echo "remember: git add private.tar.gz.gpg && git commit"

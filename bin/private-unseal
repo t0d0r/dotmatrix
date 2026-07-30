@@ -1,0 +1,76 @@
+#!/bin/sh
+#/ Usage: private-unseal [-f]
+#/ Decrypt private.tar.gz.gpg back over the repo.
+#/
+#/ Files are restored to their own paths (bin/foo, .config/…), and every
+#/ restored path is registered in .git/info/exclude so it stays out of
+#/ git -- that list is local-only, unlike .gitignore, so the paths
+#/ themselves never become public.
+#/
+#/ Refuses to overwrite existing files unless -f is given, so a stale
+#/ archive can never clobber local edits. Called by dotmatrix-install.
+set -eu
+
+usage() {
+    grep '^#/' <"$0" | cut -c4-
+}
+
+die() {
+    echo "$(basename "$0"):" "$@" 1>&2
+    exit 1
+}
+
+force=no
+case "${1:-}" in
+    --help) usage; exit 2 ;;
+    -f|--force) force=yes ;;
+    "") ;;
+    *) die "unknown option: $1" ;;
+esac
+
+repo=$(cd "$(dirname "$0")/.." && pwd)
+sealed="${repo}/private.tar.gz.gpg"
+excludes="${repo}/.git/info/exclude"
+marker="### private overlay -- managed by private-unseal"
+
+command -v gpg >/dev/null || die "gpg is not installed"
+[ -f "$sealed" ] || die "no archive to unseal: private.tar.gz.gpg"
+
+# decrypt to a temp file first: a wrong passphrase must not leave a
+# half-extracted tree behind
+tmp=$(mktemp "${TMPDIR:-/tmp}/private.XXXXXXXX") || die "mktemp failed"
+trap 'rm -f "$tmp"' EXIT INT TERM
+
+# --yes: $tmp already exists (mktemp made it), gpg would refuse otherwise
+gpg --quiet --yes --decrypt --output "$tmp" "$sealed" || die "decryption failed"
+
+# refuse to clobber anything that already exists, unless forced
+if [ "$force" = no ]; then
+    clash=0
+    for p in $(tar -tzf "$tmp"); do
+        case "$p" in */) continue ;; esac
+        [ -e "${repo}/${p}" ] || continue
+        echo "exists: $p" 1>&2
+        clash=$((clash + 1))
+    done
+    [ "$clash" -eq 0 ] || die "$clash file(s) already present -- use -f to overwrite"
+fi
+
+tar -xzf "$tmp" -C "$repo"
+
+# keep the restored paths out of git, locally
+if [ -d "${repo}/.git" ]; then
+    mkdir -p "$(dirname "$excludes")"
+    touch "$excludes"
+    # drop the previous block, then rewrite it from the archive listing
+    if grep -qF "$marker" "$excludes" 2>/dev/null; then
+        sed "/^${marker}\$/,\$d" "$excludes" > "${excludes}.new"
+        mv "${excludes}.new" "$excludes"
+    fi
+    {
+        echo "$marker"
+        tar -tzf "$tmp" | sed 's|/$||' | grep -v '^$' | sort -u
+    } >> "$excludes"
+fi
+
+echo "unsealed $(tar -tzf "$tmp" | grep -vc '/$') file(s)"
