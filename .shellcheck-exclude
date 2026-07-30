@@ -1,0 +1,20 @@
+# Scripts vendored from upstream projects -- not ours to fix, skipped by CI.
+# One path per line, '#' starts a comment.
+bin/cht.sh
+bin/git-sh
+# Ryan Tomayko's git tools (github.com/rtomayko/dotfiles)
+bin/git-amend
+bin/git-big-object-report
+bin/git-cut-branch
+bin/git-find-object
+bin/git-incoming
+bin/git-ls-object-refs
+bin/git-object-deflate
+bin/git-outgoing
+bin/git-prune-merged-branches
+bin/git-pruneall
+bin/git-rel
+bin/git-reup
+bin/git-thanks
+bin/git-track
+bin/git-up
