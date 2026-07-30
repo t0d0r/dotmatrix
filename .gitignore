@@ -14,7 +14,9 @@
 .unison/
 .vim/_backup/
 .vim/_temp/
-.vim/pack/
+# ignore packages dropped into pack/, except the colorschemes we track
+.vim/pack/*/start/*
+!.vim/pack/colors/start/t0d0r
 .vim/plugged/
 bin/knock-*
 galaxy_token
