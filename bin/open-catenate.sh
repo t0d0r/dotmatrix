@@ -1,3 +1,4 @@
+#!/bin/sh
 knock-catenate open dev.catenate.bg
 knock-catenate open servicedesk.catenate.bg
 knock-catenate open zabbix.catenate.com

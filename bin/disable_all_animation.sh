@@ -1,3 +1,6 @@
+#!/bin/sh
+# macOS only -- disable UI animations via `defaults`.
+
 # opening and closing windows and popovers
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
