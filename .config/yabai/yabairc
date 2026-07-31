@@ -47,12 +47,12 @@ yabai -m rule --add app="^(Linux Minecraft Launcher|Minecraft|Launcher Settings)
 
 # Space labels
 yabai -m space 1 --label "Comms"
-yabai -m space 2 --label "Catenate"
-yabai -m space 3 --label "REDACTED"
+yabai -m space 2 --label "Work"
+yabai -m space 3 --label "Side"
 yabai -m space 4 --label "Media"
 yabai -m space 5 --label "Mail"
-yabai -m space 6 --label "Catenate Two"
-yabai -m space 7 --label "REDACTED Two"
+yabai -m space 6 --label "Work Two"
+yabai -m space 7 --label "Side Two"
 yabai -m space 8 --label "Float"
 yabai -m space 9 --label "Secondary"
 

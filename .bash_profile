@@ -51,7 +51,8 @@ case "$-" in
 	export PATH=$PATH:$GOPATH/bin
 	[[ -f ~/.bashrc ]] && source ~/.bashrc
 
-	[[ `hostname` = 'do.linuxfan.org' ]] && last | head
+	# show recent logins on the server; MY_SERVER_HOST is set in ~/.bash_env
+	[[ -n "${MY_SERVER_HOST:-}" && `hostname` = "${MY_SERVER_HOST}" ]] && last | head
 
 	if [ -d ~/.profile.d ]; then
 	  for i in ~/.profile.d/*.sh; do
