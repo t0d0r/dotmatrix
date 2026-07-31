@@ -29,10 +29,6 @@ if [ -f private.tar.gz.gpg ]; then
   fi
 fi
 
-# install/update vim plugins via vim-plug
-echo "===== vim-plug ====="
-vim -u ~/.vim/vim-plugrc --noplugin +PlugUpgrade +PlugInstall +PlugUpdate +qall
-
 #for i in `find . -depth 1 -exec basename {} \;`; do
 for i in `find . -maxdepth 1 -exec basename {} \;`; do
   echo "${i}" | grep -qE "${EXCLUDE}" && echo "skipping ${i}" && continue
@@ -70,4 +66,20 @@ if [ -d dot.claude ]; then
 		fi
 		ln -vs ${pwd}/$i ${target}
 	done
+fi
+
+# install/update vim plugins via vim-plug.
+# Must run *after* the symlinks above: on a fresh machine ~/.vim does not
+# exist until then, and vim would stop at "Press ENTER" on the missing rc,
+# hanging the whole install. </dev/null and --not-a-term keep it from
+# blocking even if something else goes wrong.
+echo "===== vim-plug ====="
+if ! command -v vim > /dev/null; then
+	echo "vim not installed -- skipping plugin install"
+elif [ ! -r ${HOME}/.vim/vim-plugrc ]; then
+	echo "${HOME}/.vim/vim-plugrc not readable -- skipping plugin install"
+else
+	vim -u ${HOME}/.vim/vim-plugrc --noplugin --not-a-term \
+		+PlugUpgrade +PlugInstall +PlugUpdate +qall < /dev/null ||
+		echo "vim-plug step failed -- run it by hand"
 fi

@@ -18,6 +18,8 @@
 .vim/pack/*/start/*
 !.vim/pack/colors/start/t0d0r
 .vim/plugged/
+# PlugUpgrade rewrites plug.vim and leaves the previous copy behind
+.vim/autoload/plug.vim.old
 bin/knock-*
 # Plaintext of the private overlay (see bin/private-seal). The paths
 # themselves are secret, so they are listed in .git/info/exclude, which
