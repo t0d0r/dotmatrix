@@ -31,7 +31,7 @@ set mail_check=30000
 set folder = "~/.mail"
 #set folder         = "imaps://imap.gmail.com:993"
 #set spoolfile       = "+INBOX"
-#set spoolfile="imaps://todor.dragnev@catenate.com@imap.gmail.com:993/INBOX"
+#set spoolfile="imaps://user@example.com@imap.example.com:993/INBOX"
 
 set mbox            = "+archive"
 set postponed ="+[Gmail]/Drafts"
