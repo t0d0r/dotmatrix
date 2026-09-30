@@ -49,7 +49,7 @@ reproduced in this document.
 | 17 | Low | `git://` / `http://` fetches, `curl \| sh` in README | Fixed |
 | 18 | Low | `terraform.docker` mounts `~/.ssh` read-write | Fixed (ro) |
 | 19 | Low | `borg.REDACTED` continues after failed rsync; passphrase in env | Fixed |
-| 20 | Low | Predictable `/tmp` log (`bin/checkup.sh`), `ssh $@` unquoted (`bin/ssh-retry`) | Fixed |
+| 20 | Low | Predictable `/tmp` log (`bin/checkup.sh`), `ssh $@` unquoted (`bin/ssh-retry`) | Fixed; `checkup.sh` later removed |
 | 21 | Low | `bin/timehack`, `bin/cht.sh`, `bin/vimr`, `.mutt/offlineimap.py` | Removed |
 | — | Low/Info | Items deliberately left unchanged | See [Not changed](#not-changed-deliberately) |
 
@@ -275,7 +275,9 @@ its cache. Images are not pinned by digest; see below.
   - The passphrase is supplied via `BORG_PASSCOMMAND` instead of
     `BORG_PASSPHRASE=$(cat …)` on each command.
 - **`bin/checkup.sh`:** the log is created with `mktemp` instead of a
-  predictable `/tmp/checkup_<epoch>.log`.
+  predictable `/tmp/checkup_<epoch>.log`. The script was later moved to the
+  private overlay on `master` and then removed entirely, along with its
+  entries in `.private-manifest`.
 - **`bin/ssh-retry`:** `ssh "$@"` is quoted, and the loop stops after a clean
   exit.
 
