@@ -30,9 +30,9 @@ reproduced in this document.
 
 | # | Severity | Finding | Status |
 |---|----------|---------|--------|
-| 1 | High | Credentials in public git history (`.netrc` 2014, `blog.vim` 2012–2015) | **Manual** — rotate; optional history purge |
+| 1 | High | Credentials in public git history (`.netrc` 2014, `blog.vim` 2012–2015) | Rotated long ago (confirmed by owner); optional history purge |
 | 2 | Medium | `git sh` tab completion executes `$(…)` in fetched ref/file names | Fixed + test |
-| 3 | Medium | Hardcoded iodine password, passed via argv (`bin/ioclient`) | Fixed + test; **rotate** |
+| 3 | Medium | Hardcoded iodine password, passed via argv (`bin/ioclient`) | Script removed; password already rotated |
 | 4 | Medium | Unvalidated `.pub` content embedded in generated root script (`bin/ssh.config`) | Fixed + test |
 | 5 | Medium | SMS API credentials over plain HTTP and in argv (`bin/sms`) | Fixed + test |
 | 6 | Medium | Ansible `host_key_checking = False` | Fixed + test |
@@ -66,7 +66,7 @@ excluded them. Deleting a file later does not remove it from history.
 - `.janus/blog/plugin/blog.vim`, present from `6f7c50a` to `aa2052f`, held a
   WordPress XML-RPC password, which the plugin also sent over `http://`.
 
-**Fix.** This cannot be fixed in code. See [Manual actions](#manual-actions-required).
+**Fix.** This cannot be fixed in code. The owner confirmed (2026-09-30) that all of these credentials were rotated long ago, so they are no longer usable. Purging them from history is optional.
 
 ### 2. `git sh` completion code execution — `bin/git-sh`
 
@@ -105,9 +105,7 @@ completion functions, and checks two things:
 **Usage note.** The script runs as root. `sudo` drops the environment by
 default, so use `sudo -E` or `sudo --preserve-env=IODINE_PASS`.
 
-**Test.** A static check that no `IOPASS="…"` literal remains.
-
-**Manual.** Rotate the iodined password. The old value stays in history.
+**Update.** `bin/ioclient` was later moved to the encrypted private overlay on `master`, and then removed entirely, along with its entries in `.private-manifest`. Its test check was dropped. The old password in history had already been rotated.
 
 ### 4. Root bootstrap script injection — `bin/ssh.config` (also `bin/newssh`)
 
@@ -299,14 +297,9 @@ symlinked into `$HOME`.
 
 ## Manual actions required
 
-1. **Rotate the leaked credentials.** Treat all of them as permanently
-   exposed, whether or not you purge history.
-   - The Google account password(s) from the 2014 `.netrc`: check whether they
-     are still in use or reused anywhere.
-   - The Heroku API credentials from the same file: revoke them in the Heroku
-     dashboard.
-   - The WordPress password from `blog.vim`.
-   - The iodined tunnel password from `bin/ioclient`: change it on the server.
+1. ~~**Rotate the leaked credentials.**~~ Done. The owner confirmed that the
+   `.netrc` (Google, Heroku), WordPress and iodine credentials were rotated
+   long ago.
 2. **Optional history purge**, after rotation. This rewrites history, needs a
    force-push, and does not remove existing clones or forks.
    ```sh
@@ -350,9 +343,8 @@ are not installed, so none of them were run.
 
 ## 🔒 Security Note
 
-The most urgent items are outside the code. Removing a secret from the
-current tree does not un-publish it. **Rotate** the 2014 `.netrc` credentials,
-the WordPress password and the iodine tunnel password, whether or not you
-rewrite history. Also enable 2FA on the GitHub account: anyone who can push
-to this repository gets code execution on every machine that runs
-`bin/dotmatrix-install`.
+The credentials found in history were rotated long ago, so what remains is
+cleanup (an optional history purge) and prevention. Add a secret-scanning
+pre-commit hook so a new secret never reaches the public repo. Enable 2FA on
+the GitHub account: anyone who can push to this repository gets code
+execution on every machine that runs `bin/dotmatrix-install`.
