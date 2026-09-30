@@ -47,10 +47,10 @@ loop do
   end
 end
 
-url = URI.parse('http://www.websequencediagrams.com/index.php')
+url = URI.parse('https://www.websequencediagrams.com/index.php')
 response = Net::HTTP.post_form(url, 'style' => style, 'message' => text)
 
 if response.body =~ /img: "(.+)"/
-  connection = open("http://www.websequencediagrams.com/#$1")
+  connection = URI.open("https://www.websequencediagrams.com/#$1")
   $stdout.write(connection.read)
 end
