@@ -7,7 +7,7 @@ Dot files from my Mac OS X.
 ```bash
   mkdir github
   cd github
-  git clone git://github.com/t0d0r/dotmatrix.git
+  git clone https://github.com/t0d0r/dotmatrix.git
   cd dotmatrix && ./bin/dotmatrix-install
 ```
 
@@ -15,7 +15,9 @@ Dot files from my Mac OS X.
 If you prefer zsh, here is how to install it:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+curl -fsSL -o /tmp/ohmyzsh-install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+less /tmp/ohmyzsh-install.sh   # review before running
+sh /tmp/ohmyzsh-install.sh
 ```
 
 It is possible git submodule commands to fail, try [this to solve it](http://stackoverflow.com/questions/14768509/unable-to-checkout-git-submodule-path)

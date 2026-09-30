@@ -13,7 +13,7 @@ else
 	repo=$(basename $(pwd))
 fi
 
-command="git remote add $username git://github.com/$username/$repo.git"
+command="git remote add $username https://github.com/$username/$repo.git"
 echo $command
 $command
 
