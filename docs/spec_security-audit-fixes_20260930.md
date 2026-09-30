@@ -50,6 +50,7 @@ reproduced in this document.
 | 18 | Low | `terraform.docker` mounts `~/.ssh` read-write | Fixed (ro) |
 | 19 | Low | `borg.REDACTED` continues after failed rsync; passphrase in env | Fixed |
 | 20 | Low | Predictable `/tmp` log (`bin/checkup.sh`), `ssh $@` unquoted (`bin/ssh-retry`) | Fixed |
+| 21 | Low | `bin/timehack`, `bin/cht.sh`, `bin/vimr`, `.mutt/offlineimap.py` | Removed |
 | — | Low/Info | Items deliberately left unchanged | See [Not changed](#not-changed-deliberately) |
 
 ## Fixes in detail
@@ -280,6 +281,17 @@ its cache. Images are not pinned by digest; see below.
 - **`bin/ssh-retry`:** `ssh "$@"` is quoted, and the loop stops after a clean
   exit.
 
+### 21. Removed scripts
+
+These scripts were deleted instead of being patched:
+
+| File | Why it was removed |
+|------|--------------------|
+| `bin/timehack` | Rolled the system clock back to 2005 and recommended a NOPASSWD sudo rule for `date`. TLS certificate expiry checks and TOTP are unreliable while the clock is wrong. The `Sketch.app` aliases in `.config/fish/conf.d/t0d0r.fish` and `.profile.d/aliases.sh` were removed with it. |
+| `bin/cht.sh` | Vendored client. Its `--shell` mode ran `eval curl` on the query, and its self-update overwrote the script from the network with no signature check. |
+| `bin/vimr` | Vendored VimR launcher. `--cur-env` wrote the whole environment to a temp file before restricting its permissions. |
+| `.mutt/offlineimap.py` | Unused helper copied from someone else's config. It called `sudo -u sjl` with `shell=True`. The mutt macros invoke the `offlineimap` binary, not this file. |
+
 ### Supporting change
 
 `bin/dotmatrix-install` now excludes `docs/` and `tests/`, so they are not
@@ -314,11 +326,7 @@ symlinked into `$HOME`.
 
 | Item | Reason |
 |------|--------|
-| `bin/timehack` (NOPASSWD `date` sudo rule suggestion, clock set to 2005) | Changing the clock is the tool's purpose. Documented risk: TLS certificate expiry checks and TOTP are unreliable while it runs. |
-| `bin/cht.sh` `eval curl` in `--shell` mode | Vendored upstream script. Only input you type yourself is affected; clipboard input is already sanitised. Fix upstream or replace the script. |
-| `bin/vimr` env dump chmod race | Vendored VimR code. On macOS the file lives in the per-user `$TMPDIR` (0700). |
 | Docker images `:latest` (`hashicorp/terraform`, `ghcr.io/anomalyco/opencode`) | Pinning needs current digests, which requires network access. Also confirm that `anomalyco` is the official opencode publisher. |
-| `.mutt/offlineimap.py` (`sudo -u sjl`, `shell=True`) | Not referenced anywhere. Recommend deleting it; left for the owner to decide. |
 | `.mailcap` `%{charset}` in a shell pipeline | mutt uses `~/.mutt/mailcap`, not this file. Only other mailcap consumers are affected. |
 | `cve_monitor/setup.sh` `notify.sh` AppleScript built from `$1`/`$2` | Not injectable today (the message holds counts only). Must be switched to `on run argv` before any feed text goes into notifications. |
 | Remaining ~2400 lines of the vendored git completion in `git-sh` | Both `compgen -W` sites are fixed. Replacing it with the current `git-completion.bash` is still the long-term recommendation. |
