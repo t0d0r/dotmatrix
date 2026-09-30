@@ -15,8 +15,12 @@ sed 's|^\([0-9a-f]\{40\}\)|commit referenced from at least one ref: \1|'
 
 for ref in $(git for-each-ref --format='%(refname)')
 do
+    # ref names come from fetched repos; pass them to awk as data, never
+    # splice them into a sed script (GNU sed's `e` flag would run them)
     (git rev-list "$ref" | grep "$o") 2>&1 |
-    sed "s|^[0-9a-f]\{40\}$|commit referenced from $ref|"
+    awk -v ref="$ref" '
+        length($0) == 40 && $0 ~ /^[0-9a-f]+$/ { print "commit referenced from " ref; next }
+        { print }'
 done
 
 for p in $(git rev-list --all)
