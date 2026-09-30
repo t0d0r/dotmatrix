@@ -28,7 +28,6 @@ alias mvim='mvim --servername `basename $PWD` --remote-tab-silent'
 
 #alias +='pushd .'
 #alias ++='popd'
-alias Sketch.app='timehack Sketch'
 alias aea='ansible all -m shell -o -a '
 alias be="bundle exec"
 alias beep='echo -en "\007"'

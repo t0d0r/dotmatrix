@@ -25,7 +25,8 @@ set shell=/bin/bash
 " disable autowrap when cursor reach textwidth size
 set formatoptions-=t
 colorscheme koehler
-set modeline
+" modelines let any opened file (mail, cloned repos) change options
+set nomodeline
 set hls
 
 " commands
