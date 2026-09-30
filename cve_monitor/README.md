@@ -69,7 +69,7 @@ cve-monitor --config-edit    # Edit config
 
 Set API key:
 ```bash
-cve-monitor --api-key "your-key-here"
+cve-monitor --api-key -   # paste the key, then Enter (keeps it out of ps/history)
 ```
 
 ## Monitored Services
@@ -226,7 +226,7 @@ cve-monitor --json
 
 **Rate limiting (HTTP 429):**
 ```bash
-cve-monitor --api-key "your-key"
+cve-monitor --api-key -   # paste the key, then Enter
 ```
 
 **No CVEs found:**

@@ -142,11 +142,14 @@ setup_api_key() {
     read -p "Do you have an NVD API key? (y/n): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        read -p "Enter your API key: " api_key
-        "$CVE_MONITOR" --api-key "$api_key"
+        read -s -p "Enter your API key: " api_key
+        echo
+        # pass the key on stdin so it never appears in the process list
+        printf '%s\n' "$api_key" | "$CVE_MONITOR" --api-key -
+        unset api_key
         echo "✓ API key configured"
     else
-        echo "ℹ You can add it later with: cve-monitor --api-key YOUR_KEY"
+        echo "ℹ You can add it later with: cve-monitor --api-key -  (then paste the key)"
     fi
 }
 

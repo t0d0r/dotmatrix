@@ -59,8 +59,7 @@ if status --is-interactive
 	alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'''
 	alias weather='curl -s wttr.in | head -7'
 	alias rm=rmtrash
-	alias Sketch.app='timehack Sketch'
-	alias terraform.docker='docker run --rm -it -v .:/workspace -v /Users/$USER/.ssh:/root/.ssh -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=$AWS_PROFILE hashicorp/terraform'
+	alias terraform.docker='docker run --rm -it -v .:/workspace -v $HOME/.ssh:/root/.ssh:ro -v ~/.aws:/root/.aws -w /workspace -e AWS_PROFILE=$AWS_PROFILE hashicorp/terraform'
 	alias opencode='docker run --rm -it -v ~/.local/share/opencode:/root/.local/share/opencode -v "$(pwd)":/workspace -w /workspace -e HOST_PWD=(pwd) ghcr.io/anomalyco/opencode:latest'
 
 	#alias rbenv="CC=/usr/local/bin/gcc-4.2 rbenv"

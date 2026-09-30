@@ -36,7 +36,9 @@ used.
 If you prefer zsh, here is how to install it:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+curl -fsSL -o /tmp/ohmyzsh-install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+less /tmp/ohmyzsh-install.sh   # review before running
+sh /tmp/ohmyzsh-install.sh
 ```
 
 # Private overlay

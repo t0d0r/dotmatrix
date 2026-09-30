@@ -160,19 +160,22 @@ for cfg in "${_git_cmd_cfg[@]}" ; do
 	done
 done
 
-# Create aliases for everything defined in the gitconfig [alias] section.
+# Create aliases for everything defined in the global gitconfig [alias]
+# section. Repository-local config is ignored on purpose (a .git/config from
+# an untrusted checkout must not define shell aliases), and alias values are
+# passed as data instead of being re-parsed by eval.
 _git_import_aliases () {
-	eval "$(
-		git config --get-regexp 'alias\..*' |
-		sed 's/^alias\.//'                  |
-		while read key command
-		do
-			if expr -- "$command" : '!' >/dev/null
-			then echo "alias $key='git $key'"
-			else echo "gitalias $key=\"git $command\""
-			fi
-		done
-	)"
+	local key command
+	while read -r key command
+	do
+		case "$key" in
+		*[!A-Za-z0-9_-]*|'') continue ;;
+		esac
+		if expr -- "$command" : '!' >/dev/null
+		then alias "$key=git $key"
+		else gitalias "$key=git $command"
+		fi
+	done < <(git config --global --get-regexp '^alias\.' | sed 's/^alias\.//')
 }
 
 # PROMPT =======================================================================
@@ -596,12 +599,26 @@ __gitcomp ()
 		COMPREPLY=()
 		;;
 	*)
-		local IFS=$'\n'
-		COMPREPLY=($(compgen -P "${2-}" \
-			-W "$(__gitcomp_1 "${1-}" "${4-}")" \
-			-- "$cur"))
+		__gitcomp_match "${2-}" "$cur" "$(__gitcomp_1 "${1-}" "${4-}")"
 		;;
 	esac
+}
+
+# __gitcomp_match prefix cur words
+# Fills COMPREPLY with the newline-separated words that start with cur,
+# each prefixed with prefix. Unlike `compgen -W`, the words are compared
+# literally and never shell-expanded, so ref names or file names such as
+# 'x$(cmd)' taken from a fetched repository cannot execute code.
+__gitcomp_match ()
+{
+	local pfx="$1" cur="$2" w
+	COMPREPLY=()
+	while IFS= read -r w; do
+		[ -n "$w" ] || continue
+		case "$w" in
+		"$cur"*) COMPREPLY+=("$pfx$w") ;;
+		esac
+	done <<< "$3"
 }
 
 # __git_heads accepts 0 or 1 arguments (to pass to __gitdir)
@@ -766,9 +783,8 @@ __git_complete_file ()
 		*)   pfx="$ref:$pfx" ;;
 		esac
 
-		local IFS=$'\n'
-		COMPREPLY=($(compgen -P "$pfx" \
-			-W "$(git --git-dir="$(__gitdir)" ls-tree "$ls" \
+		__gitcomp_match "$pfx" "$cur" \
+			"$(git --git-dir="$(__gitdir)" ls-tree "$ls" \
 				| sed '/^100... blob /{
 				           s,^.*	,,
 				           s,$, ,
@@ -781,8 +797,7 @@ __git_complete_file ()
 				           s,^.*	,,
 				           s,$,/,
 				       }
-				       s/^.*	//')" \
-			-- "$cur"))
+				       s/^.*	//')"
 		;;
 	*)
 		__gitcomp "$(__git_refs)"
