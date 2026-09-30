@@ -2,8 +2,8 @@
 
 sleeptime=30
 
-while (true); do
-  ssh $@
+while true; do
+  ssh "$@" && break
   date
   echo "retrying (after ${sleeptime} sec)..."
   sleep ${sleeptime}

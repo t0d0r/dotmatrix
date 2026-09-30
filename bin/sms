@@ -4,17 +4,26 @@ username=$CLICKATELL_USERNAME
 password=$CLICKATELL_PASSWORD
 api_id=${CLICKATELL_API_ID}
 recipient=${CLICKATELL_RECIPIENT}
-message=$@
+message=$(printf "%s" "$*" | tr "\n" " ")
 
 if [ $# -eq 0 ]; then
 	echo "$0 message"
 	exit 1
 fi
 
-curl -G \
-	"http://api.clickatell.com/http/sendmsg" \
-	--data-urlencode "user=${username}" \
-	--data-urlencode "password=${password}" \
-	--data-urlencode "api_id=${api_id}" \
-	--data-urlencode "to=${recipient}" \
-	--data-urlencode "text=${message}"
+# Use HTTPS and hand the parameters to curl through a config on stdin, so the
+# credentials neither cross the network in cleartext nor appear in `ps`.
+# Double quotes and backslashes are escaped for curl's config syntax.
+curl_quote() {
+	printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g'
+}
+
+{
+	printf 'url = "https://api.clickatell.com/http/sendmsg"\n'
+	printf 'get\n'
+	printf 'data-urlencode = "user=%s"\n' "$(curl_quote "$username")"
+	printf 'data-urlencode = "password=%s"\n' "$(curl_quote "$password")"
+	printf 'data-urlencode = "api_id=%s"\n' "$(curl_quote "$api_id")"
+	printf 'data-urlencode = "to=%s"\n' "$(curl_quote "$recipient")"
+	printf 'data-urlencode = "text=%s"\n' "$(curl_quote "$message")"
+} | curl --silent --show-error --fail --proto '=https' -K -

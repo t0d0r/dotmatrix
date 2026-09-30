@@ -6,6 +6,10 @@
 #
 ####################################
 
+# The archive holds /etc/shadow, SSH keys and home directories: make sure it
+# is created readable by root only.
+umask 077
+
 # What to backup.
 backup_files="/home /var/spool/mail /etc /root /boot /opt"
 
@@ -23,7 +27,8 @@ date
 echo
 
 # Backup the files using tar.
-tar czf $dest/$archive_file $backup_files
+# $backup_files is intentionally unquoted: it is a list of paths
+tar czf "$dest/$archive_file" $backup_files
 
 # Print end status message.
 echo
@@ -31,4 +36,4 @@ echo "Backup finished"
 date
 
 # Long listing of files in $dest to check file sizes.
-ls -lh $dest
+ls -lh "$dest"
