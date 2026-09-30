@@ -4,9 +4,6 @@ username = Todor Dragnev <todor@bstconsult.com>
 #verbose = True
 merge = vimdiff
 
-[trusted]
-users = 2000
-
 [defaults]
 # suppress noisy extdiff header message
 cdiff = -q
