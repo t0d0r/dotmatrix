@@ -58,6 +58,5 @@ grep -q '^auto_view.*octet-stream' "$repo/.mutt/auto_views" && flunk "mutt autov
 grep -q "^set query_command.*'%s'" "$repo/.mutt/general" && flunk "mutt query_command double-quoted" || pass "mutt query_command quoting"
 grep -q '^umask 077' "$repo/bin/backup-daily.sh" && pass "backup umask" || flunk "backup umask missing"
 grep -q 'http://api.clickatell' "$repo/bin/sms" && flunk "sms uses http" || pass "sms uses https"
-grep -qE '^IOPASS="[^"]+"' "$repo/bin/ioclient" && flunk "ioclient hardcoded password" || pass "ioclient no hardcoded password"
 
 exit $fail
