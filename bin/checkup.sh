@@ -48,7 +48,7 @@ nolog=0
 #
 # Define the location of the log file.
 #
-log="/tmp/checkup_$(date +%s).log"
+log=$(mktemp "${TMPDIR:-/tmp}/checkup_$(date +%s).XXXXXX") || exit 1
 
 #
 # Set seperator for the logfile. This allows the specification of the seperator between te fields in the logfile.

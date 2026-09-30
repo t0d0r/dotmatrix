@@ -26,8 +26,10 @@ IOD="/opt/local/sbin/iodine"
 # Your top domain
 IOTD="l.all4y.net"
 
-# You may choose to store the password in this script or enter it every time
-IOPASS="***REMOVED***"
+# Never store the password in this script (it is tracked in a public repo).
+# Export IODINE_PASS before running, or leave it unset to be prompted by
+# iodine. The password is handed to iodine through the environment, so it
+# does not show up in the process list the way `-P <password>` does.
 
 # You might need to change this if you use linux, or already have 
 # tunnels running.  In linux iodine uses dnsX and fbsd/osX use tunX
@@ -44,9 +46,8 @@ IOIP="172.16.12.1"
 NS=`grep nameserver /etc/resolv.conf|head -1|awk '{print $2}'`
 GW=`netstat -rn|grep -v Gateway|grep G|awk '{print $2}'`
 OS=`uname`
-[ -z $IOPASS ] && echo "Enter your iodine password"
-[ -z $IOPASS ] && $IOD $NS $IOTD
-[ -n $IOPASS ] && $IOD -P "${IOPASS}" $NS $IOTD
+[ -z "${IODINE_PASS}" ] && echo "Enter your iodine password"
+"$IOD" "$NS" "$IOTD"
 if ps auxw|grep iodine|grep -v grep
  then
         case "$OS" in
@@ -69,7 +70,7 @@ if ps auxw|grep iodine|grep -v grep
  echo "Press enter when you are done with iodine"
  echo "and you want your routes back to normal"
  read yourmind
- kill -9 `ps auxw|grep iodine|grep -v grep|awk '{print $2}'`
+ pkill -x iodine
          case "$OS" in
         Darwin|*BSD)
                 route delete default
