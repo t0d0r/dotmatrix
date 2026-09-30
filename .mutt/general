@@ -126,10 +126,13 @@ set print_command       = "mutt-print %s"                   # Send your message 
 set ispell              = "aspell -e -c"
 
 # Dealing with attachments -------------------------
-set implicit_autoview
+# implicit_autoview stays off: it would run every "copiousoutput" mailcap
+# entry (Office/octet-stream converters) on inline parts of any message.
+unset implicit_autoview
 
 # Goobook https://pypi.python.org/pypi/goobook/ -----
-set query_command       = "goobook query '%s'"
+# mutt shell-quotes %s itself; extra quotes around it would cancel that out
+set query_command       = "goobook query %s"
 
 ## SIDEBAR ## -----------------------------------------
 #set sidebar_width       = 30

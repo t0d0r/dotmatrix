@@ -20,7 +20,6 @@ msgwait 2 # 2 second message
 bindkey "^[." next
 bindkey "^[," prev
 
-screen -t r00t 0 su -
 #defutf8 on
 #utf8 on on
 #screen -t outpost 8 ssh -v outpost
